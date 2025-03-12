@@ -1,6 +1,6 @@
 ## 👋 Hi there, I'm Julio Carneiro!
 
-🔍 🔎 Aspiring Data Analyst | Strong Business Background
+🔍 Aspiring Data Analyst | Strong Business Background
 
 
 <!--
