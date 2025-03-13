@@ -2,9 +2,12 @@
 
 🔍 Aspiring Data Analyst | Strong Business Background
 
-I’m currently working on:
+🌱 I’m currently enrolled in an intensive, project-based Data Analytics Bootcamp at the University of Toronto and edX, where I’m learning Python, SQL, Tableau, Machine Learning, and Data Visualization.
 
-Employee Attrition Analysis
+📈 I'm working on projects that involve both real-world and simulated datasets to extract meaninful insights and support data-driven decision-making.
+
+🚀 Current Projects:
+loading...
 
 <!--
 **juliocezarcarneiro/juliocezarcarneiro** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
@@ -12,7 +15,7 @@ Employee Attrition Analysis
 Here are some ideas to get you started:
 
 - 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
+
 - 👯 I’m looking to collaborate on ...
 - 🤔 I’m looking for help with ...
 - 💬 Ask me about ...
