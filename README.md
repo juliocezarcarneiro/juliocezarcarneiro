@@ -10,6 +10,12 @@
 
 * Crowdfunding_ETL: This project focuses on building an ETL (Extract, Transform, Load) pipeline using Python, Pandas, and PostgreSQL. The goal is to extract data from Excel files, transform it into structured DataFrames, and load it into a PostgreSQL database. The project demonstrates skills in data extraction, cleaning, transformation, and database management.
 
+
+
+## 📧 Contact  
+- **LinkedIn:** [Julio Carneiro](https://www.linkedin.com/in/juliocezarcarneiro/)
+- **Email:** juliocezarcarneiro@outlook.com 
+
 <!--
 **juliocezarcarneiro/juliocezarcarneiro** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
