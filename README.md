@@ -1,7 +1,7 @@
 # My Data Analytics Portfolio
 A showcase of my projects, dashboards, and data visualizations built with Plotly, D3.js, Leaflet, and more.
 
-🔗 [View Live Portfolio](https:/juliocezarcarneiro.github.io/juliocezarcarneiro/index.html)
+🔗 [View Live Portfolio](https://juliocezarcarneiro.github.io/juliocezarcarneiro/)
 
 ## About
 This portfolio highlights my skills as a data analyst with a focus on visual storytelling, data cleaning, and analytics. I use real-world data and tools like Python, Plotly, D3.js, and Leaflet.js.
