@@ -2,74 +2,266 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Julio Carneiro | Data Analyst Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julio Carneiro | Data Analyst</title>
   <style>
+    :root {
+      --text: #2d3748;
+      --primary: #4a6fa5;
+      --secondary: #6b8cae;
+      --light-bg: #f5f7fa;
+      --line: #e2e8f0;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f9f9f9;
-      color: #333;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+      font-size: 16px;
+      background-color: #ffffff;
     }
-    h1, h2 {
-      color: #2c3e50;
+
+    header {
+      margin: 5rem 0 3.5rem;
+      text-align: center;
     }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      letter-spacing: -0.025em;
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      color: #4a5568;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin: 4rem 0 1.5rem;
+      color: var(--primary);
+      padding-bottom: 0.5rem;
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+    }
+
     a {
-      color: #2980b9;
+      color: var(--primary);
       text-decoration: none;
+      transition: all 0.2s ease;
     }
+
     a:hover {
+      color: #2c5282;
       text-decoration: underline;
     }
-    section {
-      margin-bottom: 40px;
+
+    .project {
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+      background-color: var(--light-bg);
+      border-radius: 8px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .project-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-meta {
+      color: #4a5568;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .project-links {
+      margin-top: 1rem;
+    }
+
+    .project-links a {
+      margin-right: 1.5rem;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .project-links a::before {
+      content: "↗";
+      margin-right: 0.25rem;
+      font-size: 0.8em;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      list-style-type: square;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      padding-left: 0.25rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .skill {
+      background: var(--light-bg);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: var(--card-shadow);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    footer {
+      margin: 5rem 0 3rem;
+      text-align: center;
+      color: #718096;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        font-size: 15px;
+        padding: 0 16px;
+      }
+
+      header {
+        margin: 3rem 0 2rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .project {
+        padding: 1.25rem;
+      }
     }
   </style>
 </head>
 <body>
-
-  <h1>Julio Carneiro</h1>
-  <p>📊 Aspiring Data Analyst | Python • SQL • Excel • Tableau</p>
+  <header>
+    <h1>Julio Carneiro</h1>
+    <p class="tagline">Data Analyst, SQL, Python, and Data Visualization</p>
+  </header>
 
   <section>
-    <h2>About Me</h2>
+    <h2>About</h2>
     <p>
-      I'm a data analyst-in-training with a passion for turning raw data into meaningful insights.
+      Aspiring data analyst with a passion for turning complex data into clear, actionable insights. I enjoy building efficient data pipelines and interactive dashboards that support smart decision-making. Currently expanding my skills through hands-on projects while pursuing my studies.
     </p>
   </section>
 
   <section>
-    <h2>Projects</h2>
-    <ul>
-      <li>
-        <strong>Project 1:</strong> Crowdfunding: Extract, Transform and Load Project —
-        <a href="https://public.tableau.com/..." target="_blank">View Dashboard</a>
-        |
-        <a href="https://github.com/juliocezarcarneiro/Crowdfunding_ETL.git" target="_blank">GitHub</a>
-      </li>
-      <li>
-        <strong>Project 2:</strong> Data Cleaning with Python & Pandas —
-        <a href="https://github.com/juliocezarcarneiro/project2" target="_blank">GitHub</a>
-      </li>
-      <!-- Add more projects here -->
-    </ul>
+    <h2>Skills</h2>
+    <div class="skills">
+      <span class="skill">Python</span>
+      <span class="skill">Pandas</span>
+      <span class="skill">SQL</span>
+      <span class="skill">PostgreSQL</span>
+      <span class="skill">Tableau</span>
+      <span class="skill">Data Visualization</span>
+      <span class="skill">ETL</span>
+      <span class="skill">Excel</span>
+      <span class="skill">Git</span>
+    </div>
   </section>
 
   <section>
-    <h2>Resume</h2>
-    <p>
-      <a href="resume.pdf" target="_blank">📄 View My Resume (PDF)</a>
-    </p>
+    <h2>A Sample of my Projects</h2>
+
+    <div class="project">
+      <h3 class="project-title">Global Wealth and Wellbeing Analysis</h3>
+      <div class="project-meta">Python, JavaScript, Leaflet</div>
+      <ul>
+        <li>Analyzed global development metrics to identify patterns in income inequality</li>
+        <li>Built interactive dashboards exploring relationships between economic and health indicators</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://github.com/juliocezarcarneiro/GDP-per-capita-project.git">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3 class="project-title">Crowdfunding ETL Pipeline</h3>
+      <div class="project-meta">Python, PostgreSQL</div>
+      <ul>
+        <li>Developed end-to-end ETL process from Excel to relational database</li>
+        <li>Designed optimized schema for campaign contribution data</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://github.com/juliocezarcarneiro/Crowdfunding_ETL">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3 class="project-title">Interactive Biodiversity Dashboard</h3>
+      <div class="project-meta">JavaScript, Plotly</div>
+      <ul>
+        <li>Created dynamic visualizations of microbial data</li>
+        <li>Implemented filtering by demographic factors</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://juliocezarcarneiro.github.io/belly-button-challenge/">Live Demo</a>
+        <a href="https://github.com/juliocezarcarneiro/belly-button-challenge">GitHub</a>
+      </div>
+    </div>
   </section>
 
   <section>
     <h2>Contact</h2>
-    <p>
-      📧 <a href="mailto:juliocezarcarneiro@outlook.com">juliocezarcarneiro@outlook.com</a><br>
-      💼 <a href="https://www.linkedin.com/in/juliocezarcarneiro" target="_blank">LinkedIn</a><br>
-      🐙 <a href="https://github.com/juliocezarcarneiro" target="_blank">GitHub</a>
-    </p>
+    <div class="contact-links">
+      <a href="mailto:juliocezarcarneiro@outlook.com">Email</a>
+      <a href="https://www.linkedin.com/in/juliocezarcarneiro">LinkedIn</a>
+      <a href="https://github.com/juliocezarcarneiro">GitHub</a>
+    </div>
   </section>
 
+  <footer>
+    © 2023 Julio Carneiro
+  </footer>
 </body>
 </html>
