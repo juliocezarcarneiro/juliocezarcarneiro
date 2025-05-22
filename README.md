@@ -10,11 +10,10 @@ Aspiring data analyst with a passion for turning complex data into clear, action
 
 ## Featured Projects
 
-### 🌍 Global Wealth and Wellbeing Analysis
-**Tech:** Python, JavaScript, Leaflet  
-- Analyzed global development metrics to identify patterns in income inequality
-- Built interactive dashboards exploring relationships between economic and health indicators  
-🔗 [GitHub](https://github.com/juliocezarcarneiro/GDP-per-capita-project.git)
+### 📊 Executive Financial Dashboard
+**Tech:** Tableau, SQL
+- Built C-level dashboards tracking revenue, profit and marketing ROI across 10 stores  
+🔗 [GitHub](https://github.com/juliocezarcarneiro/executive-financial-dashboard.git)
 
 ### 📊 Crowdfunding ETL Pipeline
 **Tech:** Python, PostgreSQL  
