@@ -2,12 +2,6 @@
 
 [![Portfolio Preview](https://img.shields.io/badge/View-Live_Portfolio-blue?style=for-the-badge)](https://juliocezarcarneiro.github.io/juliocezarcarneiro/)
 
-A showcase of my data analysis projects, interactive dashboards, and data visualizations built with Python, JavaScript, and modern data visualization libraries.
-
-## About Me
-
-Aspiring data analyst with a passion for turning complex data into clear, actionable insights. I enjoy building efficient data pipelines and interactive dashboards that support smart decision-making.
-
 ## Featured Projects
 
 ### 📊 Executive Financial Dashboard
@@ -15,31 +9,17 @@ Aspiring data analyst with a passion for turning complex data into clear, action
 - Built C-level dashboards tracking revenue, profit and marketing ROI across 10 stores  
 🔗 [GitHub](https://github.com/juliocezarcarneiro/executive-financial-dashboard.git)
 
-### 📊 Crowdfunding ETL Pipeline
-**Tech:** Python, PostgreSQL  
-- Developed end-to-end ETL process from Excel to relational database
-- Designed optimized schema for campaign contribution data  
-🔗 [GitHub](https://github.com/juliocezarcarneiro/Crowdfunding_ETL)
+### ⚙️ Automated Sales Performance Reporting System
+**Tech:** Python (Pandas), SQL, Airflow
+- Automated daily performance briefings with exception alerts for 20+ regions
+🔗 [GitHub](https://github.com/juliocezarcarneiro/automated-sales-reporting-system.git)
 
-### 🦠 Interactive Biodiversity Dashboard
-**Tech:** JavaScript, Plotly  
-- Created dynamic visualizations of microbial data
-- Implemented filtering by demographic factors  
-🔗 [Live Demo](https://juliocezarcarneiro.github.io/belly-button-challenge/) | [GitHub](https://github.com/juliocezarcarneiro/belly-button-challenge)
-
-## Technical Skills
-
-**Languages & Databases:**  
-Python, JavaScript, SQL, PostgreSQL  
-
-**Data Tools:**  
-Pandas, Tableau, Excel, ETL Processes  
-
-**Visualization:**  
-Plotly, D3.js, Leaflet.js  
-
-**Other:**  
-Git, GitHub, VS Code  
+### 🔍 E-Commerce Behavior Analytics
+**Tech:** PySpark | Databricks | Delta Lake  
+- Analyzed 10M+ events to optimize purchase paths
+- Reduced infra costs by 22% via pattern clustering
+- Built scalable PySpark pipeline for real time analytics
+🔗 [GitHub](https://github.com/juliocezarcarneiro/big-data-analytics.git)
 
 ## Connect With Me
 
