@@ -4,22 +4,19 @@
 
 ## Featured Projects
 
-### 📊 Executive Financial Dashboard
+### 📊 Executive Financial Dashboard 🔗 [GitHub](https://github.com/juliocezarcarneiro/executive-financial-dashboard.git)
 **Tech:** Tableau, SQL
 - Built C-level dashboards tracking revenue, profit and marketing ROI across 10 stores  
-🔗 [GitHub](https://github.com/juliocezarcarneiro/executive-financial-dashboard.git)
 
-### ⚙️ Automated Sales Performance Reporting System
+### ⚙️ Automated Sales Performance Reporting System 🔗 [GitHub](https://github.com/juliocezarcarneiro/automated-sales-reporting-system.git)
 **Tech:** Python (Pandas), SQL, Airflow
 - Automated daily performance briefings with exception alerts for 20+ regions
-🔗 [GitHub](https://github.com/juliocezarcarneiro/automated-sales-reporting-system.git)
 
-### 🔍 E-Commerce Behavior Analytics
+### 🔍 E-Commerce Behavior Analytics 🔗 [GitHub](https://github.com/juliocezarcarneiro/big-data-analytics.git)
 **Tech:** PySpark | Databricks | Delta Lake  
 - Analyzed 10M+ events to optimize purchase paths
 - Reduced infra costs by 22% via pattern clustering
 - Built scalable PySpark pipeline for real time analytics
-🔗 [GitHub](https://github.com/juliocezarcarneiro/big-data-analytics.git)
 
 ## Connect With Me
 
