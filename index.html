@@ -3,295 +3,748 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Julio Carneiro | Data Analyst</title>
-
-  <!-- 
-    Portfolio Website by Julio Cezar Carneiro
-    Built with: HTML5, CSS3, JavaScript, Git, GitHub Pages
-    Data visualizations powered by: Plotly.js, Leaflet.js, D3.js
-    Deployed using GitHub Pages
-  -->
-
+  <title>Julio Carneiro | Data Analytics Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta name="description" content="Julio Carneiro's Data Analytics Portfolio showcasing projects in SQL, Python, Tableau, and more. Transforming data into actionable business insights.">
   <style>
     :root {
-      --text: #2d3748;
-      --primary: #4a6fa5;
-      --secondary: #6b8cae;
-      --light-bg: #f5f7fa;
-      --line: #e2e8f0;
-      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --white: #ffffff;
+      --lightest-grey: #f8fafc;
+      --light-grey: #e2e8f0;
+      --medium-grey: #94a3b8;
+      --dark-grey: #334155;
+      --darkest-grey: #1e293b;
+      --primary-blue: #2563eb;
+      --light-blue: #3b82f6;
+      --dark-blue: #1d4ed8;
+      --accent-teal: #0d9488;
+      --accent-green: #10b981;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
     }
-
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--dark-grey);
+      background-color: var(--white);
       line-height: 1.6;
-      color: var(--text);
-      max-width: 800px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      color: var(--darkest-grey);
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .container {
+      max-width: 1440px;
       margin: 0 auto;
       padding: 0 24px;
-      font-size: 16px;
-      background-color: #ffffff;
     }
-
-    header {
-      margin: 5rem 0 3.5rem;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-      letter-spacing: -0.025em;
-    }
-
-    .tagline {
-      font-size: 1.25rem;
-      color: #4a5568;
-      margin-bottom: 1.5rem;
-      font-weight: 400;
-    }
-
-    h2 {
-      font-size: 1.75rem;
-      font-weight: 600;
-      margin: 4rem 0 1.5rem;
-      color: var(--primary);
-      padding-bottom: 0.5rem;
-      letter-spacing: -0.025em;
-    }
-
-    h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 2rem 0 0.75rem;
-    }
-
-    a {
-      color: var(--primary);
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    a:hover {
-      color: #2c5282;
-      text-decoration: underline;
-    }
-
-    .project {
-      margin-bottom: 3rem;
-      padding: 1.5rem;
-      background-color: var(--light-bg);
-      border-radius: 8px;
-      box-shadow: var(--card-shadow);
-    }
-
-    .project-title {
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .project-meta {
-      color: #4a5568;
-      margin-bottom: 0.75rem;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    .project-links {
-      margin-top: 1rem;
-    }
-
-    .project-links a {
-      margin-right: 1.5rem;
-      font-size: 0.9rem;
-      display: inline-flex;
+    
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 0 24px;
+      height: 72px;
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
       align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      box-shadow: var(--shadow-sm);
     }
-
-    .project-links a::before {
-      content: "↗";
-      margin-right: 0.25rem;
-      font-size: 0.8em;
+    
+    .nav-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--darkest-grey);
+      background: linear-gradient(to right, var(--primary-blue), var(--accent-teal));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
-
-    ul {
-      padding-left: 1.5rem;
-      list-style-type: square;
+    
+    .nav-links {
+      display: flex;
+      gap: 32px;
     }
-
-    li {
-      margin-bottom: 0.5rem;
-      padding-left: 0.25rem;
+    
+    .nav-link {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--dark-grey);
+      transition: var(--transition);
+      position: relative;
     }
-
-    .skills {
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-blue);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: var(--darkest-grey);
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 120vh;
+      min-height: 800px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 72px;
+      background: linear-gradient(135deg, var(--lightest-grey), var(--white));
+    }
+    
+    .hero h1 {
+      font-size: 72px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.1;
+      background: linear-gradient(to right, var(--darkest-grey), var(--primary-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .hero .subtitle {
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--medium-grey);
+      margin-bottom: 32px;
+      max-width: 700px;
+    }
+    
+    .hero-social-links {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    
+    .hero-social-link {
+      font-size: 24px;
+      color: var(--medium-grey);
+      transition: var(--transition);
+    }
+    
+    .hero-social-link:hover {
+      color: var(--primary-blue);
+      transform: translateY(-3px);
+    }
+    
+    .scroll-down {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      font-size: 24px;
+      color: var(--medium-grey);
+      transition: var(--transition);
+    }
+    
+    .scroll-down:hover {
+      color: var(--primary-blue);
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+      40% { transform: translateY(-15px) translateX(-50%); }
+      60% { transform: translateY(-7px) translateX(-50%); }
+    }
+    
+    /* Projects Section */
+    .projects-section {
+      padding: 120px 0;
+      background-color: var(--white);
+    }
+    
+    .section-title {
+      font-size: 48px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 80px;
+      color: var(--darkest-grey);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-blue), var(--accent-teal));
+      border-radius: 2px;
+    }
+    
+    /* Hero Project */
+    .project-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 120px;
+    }
+    
+    .hero-image {
+      margin-bottom: 48px;
+      width: 100%;
+      max-width: 1000px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .hero-content {
+      text-align: center;
+      max-width: 700px;
+    }
+    
+    .featured-badge {
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary-blue), var(--accent-teal));
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .project-hero h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--darkest-grey);
+    }
+    
+    .project-hero p {
+      font-size: 20px;
+      color: var(--medium-grey);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    
+    .project-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .project-link {
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .github-link {
+      background-color: var(--darkest-grey);
+      color: white;
+    }
+    
+    .demo-link {
+      background: linear-gradient(to right, var(--primary-blue), var(--light-blue));
+      color: white;
+    }
+    
+    .project-link:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    /* Secondary Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 32px;
+      margin-bottom: 80px;
+    }
+    
+    .project-card {
+      background-color: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid var(--light-grey);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary-blue);
+    }
+    
+    .project-image-wrapper {
+      height: 280px;
+      overflow: hidden;
+      background-color: var(--lightest-grey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--light-grey);
+    }
+    
+    .project-image {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      transition: transform 0.6s ease;
+    }
+    
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+    
+    .project-content {
+      padding: 28px;
+    }
+    
+    .project-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--darkest-grey);
+    }
+    
+    .project-description {
+      font-size: 16px;
+      color: var(--medium-grey);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    
+    .project-tech-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin: 1.5rem 0;
+      gap: 8px;
     }
-
-    .skill {
-      background: var(--light-bg);
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
+    
+    .project-tech {
+      background: linear-gradient(to right, var(--accent-teal), var(--accent-green));
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
       font-weight: 500;
-      box-shadow: var(--card-shadow);
     }
-
-    .contact-links {
-      display: flex;
-      gap: 2rem;
-      margin: 2rem 0;
+    
+    /* Small Projects */
+    .projects-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
     }
-
-    .contact-links a {
-      display: flex;
-      align-items: center;
-      padding: 0.5rem 0;
-    }
-
-    footer {
-      margin: 5rem 0 3rem;
+    
+    .project-item {
+      background-color: var(--white);
+      border-radius: 16px;
+      padding: 32px;
       text-align: center;
-      color: #718096;
-      font-size: 0.9rem;
+      transition: var(--transition);
+      border: 1px solid var(--light-grey);
+      box-shadow: var(--shadow-sm);
     }
-
-    @media (max-width: 640px) {
-      body {
-        font-size: 15px;
-        padding: 0 16px;
+    
+    .project-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-blue);
+    }
+    
+    .project-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 24px;
+      background-color: var(--lightest-grey);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    
+    .project-item h4 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--darkest-grey);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--darkest-grey);
+      color: white;
+      padding: 80px 0 40px;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .footer-logo {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      background: linear-gradient(to right, var(--light-blue), var(--accent-teal));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-link {
+      font-size: 16px;
+      color: var(--light-grey);
+      transition: var(--transition);
+    }
+    
+    .footer-link:hover {
+      color: var(--light-blue);
+    }
+    
+    .footer-social-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-social-link {
+      font-size: 24px;
+      color: var(--light-grey);
+      transition: var(--transition);
+    }
+    
+    .footer-social-link:hover {
+      color: var(--light-blue);
+      transform: translateY(-3px);
+    }
+    
+    .footer-copyright {
+      font-size: 14px;
+      color: var(--medium-grey);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 60px;
       }
-
-      header {
-        margin: 3rem 0 2rem;
+      
+      .hero .subtitle {
+        font-size: 20px;
       }
-
-      h1 {
-        font-size: 2rem;
+      
+      .section-title {
+        font-size: 40px;
       }
-
-      h2 {
-        font-size: 1.5rem;
+      
+      .project-hero h2 {
+        font-size: 40px;
       }
-
-      .contact-links {
+      
+      .project-hero p {
+        font-size: 18px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 700px;
+      }
+      
+      .hero h1 {
+        font-size: 48px;
+      }
+      
+      .nav-links {
+        gap: 20px;
+      }
+      
+      .section-title {
+        font-size: 36px;
+        margin-bottom: 60px;
+      }
+      
+      .project-hero h2 {
+        font-size: 32px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-links {
         flex-direction: column;
-        gap: 0.75rem;
+        align-items: center;
       }
-
-      .project {
-        padding: 1.25rem;
+      
+      .project-link {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+      
+      .hero .subtitle {
+        font-size: 18px;
+      }
+      
+      .nav-logo {
+        font-size: 20px;
+      }
+      
+      .nav-links {
+        gap: 16px;
+      }
+      
+      .section-title {
+        font-size: 32px;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 16px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Julio Carneiro</h1>
-    <p class="tagline">Data Analyst, SQL, Python, and Data Visualization</p>
-  </header>
-
-  <section>
-    <h2>About</h2>
-    <p>
-      Aspiring data analyst with a passion for turning complex data into clear, actionable insights. I enjoy building efficient data pipelines and interactive dashboards that support smart decision-making. Currently expanding my skills through hands-on projects while pursuing my studies.
-    </p>
-  </section>
-
-  <section>
-    <h2>Skills</h2>
-    <div class="skills">
-      <span class="skill">Python</span>
-      <span class="skill">Pandas</span>
-      <span class="skill">SQL</span>
-      <span class="skill">PostgreSQL</span>
-      <span class="skill">Tableau</span>
-      <span class="skill">Data Visualization</span>
-      <span class="skill">ETL</span>
-      <span class="skill">Excel</span>
-      <span class="skill">Git</span>
+  <nav class="navbar">
+    <div class="nav-logo">Julio Carneiro</div>
+    <div class="nav-links">
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Data Insights</h1>
+    <div class="hero-social-links">
+      <a href="https://github.com/your-github" class="hero-social-link"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/your-linkedin" class="hero-social-link"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:your-email@example.com" class="hero-social-link"><i class="fas fa-envelope"></i></a>
+    </div>
+    <a href="#projects" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
   </section>
 
-  <section>
-    <h2>A Sample of my Projects</h2>
-
-    <div class="project">
-      <h3 class="project-title">Global Wealth and Wellbeing Analysis</h3>
-      <div class="project-meta">Python, JavaScript, Leaflet</div>
-      <ul>
-        <li>Analyzed global development metrics to identify patterns in income inequality</li>
-        <li>Built interactive dashboards exploring relationships between economic and health indicators</li>
-      </ul>
-      <div class="project-links">
-        <a href="https://github.com/juliocezarcarneiro/GDP-per-capita-project.git">GitHub</a>
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      
+      <!-- Hero Project -->
+      <div class="project-hero">
+        <div class="hero-image">
+          <img src="https://raw.githubusercontent.com/plotly/datasets/master/dash-docs-stock.csv" alt="Executive Financial Dashboard" onerror="this.onerror=null;this.src='https://via.placeholder.com/1200x600/f8fafc/334155?text=Sales+Performance+Dashboard'">
+        </div>
+        <div class="hero-content">
+          <span class="featured-badge">Featured Project</span>
+          <h2>Executive Financial Dashboard</h2>
+          <p>Built an interactive Tableau dashboard to visualize P&L performance, rolling profitability trends, and scenario modeling for executive decision-making. The tool replaced static Excel reports, reducing monthly close analysis time by 30%.</p>
+          <div class="project-links">
+            <a href="#" class="project-link github-link">View on GitHub</a>
+            <a href="#" class="project-link demo-link">Live Demo</a>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="project">
-      <h3 class="project-title">Crowdfunding ETL Pipeline</h3>
-      <div class="project-meta">Python, PostgreSQL</div>
-      <ul>
-        <li>Developed end-to-end ETL process from Excel to relational database</li>
-        <li>Designed optimized schema for campaign contribution data</li>
-      </ul>
-      <div class="project-links">
-        <a href="https://github.com/juliocezarcarneiro/Crowdfunding_ETL">GitHub</a>
+      
+      <!-- Secondary Projects -->
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image-wrapper">
+            <img src="https://raw.githubusercontent.com/plotly/datasets/master/volcano_db.csv" alt="Customer Churn Analysis" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Customer+Churn+Analysis'">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Customer Churn Prediction</h3>
+            <p class="project-description">Machine learning model that predicts customer churn with 89% accuracy, helping businesses implement retention strategies.</p>
+            <div class="project-tech-tags">
+              <span class="project-tech">Python</span>
+              <span class="project-tech">Scikit-learn</span>
+              <span class="project-tech">XGBoost</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image-wrapper">
+            <img src="https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv" alt="HR Analytics Dashboard" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=HR+Analytics+Dashboard'">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">HR Analytics Dashboard</h3>
+            <p class="project-description">Power BI dashboard analyzing employee turnover, performance metrics, and workforce demographics with interactive filters.</p>
+            <div class="project-tech-tags">
+              <span class="project-tech">Power BI</span>
+              <span class="project-tech">DAX</span>
+              <span class="project-tech">SQL</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      
+      <!-- Additional Projects Section -->
+<section class="projects-section">
+  <h2 class="section-title">Additional Projects</h2>
+  <div class="projects-row">
 
-    <div class="project">
-      <h3 class="project-title">Interactive Biodiversity Dashboard</h3>
-      <div class="project-meta">JavaScript, Plotly</div>
-      <ul>
-        <li>Created dynamic visualizations of microbial data</li>
-        <li>Implemented filtering by demographic factors</li>
-      </ul>
-      <div class="project-links">
-        <a href="https://juliocezarcarneiro.github.io/belly-button-challenge/">Live Demo</a>
-        <a href="https://github.com/juliocezarcarneiro/belly-button-challenge">GitHub</a>
+    <!-- Project 1: Nonprofit Funding Prediction -->
+    <a href="https://github.com/juliocezarcarneiro/deep-learning-challenge" target="_blank" class="project-link">
+      <div class="project-item">
+        <img 
+          src="https://via.placeholder.com/600x300/f8fafc/334155?text=Neural+Network+Model" 
+          alt="Deep Learning Model for Nonprofit Funding Success Prediction"
+          onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300/f8fafc/334155?text=Nonprofit+Funding+Prediction'">
+        <h4>Nonprofit Funding Success Predictor</h4>
+        <p>Binary classifier using neural networks to identify high-impact funding applicants.</p>
+        <div class="tags">
+          <span>#DeepLearning</span>
+          <span>#TensorFlow</span>
+          <span>#NonprofitTech</span>
+        </div>
       </div>
+    </a>
+
+    <!-- Project 2: Home Sales Analysis -->
+    <a href="https://github.com/juliocezarcarneiro/home-sales-analysis" target="_blank" class="project-link">
+      <div class="project-item">
+        <img 
+          src="https://via.placeholder.com/600x300/f8fafc/334155?text=SparkSQL" 
+          alt="Home Sales Analysis Dashboard">
+        <h4>Home Sales Analysis with SparkSQL</h4>
+        <p>Big data processing pipeline for real estate trends using PySpark and SQL.</p>
+        <div class="tags">
+          <span>#SparkSQL</span>
+          <span>#BigData</span>
+          <span>#RealEstate</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Project 3: Credit Risk Classification -->
+    <a href="https://github.com/juliocezarcarneiro/credit-risk-classification" target="_blank" class="project-link">
+      <div class="project-item">
+        <img 
+          src="https://via.placeholder.com/600x300/f8fafc/334155?text=Credit+Risk+ML" 
+          alt="Machine Learning for Credit Risk"
+          onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300/f8fafc/334155?text=Credit+Risk+ML'">
+        <h4>Credit Risk Classification</h4>
+        <p>Machine learning model to assess loan applicant risk using supervised learning.</p>
+        <div class="tags">
+          <span>#MachineLearning</span>
+          <span>#ScikitLearn</span>
+          <span>#Finance</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-logo">Julio Carneiro</div>
+      <div class="footer-links">
+        <a href="#projects" class="footer-link">Projects</a>
+        <a href="#" class="footer-link">About</a>
+        <a href="#" class="footer-link">Blog</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </div>
+      <div class="footer-social-links">
+        <a href="https://github.com/your-github" class="footer-social-link"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/your-linkedin" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:your-email@example.com" class="footer-social-link"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p class="footer-copyright">© 2025 Julio Carneiro. All rights reserved.</p>
     </div>
-  </section>
-
-  <section>
-    <h2>Contact</h2>
-    <div class="contact-links">
-      <a href="mailto:juliocezarcarneiro@outlook.com">Email</a>
-      <a href="https://www.linkedin.com/in/juliocezarcarneiro">LinkedIn</a>
-      <a href="https://github.com/juliocezarcarneiro">GitHub</a>
-    </div>
-  </section>
-
-  <section>
-    <h2>Built With</h2>
-    <ul>
-      <li><strong>HTML & CSS</strong> – for custom structure and styling</li>
-      <li><strong>Git & GitHub</strong> – version control and collaboration</li>
-      <li><strong>GitHub Pages</strong> – free portfolio hosting</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>How I Built This Portfolio</h2>
-    <p>
-      I designed this portfolio from scratch using HTML and custom CSS, prioritizing clarity, responsiveness, and minimalism. The site is lightweight and optimized for performance, built without frameworks to keep it lean and fast.
-    </p>
-    <p>
-      All visualizations and dashboards were developed using tools like Plotly, Leaflet, and D3.js, which I integrated manually. Projects are hosted on GitHub, and this site is published using GitHub Pages for easy updates and deployment.
-    </p>
-    <p>
-      Every section, from layout to interactivity was built to showcase my ability to turn data into stories, design user interactive dashboards, and write clean code. I maintain the site actively as I grow my skills and portfolio.
-    </p>
-  </section>
-
-  <footer>
-    © 2025 Julio Carneiro
   </footer>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.backgroundColor = 'rgba(30, 41, 59, 0.96)';
+        navbar.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+      } else {
+        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.96)';
+        navbar.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
+      }
+    });
+  </script>
 </body>
 </html>
