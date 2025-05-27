@@ -144,11 +144,12 @@
       font-size: 72px;
       font-weight: 700;
       margin-bottom: 16px;
-      line-height: 1.1;
+      line-height: 1.2; /* Increased from 1.1 to prevent text cutoff */
       background: linear-gradient(to right, var(--darkest-grey), var(--primary-blue));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      padding-bottom: 8px; /* Added padding to ensure full text visibility */
     }
     
     .hero .subtitle {
@@ -656,7 +657,7 @@
     <a href="https://github.com/juliocezarcarneiro/deep-learning-challenge" target="_blank" class="project-link">
       <div class="project-item">
         <img 
-          src="https://via.placeholder.com/600x300/f8fafc/334155?text=Neural+Network+Model" 
+          src="Images/funding-predictor.jpeg"
           alt="Deep Learning Model for Nonprofit Funding Success Prediction"
           onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300/f8fafc/334155?text=Nonprofit+Funding+Prediction'">
         <h4>Nonprofit Funding Success Predictor</h4>
