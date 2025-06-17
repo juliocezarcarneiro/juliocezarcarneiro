@@ -129,7 +129,7 @@
     
     /* Hero Section */
     .hero {
-      height: 120vh;
+      height: 100vh;
       min-height: 800px;
       display: flex;
       flex-direction: column;
@@ -144,12 +144,12 @@
       font-size: 72px;
       font-weight: 700;
       margin-bottom: 16px;
-      line-height: 1.2; /* Increased from 1.1 to prevent text cutoff */
+      line-height: 1.2;
       background: linear-gradient(to right, var(--darkest-grey), var(--primary-blue));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      padding-bottom: 8px; /* Added padding to ensure full text visibility */
+      padding-bottom: 8px;
     }
     
     .hero .subtitle {
@@ -228,18 +228,22 @@
     /* Hero Project */
     .project-hero {
       display: flex;
-      flex-direction: column;
+      gap: 48px;
       align-items: center;
-      margin-bottom: 120px;
+      max-width: 1200px;
+      margin: 0 auto 120px;
+      padding: 48px;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-xl);
     }
     
     .hero-image {
-      margin-bottom: 48px;
-      width: 100%;
-      max-width: 1000px;
-      border-radius: 16px;
+      flex: 1;
+      min-width: 0;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: var(--shadow-xl);
+      box-shadow: var(--shadow-lg);
     }
     
     .hero-image img {
@@ -249,31 +253,32 @@
     }
     
     .hero-content {
-      text-align: center;
-      max-width: 700px;
+      flex: 1;
+      min-width: 0;
+      padding: 0 24px;
     }
     
     .featured-badge {
       display: inline-block;
       background: linear-gradient(to right, var(--primary-blue), var(--accent-teal));
       color: white;
-      padding: 6px 16px;
+      padding: 8px 16px;
       border-radius: 20px;
       font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 20px;
+      font-weight: 600;
+      margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
     }
     
     .project-hero h2 {
-      font-size: 48px;
+      font-size: 40px;
       font-weight: 700;
       margin-bottom: 20px;
       color: var(--darkest-grey);
     }
     
     .project-hero p {
-      font-size: 20px;
+      font-size: 18px;
       color: var(--medium-grey);
       margin-bottom: 32px;
       line-height: 1.6;
@@ -281,12 +286,11 @@
     
     .project-links {
       display: flex;
-      justify-content: center;
-      gap: 20px;
+      gap: 16px;
     }
     
     .project-link {
-      padding: 14px 28px;
+      padding: 12px 24px;
       border-radius: 8px;
       font-size: 16px;
       font-weight: 500;
@@ -299,12 +303,19 @@
       color: white;
     }
     
+    .github-link:hover {
+      background-color: var(--dark-grey);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    
     .demo-link {
       background: linear-gradient(to right, var(--primary-blue), var(--light-blue));
       color: white;
     }
     
-    .project-link:hover {
+    .demo-link:hover {
+      background: linear-gradient(to right, var(--dark-blue), var(--primary-blue));
       transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
     }
@@ -333,7 +344,7 @@
     }
     
     .project-image-wrapper {
-      height: 280px;
+      height: 240px;
       overflow: hidden;
       background-color: var(--lightest-grey);
       display: flex;
@@ -342,19 +353,19 @@
       border-bottom: 1px solid var(--light-grey);
     }
     
-    .project-image {
-      width: 90%;
-      height: 90%;
-      object-fit: contain;
+    .project-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: transform 0.6s ease;
     }
     
-    .project-card:hover .project-image {
+    .project-card:hover .project-image-wrapper img {
       transform: scale(1.05);
     }
     
     .project-content {
-      padding: 28px;
+      padding: 24px;
     }
     
     .project-title {
@@ -386,43 +397,45 @@
       font-weight: 500;
     }
     
-    /* Small Projects */
+    /* Additional Projects - Fixed Section */
     .projects-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
     }
     
-    .project-item {
+    .featured-project {
+      display: flex;
+      flex-direction: column;
       background-color: var(--white);
       border-radius: 16px;
-      padding: 32px;
-      text-align: center;
+      overflow: hidden;
       transition: var(--transition);
       border: 1px solid var(--light-grey);
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-md);
     }
     
-    .project-item:hover {
+    .featured-project:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-lg);
       border-color: var(--primary-blue);
     }
     
-    .project-item img {
-      width: 100%;
-      height: 180px;
-      object-fit: contain;
-      margin-bottom: 24px;
-      background-color: var(--lightest-grey);
-      border-radius: 8px;
-      padding: 16px;
+    .featured-project .project-image-wrapper {
+      height: 200px;
     }
     
-    .project-item h4 {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--darkest-grey);
+    .featured-project .project-content {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 30px; /* Added to prevent overlap */
+    }
+    
+    .featured-project .project-links {
+      margin-top: 20px; /* Increased spacing */
+      justify-content: flex-start;
     }
     
     /* Footer */
@@ -502,12 +515,13 @@
         font-size: 40px;
       }
       
-      .project-hero h2 {
-        font-size: 40px;
+      .project-hero {
+        flex-direction: column;
+        gap: 32px;
       }
       
-      .project-hero p {
-        font-size: 18px;
+      .hero-image, .hero-content {
+        width: 100%;
       }
     }
     
@@ -529,22 +543,16 @@
         margin-bottom: 60px;
       }
       
+      .project-hero {
+        padding: 32px;
+      }
+      
       .project-hero h2 {
         font-size: 32px;
       }
       
       .projects-grid {
         grid-template-columns: 1fr;
-      }
-      
-      .project-links {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .project-link {
-        width: 100%;
-        max-width: 280px;
       }
     }
     
@@ -569,6 +577,14 @@
         font-size: 32px;
       }
       
+      .project-hero {
+        padding: 24px;
+      }
+      
+      .project-links {
+        flex-direction: column;
+      }
+      
       .footer-links {
         flex-direction: column;
         gap: 16px;
@@ -587,6 +603,7 @@
 
   <section class="hero">
     <h1>Data Insights</h1>
+    <p class="subtitle">Transforming raw data into actionable business intelligence</p>
     <div class="hero-social-links">
       <a href="https://github.com/juliocezarcarneiro" class="hero-social-link"><i class="fab fa-github"></i></a>
       <a href="https://www.linkedin.com/in/juliocezarcarneiro/" class="hero-social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -602,15 +619,15 @@
       <!-- Hero Project -->
       <div class="project-hero">
         <div class="hero-image">
-          <img src="https://raw.githubusercontent.com/plotly/datasets/master/dash-docs-stock.csv" alt="Executive Financial Dashboard" onerror="this.onerror=null;this.src='https://via.placeholder.com/1200x600/f8fafc/334155?text=Sales+Performance+Dashboard'">
+          <img src="./Images/executive-financial.jpg" alt="Executive Financial Dashboard" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Executive+Financial+Dashboard'">
         </div>
         <div class="hero-content">
           <span class="featured-badge">Featured Project</span>
           <h2>Executive Financial Dashboard</h2>
-          <p>Built an interactive Tableau dashboard to visualize P&L performance, rolling profitability trends, and scenario modeling for executive decision-making. The tool replaced static Excel reports, reducing monthly close analysis time by 30%.</p>
+          <p>Built an interactive Tableau dashboard to visualize P&L performance, rolling profitability trends, and scenario modeling for executive decision-making. The tool replaced static Excel reports, reducing monthly close analysis time by 30%.</p>
           <div class="project-links">
-            <a href="#" class="project-link github-link">View on GitHub</a>
-            <a href="#" class="project-link demo-link">Live Demo</a>
+            <a href="https://github.com/juliocezarcarneiro/executive-financial-dashboard" class="project-link github-link" target="_blank">View on GitHub</a>
+            <a href="https://github.com/juliocezarcarneiro/executive-financial-dashboard" class="project-link demo-link" target="_blank">Live Demo</a>
           </div>
         </div>
       </div>
@@ -649,90 +666,76 @@
       </div>
       
       <!-- Additional Projects Section -->
-<section class="projects-section">
-  <h2 class="section-title">Additional Projects</h2>
-  <div class="projects-row">
+      <section class="projects-section">
+        <h2 class="section-title">Additional Projects</h2>
+        <div class="projects-row">
+          <!-- Project 1: Nonprofit Funding Prediction -->
+          <div class="featured-project">
+            <div class="project-image-wrapper">
+              <img src="Images/funding-predictor.jpg" alt="Deep Learning Model for Nonprofit Funding Success Prediction" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Nonprofit+Funding+Prediction'">
+            </div>
+            <div class="project-content">
+              <div class="featured-badge">Deep Learning</div>
+              <h3 class="project-title">Nonprofit Funding Success Predictor</h3>
+              <p class="project-description">
+                Deep Learning model to predict whether charitable donation applications will be successful. Using historical application data, we frame this as a binary classification problem and benchmark our model against a 75% accuracy target.
+              </p>
+              <div class="project-tech-tags">
+                <span class="project-tech">TensorFlow</span>
+                <span class="project-tech">Keras</span>
+                <span class="project-tech">Python</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/juliocezarcarneiro/deep-learning-challenge" class="project-link github-link" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
 
-    <!-- Project 1: Nonprofit Funding Prediction -->
-    <div class="project-card featured-project">
-      <div class="project-image-wrapper">
-        <div class="hero-image">
-          <img 
-            src="Images/funding-predictor.jpg"
-            alt="Deep Learning Model for Nonprofit Funding Success Prediction"
-            onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Nonprofit+Funding+Prediction';"
-          >
+          <!-- Project 2: Home Sales Analysis -->
+          <div class="featured-project">
+            <div class="project-image-wrapper">
+              <img src="Images/home-sales.jpg" alt="SparkSQL Analysis of Home Sales Data" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Home+Sales+Analysis'">
+            </div>
+            <div class="project-content">
+              <div class="featured-badge">Data Engineering</div>
+              <h3 class="project-title">Home Sales Analysis with SparkSQL</h3>
+              <p class="project-description">
+                SparkSQL analysis of home sales data to determine key metrics. Created temporary views, partitioned data, and optimized queries through caching. Compared performance between cached, uncached, and partitioned large datasets.
+              </p>
+              <div class="project-tech-tags">
+                <span class="project-tech">PySpark</span>
+                <span class="project-tech">SparkSQL</span>
+                <span class="project-tech">Parquet</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/juliocezarcarneiro/Home_Sales.git" class="project-link github-link" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Credit Risk Classification -->
+          <div class="featured-project">
+            <div class="project-image-wrapper">
+              <img src="Images/credit-risk.jpg" alt="Machine Learning for Credit Risk" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300/f8fafc/334155?text=Credit+Risk+ML'">
+            </div>
+            <div class="project-content">
+              <div class="featured-badge">Machine Learning</div>
+              <h3 class="project-title">Credit Risk Classification</h3>
+              <p class="project-description">Machine learning model to assess loan applicant risk using supervised learning techniques with imbalanced classes.</p>
+              <div class="project-tech-tags">
+                <span class="project-tech">Python</span>
+                <span class="project-tech">Scikit-learn</span>
+                <span class="project-tech">Pandas</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/juliocezarcarneiro/credit-risk-classification" class="project-link github-link" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="project-content">
-        <div class="featured-badge">Deep Learning</div>
-        <h3 class="project-title">Nonprofit Funding Success Predictor</h3>
-        <p class="project-description">
-          Deep Learning model to predict whether charitable donation applications will be successful. Using historical application data, we frame this as a binary classification problem (IS_SUCCESSFUL = 1 or 0) and benchmark our model against a 75% accuracy target.
-        </p>
-        <div class="project-tech-tags">
-          <span class="project-tech">TensorFlow</span>
-          <span class="project-tech">Keras</span>
-          <span class="project-tech">Python</span>
-        </div>
-        <div class="project-links" style="justify-content: flex-start; margin-top: 20px;">
-          <a href="https://github.com/juliocezarcarneiro/deep-learning-challenge" class="project-link github-link" target="_blank">
-            View on GitHub
-          </a>
-        </div>
-      </div>
+      </section>
     </div>
-
-    <!-- Project 2: Home Sales Analysis -->
-    <div class="project-card featured-project">
-      <div class="project-image-wrapper">
-        <div class="hero-image">
-          <img 
-            src="Images/home-sales.jpg"
-            alt="SparkSQL Analysis of Home Sales Data"
-            onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Nonprofit+Funding+Prediction';"
-          >
-        </div>
-      </div>
-      <div class="project-content">
-        <div class="featured-badge">Data Engineering</div>
-        <h3 class="project-title">Home Sales Analysis with SparkSQL</h3>
-        <p class="project-description">
-          SparkSQL analysis of home sales data to determine key metrics. Created temporary views, partitioned data, and optimized queries through caching. Compared performance between cached, uncached, and partitioned datasets for large-scale data processing.
-        </p>
-        <div class="project-tech-tags">
-          <span class="project-tech">PySparkw</span>
-          <span class="project-tech">SparkSQL</span>
-          <span class="project-tech">SparkSQL</span>
-          <span class="project-tech">Parquet</span>
-        </div>
-        <div class="project-links" style="justify-content: flex-start; margin-top: 20px;">
-          <a href="https://github.com/juliocezarcarneiro/Home_Sales.git" class="project-link github-link" target="_blank">
-            View on GitHub
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Project 3: Credit Risk Classification -->
-    <a href="https://github.com/juliocezarcarneiro/credit-risk-classification" target="_blank" class="project-link">
-      <div class="project-item">
-        <img 
-          src="https://via.placeholder.com/600x300/f8fafc/334155?text=Credit+Risk+ML" 
-          alt="Machine Learning for Credit Risk"
-          onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300/f8fafc/334155?text=Credit+Risk+ML'">
-        <h4>Credit Risk Classification</h4>
-        <p>Machine learning model to assess loan applicant risk using supervised learning.</p>
-        <div class="tags">
-          <span>#MachineLearning</span>
-          <span>#ScikitLearn</span>
-          <span>#Finance</span>
-        </div>
-      </div>
-    </a>
-
-  </div>
-</section>
+  </section>
 
   <footer id="contact">
     <div class="footer-content">
