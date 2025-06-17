@@ -335,6 +335,7 @@
       transition: var(--transition);
       border: 1px solid var(--light-grey);
       box-shadow: var(--shadow-md);
+      position: relative;
     }
     
     .project-card:hover {
@@ -366,6 +367,7 @@
     
     .project-content {
       padding: 24px;
+      padding-bottom: 80px; /* Added space for buttons */
     }
     
     .project-title {
@@ -386,6 +388,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-bottom: 16px;
     }
     
     .project-tech {
@@ -395,6 +398,14 @@
       border-radius: 20px;
       font-size: 14px;
       font-weight: 500;
+    }
+    
+    /* Project links positioning */
+    .project-card .project-links {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
     }
     
     /* Additional Projects - Fixed Section */
@@ -413,6 +424,7 @@
       transition: var(--transition);
       border: 1px solid var(--light-grey);
       box-shadow: var(--shadow-md);
+      position: relative;
     }
     
     .featured-project:hover {
@@ -427,14 +439,18 @@
     
     .featured-project .project-content {
       padding: 24px;
+      padding-bottom: 80px; /* Added space for buttons */
       flex: 1;
       display: flex;
       flex-direction: column;
-      padding-bottom: 30px; /* Added to prevent overlap */
     }
     
     .featured-project .project-links {
-      margin-top: 20px; /* Increased spacing */
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      margin-top: 20px;
       justify-content: flex-start;
     }
     
@@ -554,6 +570,10 @@
       .projects-grid {
         grid-template-columns: 1fr;
       }
+      
+      .project-content {
+        padding-bottom: 90px; /* More space on mobile */
+      }
     }
     
     @media (max-width: 480px) {
@@ -588,6 +608,17 @@
       .footer-links {
         flex-direction: column;
         gap: 16px;
+      }
+      
+      .project-card .project-links,
+      .featured-project .project-links {
+        position: static;
+        margin-top: 20px;
+      }
+      
+      .project-content,
+      .featured-project .project-content {
+        padding-bottom: 24px;
       }
     }
   </style>
@@ -636,15 +667,19 @@
       <div class="projects-grid">
         <div class="project-card">
           <div class="project-image-wrapper">
-            <img src="https://raw.githubusercontent.com/plotly/datasets/master/volcano_db.csv" alt="Customer Churn Analysis" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Customer+Churn+Analysis'">
+            <img src="Images/sales-system.jpg" alt="Automated Sales Performance Reporting System" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Customer+Churn+Analysis'">
           </div>
           <div class="project-content">
-            <h3 class="project-title">Customer Churn Prediction</h3>
-            <p class="project-description">Machine learning model that predicts customer churn with 89% accuracy, helping businesses implement retention strategies.</p>
+            <h3 class="project-title">Automated Sales Performance Reporting System</h3>
+            <p class="project-description">Built an ETL pipeline that automated daily sales reports, KPI tracking, and underperformance alerts. Reduced manual work by 85% with scheduled workflows.</p>
             <div class="project-tech-tags">
               <span class="project-tech">Python</span>
-              <span class="project-tech">Scikit-learn</span>
-              <span class="project-tech">XGBoost</span>
+              <span class="project-tech">SQL</span>
+              <span class="project-tech">Apache Airflow</span>
+              <span class="project-tech">Pandas</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/juliocezarcarneiro/sales-performance-system" class="project-link github-link" target="_blank">View on GitHub</a>
             </div>
           </div>
         </div>
@@ -660,6 +695,9 @@
               <span class="project-tech">Power BI</span>
               <span class="project-tech">DAX</span>
               <span class="project-tech">SQL</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/juliocezarcarneiro/hr-analytics-dashboard" class="project-link github-link" target="_blank">View on GitHub</a>
             </div>
           </div>
         </div>
