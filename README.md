@@ -7,7 +7,10 @@
 ![Python](https://img.shields.io/badge/python-3.10+-blue)
 ![License](https://img.shields.io/github/license/juliocezarcarneiro/data-cleaning-template)
 
+### Featured Repository
+[![Data Cleaning Template](https://img.shields.io/badge/Data_Cleaning_Template-View_on_GitHub-blue?style=for-the-badge)](https://github.com/juliocezarcarneiro/data-cleaning-template)
 
+---
 
 ## Connect With Me
 
