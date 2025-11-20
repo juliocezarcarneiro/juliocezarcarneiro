@@ -1,5 +1,3 @@
-# Julio Carneiro – Data Analytics Portfolio
-
 <div align="center">
 
 [![Portfolio](https://img.shields.io/badge/🌐_Portfolio-2EA043?style=for-the-badge&logo=google-chrome&logoColor=white)](https://juliocezarcarneiro.github.io/juliocezarcarneiro/)
