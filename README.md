@@ -4,10 +4,7 @@
 
 ## Data Analyst
 
-![Python](https://img.shields.io/badge/Data Cleaning Template-v1.0-blue)
-![License](https://img.shields.io/github/license/juliocezarcarneiro/data-cleaning-template)
-
-[![Data Cleaning Template](https://img.shields.io/badge/Data_Cleaning_Template-View_on_GitHub-blue?style=for-the-badge)](https://github.com/juliocezarcarneiro/data-cleaning-template)
+[![Data Cleaning Template v1.0](https://img.shields.io/badge/Data_Cleaning_Template-View-blue?style=for-the-badge)](https://github.com/juliocezarcarneiro/data-cleaning-template)
 
 ---
 
