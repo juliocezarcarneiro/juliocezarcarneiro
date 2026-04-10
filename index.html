@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Julio Carneiro | Data Analytics Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <meta name="description" content="Julio Carneiro's Data Analytics Portfolio showcasing projects in SQL, Python, Tableau, and more. Transforming data into actionable business insights.">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta
+    name="description"
+    content="Julio Carneiro's Data Analytics Portfolio showcasing business-focused projects in Python, SQL, Looker Studio, PySpark, and machine learning."
+  />
+
   <style>
     :root {
       --white: #ffffff;
-      --lightest-grey: #f8fafc;
+      --surface: #f8fafc;
       --light-grey: #e2e8f0;
-      --medium-grey: #94a3b8;
+      --medium-grey: #64748b;
       --dark-grey: #334155;
-      --darkest-grey: #1e293b;
-      --primary-blue: #2563eb;
-      --light-blue: #3b82f6;
-      --dark-blue: #1d4ed8;
-      --accent-teal: #0d9488;
-      --accent-green: #10b981;
-      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-      --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+      --darkest-grey: #0f172a;
+
+      --primary-blue: #173b7a;
+      --light-blue: #2563eb;
+      --dark-blue: #102a56;
+
+      --accent-teal: #0f766e;
+      --accent-green: #15803d;
+
+      --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 8px 20px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 18px 36px rgba(15, 23, 42, 0.09);
+      --shadow-xl: 0 28px 60px rgba(15, 23, 42, 0.10);
     }
-    
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     html {
       scroll-behavior: smooth;
     }
-    
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--dark-grey);
@@ -47,25 +55,26 @@
       line-height: 1.6;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-    
+
     h1, h2, h3, h4 {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--darkest-grey);
+      letter-spacing: -0.02em;
     }
-    
+
     a {
       text-decoration: none;
       color: inherit;
     }
-    
+
     .container {
-      max-width: 1440px;
+      max-width: 1360px;
       margin: 0 auto;
       padding: 0 24px;
     }
-    
-    /* Navigation */
+
     .navbar {
       position: fixed;
       top: 0;
@@ -81,25 +90,24 @@
       align-items: center;
       justify-content: space-between;
       transition: var(--transition);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
       box-shadow: var(--shadow-sm);
     }
-    
+
     .nav-logo {
       font-size: 24px;
-      font-weight: 700;
-      color: var(--darkest-grey);
+      font-weight: 800;
       background: linear-gradient(to right, var(--primary-blue), var(--accent-teal));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    
+
     .nav-links {
       display: flex;
       gap: 32px;
     }
-    
+
     .nav-link {
       font-size: 16px;
       font-weight: 500;
@@ -107,7 +115,7 @@
       transition: var(--transition);
       position: relative;
     }
-    
+
     .nav-link::after {
       content: '';
       position: absolute;
@@ -118,68 +126,67 @@
       background: var(--primary-blue);
       transition: width 0.3s ease;
     }
-    
-    .nav-link:hover {
-      color: var(--darkest-grey);
-    }
-    
+
     .nav-link:hover::after {
       width: 100%;
     }
-    
-    /* Hero Section */
+
     .hero {
-      height: 100vh;
-      min-height: 800px;
+      min-height: 88vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding-top: 72px;
-      background: linear-gradient(135deg, var(--lightest-grey), var(--white));
+      padding: 120px 24px 80px;
+      background:
+        radial-gradient(circle at top left, rgba(23, 59, 122, 0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(15, 118, 110, 0.07), transparent 22%),
+        linear-gradient(135deg, #f8fafc, #ffffff);
+      position: relative;
     }
-    
+
     .hero h1 {
-      font-size: 72px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.2;
+      font-size: 60px;
+      font-weight: 800;
+      margin-bottom: 18px;
+      line-height: 1.06;
+      letter-spacing: -1.2px;
+      max-width: 920px;
       background: linear-gradient(to right, var(--darkest-grey), var(--primary-blue));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      padding-bottom: 8px;
     }
-    
+
     .hero .subtitle {
-      font-size: 24px;
+      font-size: 21px;
       font-weight: 400;
       color: var(--medium-grey);
-      margin-bottom: 32px;
-      max-width: 700px;
+      margin-bottom: 34px;
+      max-width: 760px;
     }
-    
+
     .hero-social-links {
       display: flex;
       gap: 24px;
-      margin-bottom: 48px;
+      margin-bottom: 44px;
     }
-    
+
     .hero-social-link {
       font-size: 24px;
       color: var(--medium-grey);
       transition: var(--transition);
     }
-    
+
     .hero-social-link:hover {
       color: var(--primary-blue);
       transform: translateY(-3px);
     }
-    
+
     .scroll-down {
       position: absolute;
-      bottom: 40px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
       animation: bounce 2s infinite;
@@ -187,435 +194,454 @@
       color: var(--medium-grey);
       transition: var(--transition);
     }
-    
+
     .scroll-down:hover {
       color: var(--primary-blue);
     }
-    
+
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-      40% { transform: translateY(-15px) translateX(-50%); }
-      60% { transform: translateY(-7px) translateX(-50%); }
+      40% { transform: translateY(-12px) translateX(-50%); }
+      60% { transform: translateY(-6px) translateX(-50%); }
     }
-    
-    /* Projects Section */
+
     .projects-section {
-      padding: 120px 0;
+      padding: 100px 0;
       background-color: var(--white);
     }
-    
+
     .section-title {
-      font-size: 48px;
-      font-weight: 700;
+      font-size: 42px;
+      font-weight: 800;
       text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 70px;
       color: var(--darkest-grey);
       position: relative;
     }
-    
+
     .section-title::after {
       content: '';
       position: absolute;
       bottom: -16px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
+      width: 82px;
       height: 4px;
       background: linear-gradient(to right, var(--primary-blue), var(--accent-teal));
-      border-radius: 2px;
+      border-radius: 999px;
     }
-    
-    /* Hero Project */
+
     .project-hero {
-      display: flex;
-      gap: 48px;
+      display: grid;
+      grid-template-columns: minmax(320px, 520px) 1fr;
+      gap: 34px;
       align-items: center;
-      max-width: 1200px;
-      margin: 0 auto 120px;
-      padding: 48px;
+      max-width: 1180px;
+      margin: 0 auto 88px;
+      padding: 32px;
       background: var(--white);
-      border-radius: 16px;
-      box-shadow: var(--shadow-xl);
-    }
-    
-    .hero-image {
-      flex: 1;
-      min-width: 0;
-      border-radius: 12px;
-      overflow: hidden;
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: 22px;
       box-shadow: var(--shadow-lg);
     }
-    
+
+    .hero-image {
+      min-width: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      box-shadow: var(--shadow-md);
+    }
+
     .hero-image img {
       width: 100%;
       height: auto;
       display: block;
     }
-    
+
     .hero-content {
-      flex: 1;
       min-width: 0;
-      padding: 0 24px;
+      padding: 0 4px;
     }
-    
+
     .featured-badge {
       display: inline-block;
       background: linear-gradient(to right, var(--primary-blue), var(--accent-teal));
       color: white;
-      padding: 8px 16px;
-      border-radius: 20px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-hero h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: var(--darkest-grey);
+      line-height: 1.16;
+      max-width: 580px;
+    }
+
+    .project-subtitle {
       font-size: 14px;
       font-weight: 600;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary-blue);
+      margin-bottom: 14px;
     }
-    
-    .project-hero h2 {
-      font-size: 40px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--darkest-grey);
-    }
-    
+
     .project-hero p {
-      font-size: 18px;
+      font-size: 16px;
       color: var(--medium-grey);
-      margin-bottom: 32px;
-      line-height: 1.6;
+      margin-bottom: 18px;
+      line-height: 1.72;
+      max-width: 640px;
     }
-    
+
+    .executive-impact {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--darkest-grey);
+      background: linear-gradient(135deg, rgba(23, 59, 122, 0.05), rgba(15, 118, 110, 0.05));
+      border: 1px solid rgba(23, 59, 122, 0.10);
+      padding: 14px 16px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+    }
+
+    .project-tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .project-tech {
+      background: #eef4ff;
+      color: var(--primary-blue);
+      border: 1px solid rgba(23, 59, 122, 0.10);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
     .project-links {
       display: flex;
-      gap: 16px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-    
+
     .project-link {
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
       transition: var(--transition);
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-sm);
     }
-    
+
     .github-link {
       background-color: var(--darkest-grey);
       color: white;
     }
-    
+
     .github-link:hover {
-      background-color: var(--dark-grey);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
+      background-color: #1e293b;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
-    
+
     .demo-link {
       background: linear-gradient(to right, var(--primary-blue), var(--light-blue));
       color: white;
     }
-    
+
     .demo-link:hover {
       background: linear-gradient(to right, var(--dark-blue), var(--primary-blue));
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
-    
-    /* Secondary Projects */
+
+    .report-link {
+      background: #ffffff;
+      color: var(--darkest-grey);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+    }
+
+    .report-link:hover {
+      background: #f8fafc;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 32px;
-      margin-bottom: 80px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 28px;
+      margin-bottom: 72px;
     }
-    
-    .project-card {
+
+    .project-card,
+    .featured-project {
       background-color: var(--white);
-      border-radius: 16px;
+      border-radius: 18px;
       overflow: hidden;
       transition: var(--transition);
       border: 1px solid var(--light-grey);
       box-shadow: var(--shadow-md);
       position: relative;
     }
-    
-    .project-card:hover {
+
+    .project-card:hover,
+    .featured-project:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-xl);
-      border-color: var(--primary-blue);
+      border-color: rgba(23, 59, 122, 0.20);
     }
-    
+
     .project-image-wrapper {
-      height: 240px;
+      height: 220px;
       overflow: hidden;
-      background-color: var(--lightest-grey);
+      background-color: #f8fafc;
       display: flex;
       align-items: center;
       justify-content: center;
       border-bottom: 1px solid var(--light-grey);
     }
-    
+
     .project-image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.6s ease;
     }
-    
-    .project-card:hover .project-image-wrapper img {
-      transform: scale(1.05);
+
+    .project-card:hover .project-image-wrapper img,
+    .featured-project:hover .project-image-wrapper img {
+      transform: scale(1.04);
     }
-    
+
     .project-content {
       padding: 24px;
-      padding-bottom: 80px; /* Added space for buttons */
+      padding-bottom: 84px;
     }
-    
+
     .project-title {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 16px;
+      font-size: 23px;
+      font-weight: 700;
+      margin-bottom: 14px;
       color: var(--darkest-grey);
     }
-    
+
     .project-description {
-      font-size: 16px;
+      font-size: 15px;
       color: var(--medium-grey);
-      margin-bottom: 24px;
-      line-height: 1.6;
+      margin-bottom: 22px;
+      line-height: 1.7;
     }
-    
-    .project-tech-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    
-    .project-tech {
-      background: linear-gradient(to right, var(--accent-teal), var(--accent-green));
-      color: white;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 500;
-    }
-    
-    /* Project links positioning */
+
     .project-card .project-links {
       position: absolute;
-      bottom: 24px;
+      bottom: 22px;
       left: 24px;
       right: 24px;
     }
-    
-    /* Additional Projects - Fixed Section */
+
     .projects-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
     }
-    
+
     .featured-project {
       display: flex;
       flex-direction: column;
-      background-color: var(--white);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: var(--transition);
-      border: 1px solid var(--light-grey);
-      box-shadow: var(--shadow-md);
-      position: relative;
     }
-    
-    .featured-project:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary-blue);
-    }
-    
+
     .featured-project .project-image-wrapper {
       height: 200px;
     }
-    
+
     .featured-project .project-content {
       padding: 24px;
-      padding-bottom: 80px; /* Added space for buttons */
+      padding-bottom: 82px;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-    
+
     .featured-project .project-links {
       position: absolute;
-      bottom: 24px;
+      bottom: 22px;
       left: 24px;
       right: 24px;
-      margin-top: 20px;
       justify-content: flex-start;
     }
-    
-    /* Footer */
+
     footer {
       background-color: var(--darkest-grey);
       color: white;
       padding: 80px 0 40px;
       text-align: center;
     }
-    
+
     .footer-content {
       max-width: 600px;
       margin: 0 auto;
+      padding: 0 24px;
     }
-    
+
     .footer-logo {
       font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      background: linear-gradient(to right, var(--light-blue), var(--accent-teal));
+      font-weight: 800;
+      margin-bottom: 22px;
+      background: linear-gradient(to right, #60a5fa, #2dd4bf);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    
+
     .footer-links {
       display: flex;
       justify-content: center;
       gap: 32px;
-      margin-bottom: 40px;
+      margin-bottom: 34px;
     }
-    
+
     .footer-link {
       font-size: 16px;
       color: var(--light-grey);
       transition: var(--transition);
     }
-    
+
     .footer-link:hover {
-      color: var(--light-blue);
+      color: #93c5fd;
     }
-    
+
     .footer-social-links {
       display: flex;
       justify-content: center;
       gap: 24px;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
-    
+
     .footer-social-link {
       font-size: 24px;
       color: var(--light-grey);
       transition: var(--transition);
     }
-    
+
     .footer-social-link:hover {
-      color: var(--light-blue);
+      color: #93c5fd;
       transform: translateY(-3px);
     }
-    
+
     .footer-copyright {
       font-size: 14px;
-      color: var(--medium-grey);
+      color: #94a3b8;
     }
-    
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .hero h1 {
-        font-size: 60px;
-      }
-      
-      .hero .subtitle {
-        font-size: 20px;
-      }
-      
-      .section-title {
-        font-size: 40px;
-      }
-      
+
+    @media (max-width: 1100px) {
       .project-hero {
-        flex-direction: column;
-        gap: 32px;
+        grid-template-columns: 1fr;
+        max-width: 760px;
       }
-      
-      .hero-image, .hero-content {
-        width: 100%;
+
+      .hero-image {
+        max-width: 100%;
       }
     }
-    
+
     @media (max-width: 768px) {
       .hero {
-        min-height: 700px;
+        min-height: 760px;
       }
-      
+
       .hero h1 {
-        font-size: 48px;
+        font-size: 46px;
       }
-      
+
+      .hero .subtitle {
+        font-size: 19px;
+      }
+
       .nav-links {
         gap: 20px;
       }
-      
+
       .section-title {
         font-size: 36px;
         margin-bottom: 60px;
       }
-      
+
       .project-hero {
-        padding: 32px;
+        padding: 24px;
       }
-      
+
       .project-hero h2 {
-        font-size: 32px;
+        font-size: 28px;
       }
-      
+
       .projects-grid {
         grid-template-columns: 1fr;
       }
-      
-      .project-content {
-        padding-bottom: 90px; /* More space on mobile */
-      }
     }
-    
+
     @media (max-width: 480px) {
       .hero h1 {
         font-size: 36px;
       }
-      
+
       .hero .subtitle {
-        font-size: 18px;
+        font-size: 17px;
       }
-      
+
       .nav-logo {
         font-size: 20px;
       }
-      
+
       .nav-links {
         gap: 16px;
       }
-      
+
       .section-title {
         font-size: 32px;
       }
-      
+
       .project-hero {
-        padding: 24px;
+        padding: 20px;
       }
-      
+
       .project-links {
         flex-direction: column;
       }
-      
+
+      .project-link {
+        width: 100%;
+      }
+
       .footer-links {
         flex-direction: column;
         gap: 16px;
       }
-      
+
       .project-card .project-links,
       .featured-project .project-links {
         position: static;
         margin-top: 20px;
       }
-      
+
       .project-content,
       .featured-project .project-content {
         padding-bottom: 24px;
@@ -623,6 +649,7 @@
     }
   </style>
 </head>
+
 <body>
   <nav class="navbar">
     <a href="https://juliocezarcarneiro.github.io/juliocezarcarneiro/" class="nav-logo">Julio Carneiro</a>
@@ -633,45 +660,112 @@
   </nav>
 
   <section class="hero">
-    <h1>Data Insights</h1>
-    <p class="subtitle">Transforming raw data into actionable business intelligence</p>
+    <h1>Business-Focused Data Analytics</h1>
+    <p class="subtitle">
+      Turning raw data into dashboards, analysis, and decision-ready insights across finance,
+      operations, and customer behavior.
+    </p>
+
     <div class="hero-social-links">
-      <a href="https://github.com/juliocezarcarneiro" class="hero-social-link"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/juliocezarcarneiro/" class="hero-social-link"><i class="fab fa-linkedin-in"></i></a>
-      <a href="mailto:carneiro.julio@proton.me" class="hero-social-link"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/juliocezarcarneiro" class="hero-social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/juliocezarcarneiro/" class="hero-social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="mailto:carneiro.julio@proton.me" class="hero-social-link">
+        <i class="fas fa-envelope"></i>
+      </a>
     </div>
-    <a href="#projects" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+
+    <a href="#projects" class="scroll-down" aria-label="Scroll to projects">
+      <i class="fas fa-chevron-down"></i>
+    </a>
   </section>
 
   <section id="projects" class="projects-section">
     <div class="container">
       <h2 class="section-title">Featured Projects</h2>
-      
-      <!-- Hero Project -->
+
       <div class="project-hero">
         <div class="hero-image">
-          <img src="./Images/executive-financial.jpg" alt="Executive Financial Dashboard" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Executive+Financial+Dashboard'">
+          <img
+            src="./images/executive-summary.png"
+            alt="Executive summary preview for TechFlow financial dashboard"
+            onerror="this.onerror=null;this.src='https://via.placeholder.com/900x620/f8fafc/334155?text=Executive+Summary+Preview';"
+          />
         </div>
+
         <div class="hero-content">
           <span class="featured-badge">Featured Project</span>
-          <h2>Executive Financial Dashboard</h2>
-          <p>Built an interactive Tableau dashboard to visualize P&L performance, rolling profitability trends, and scenario modeling for executive decision-making. The tool replaced static Excel reports, reducing monthly close analysis time by 30%.</p>
+          <div class="project-subtitle">Executive Dashboard</div>
+          <h2>TechFlow Financial Performance Dashboard</h2>
+
+          <p>
+            Built an executive financial dashboard to replace static monthly reporting with a
+            decision-ready view of revenue, profitability, budget variance, and departmental
+            performance. Designed in Looker Studio with Python-based data preparation to support
+            faster and more consistent executive reporting.
+          </p>
+
+          <div class="executive-impact">
+            Reduced monthly reporting time by 30% and delivered a cleaner executive view across
+            core financial KPIs, trend performance, and budget accountability.
+          </div>
+
+          <div class="project-tech-tags">
+            <span class="project-tech">Looker Studio</span>
+            <span class="project-tech">Python</span>
+            <span class="project-tech">Pandas</span>
+            <span class="project-tech">Google Colab</span>
+          </div>
+
           <div class="project-links">
-            <a href="https://github.com/juliocezarcarneiro/executive-financial-dashboard" class="project-link github-link" target="_blank">View on GitHub</a>
-            <a href="https://github.com/juliocezarcarneiro/executive-financial-dashboard" class="project-link demo-link" target="_blank">Live Demo</a>
+            <a
+              href="https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow"
+              class="project-link github-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on GitHub
+            </a>
+
+            <a
+              href="https://lookerstudio.google.com/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49"
+              class="project-link demo-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live Dashboard
+            </a>
+
+            <a
+              href="./reports/executive-report.pdf"
+              class="project-link report-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Executive Report
+            </a>
           </div>
         </div>
       </div>
-      
-      <!-- Secondary Projects -->
+
       <div class="projects-grid">
         <div class="project-card">
           <div class="project-image-wrapper">
-            <img src="Images/sales-system.jpg" alt="Automated Sales Performance Reporting System" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Customer+Churn+Analysis'">
+            <img
+              src="./images/sales-system.jpg"
+              alt="Automated Sales Performance Reporting System"
+              onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Sales+Performance+Reporting';"
+            />
           </div>
           <div class="project-content">
             <h3 class="project-title">Automated Sales Performance Reporting System</h3>
-            <p class="project-description">Built an ETL pipeline that automated daily sales reports, KPI tracking, and underperformance alerts. Reduced manual work by 85% with scheduled workflows.</p>
+            <p class="project-description">
+              Built an ETL pipeline that automated daily sales reports, KPI tracking, and
+              underperformance alerts. Reduced manual work by 85% with scheduled workflows.
+            </p>
             <div class="project-tech-tags">
               <span class="project-tech">Python</span>
               <span class="project-tech">SQL</span>
@@ -679,44 +773,71 @@
               <span class="project-tech">Pandas</span>
             </div>
             <div class="project-links">
-              <a href="https://github.com/juliocezarcarneiro/sales-performance-system" class="project-link github-link" target="_blank">View on GitHub</a>
+              <a
+                href="https://github.com/juliocezarcarneiro/sales-performance-system"
+                class="project-link github-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </a>
             </div>
           </div>
         </div>
-        
+
         <div class="project-card">
           <div class="project-image-wrapper">
-            <img src="Images/e-commerce.jpg" alt="E-Commerce Behavior Analytics" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=HR+Analytics+Dashboard'">
+            <img
+              src="./images/e-commerce.jpg"
+              alt="E-Commerce Behavior Analytics"
+              onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=E-Commerce+Behavior+Analytics';"
+            />
           </div>
           <div class="project-content">
             <h3 class="project-title">E-Commerce Behavior Analytics</h3>
-            <p class="project-description">Analyzed 10M+ user events to identify high-conversion purchase paths. Design a scalable PySpark pipeline on Databricks (Delta Lake) to process real-time behavioral data, improving analytics latency by 35%.</p>
+            <p class="project-description">
+              Analyzed 10M+ user events to identify high-conversion purchase paths. Designed a
+              scalable PySpark pipeline on Databricks with Delta Lake to process behavioral data
+              and improve analytics latency by 35%.
+            </p>
             <div class="project-tech-tags">
               <span class="project-tech">PySpark</span>
               <span class="project-tech">Databricks</span>
               <span class="project-tech">Delta Lake</span>
             </div>
             <div class="project-links">
-              <a href="https://github.com/juliocezarcarneiro/big-data-analytics.git" class="project-link github-link" target="_blank">View on GitHub</a>
+              <a
+                href="https://github.com/juliocezarcarneiro/big-data-analytics.git"
+                class="project-link github-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </a>
             </div>
           </div>
         </div>
       </div>
-      
-      <!-- Additional Projects Section -->
-      <section class="projects-section">
+
+      <section class="projects-section" style="padding: 0;">
         <h2 class="section-title">Additional Projects</h2>
+
         <div class="projects-row">
-          <!-- Project 1: Nonprofit Funding Prediction -->
           <div class="featured-project">
             <div class="project-image-wrapper">
-              <img src="Images/funding-predictor.jpg" alt="Deep Learning Model for Nonprofit Funding Success Prediction" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Nonprofit+Funding+Prediction'">
+              <img
+                src="./images/funding-predictor.jpg"
+                alt="Nonprofit Funding Success Predictor"
+                onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Nonprofit+Funding+Prediction';"
+              />
             </div>
             <div class="project-content">
               <div class="featured-badge">Deep Learning</div>
               <h3 class="project-title">Nonprofit Funding Success Predictor</h3>
               <p class="project-description">
-                Deep Learning model to predict whether charitable donation applications will be successful. Using historical application data, we frame this as a binary classification problem and benchmark our model against a 75% accuracy target.
+                Built a deep learning model to predict whether charitable donation applications
+                would be successful, framing the problem as a binary classification task and
+                benchmarking performance against a 75% accuracy target.
               </p>
               <div class="project-tech-tags">
                 <span class="project-tech">TensorFlow</span>
@@ -724,21 +845,32 @@
                 <span class="project-tech">Python</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/juliocezarcarneiro/deep-learning-challenge" class="project-link github-link" target="_blank">View on GitHub</a>
+                <a
+                  href="https://github.com/juliocezarcarneiro/deep-learning-challenge"
+                  class="project-link github-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on GitHub
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Project 2: Home Sales Analysis -->
           <div class="featured-project">
             <div class="project-image-wrapper">
-              <img src="Images/home-sales.jpg" alt="SparkSQL Analysis of Home Sales Data" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Home+Sales+Analysis'">
+              <img
+                src="./images/home-sales.jpg"
+                alt="Home Sales Analysis with SparkSQL"
+                onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Home+Sales+Analysis';"
+              />
             </div>
             <div class="project-content">
               <div class="featured-badge">Data Engineering</div>
               <h3 class="project-title">Home Sales Analysis with SparkSQL</h3>
               <p class="project-description">
-                SparkSQL analysis of home sales data to determine key metrics. Created temporary views, partitioned data, and optimized queries through caching. Compared performance between cached, uncached, and partitioned large datasets.
+                Used SparkSQL to analyze home sales data, create temporary views, partition files,
+                and compare cached versus uncached query performance across larger datasets.
               </p>
               <div class="project-tech-tags">
                 <span class="project-tech">PySpark</span>
@@ -746,27 +878,47 @@
                 <span class="project-tech">Parquet</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/juliocezarcarneiro/Home_Sales.git" class="project-link github-link" target="_blank">View on GitHub</a>
+                <a
+                  href="https://github.com/juliocezarcarneiro/Home_Sales.git"
+                  class="project-link github-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on GitHub
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Project 3: Credit Risk Classification -->
           <div class="featured-project">
             <div class="project-image-wrapper">
-              <img src="Images/credit-risk.jpg" alt="Machine Learning for Credit Risk" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300/f8fafc/334155?text=Credit+Risk+ML'">
+              <img
+                src="./images/credit-risk.jpg"
+                alt="Credit Risk Classification"
+                onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300/f8fafc/334155?text=Credit+Risk+Classification';"
+              />
             </div>
             <div class="project-content">
               <div class="featured-badge">Machine Learning</div>
               <h3 class="project-title">Credit Risk Classification</h3>
-              <p class="project-description">Machine learning model to assess loan applicant risk using supervised learning techniques with imbalanced classes.</p>
+              <p class="project-description">
+                Built a machine learning model to assess loan applicant risk using supervised
+                learning methods and evaluation techniques for imbalanced classification problems.
+              </p>
               <div class="project-tech-tags">
                 <span class="project-tech">Python</span>
                 <span class="project-tech">Scikit-learn</span>
                 <span class="project-tech">Pandas</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/juliocezarcarneiro/credit-risk-classification" class="project-link github-link" target="_blank">View on GitHub</a>
+                <a
+                  href="https://github.com/juliocezarcarneiro/credit-risk-classification"
+                  class="project-link github-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on GitHub
+                </a>
               </div>
             </div>
           </div>
@@ -778,39 +930,54 @@
   <footer id="contact">
     <div class="footer-content">
       <div class="footer-logo">Julio Carneiro</div>
+
       <div class="footer-links">
         <a href="#projects" class="footer-link">Projects</a>
         <a href="#contact" class="footer-link">Contact</a>
       </div>
+
       <div class="footer-social-links">
-        <a href="https://github.com/juliocezarcarneiro" class="footer-social-link"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/juliocezarcarneiro/" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
-        <a href="mailto:carneiro.julio@proton.me" class="footer-social-link"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/juliocezarcarneiro" class="footer-social-link" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/juliocezarcarneiro/" class="footer-social-link" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:carneiro.julio@proton.me" class="footer-social-link">
+          <i class="fas fa-envelope"></i>
+        </a>
       </div>
+
       <p class="footer-copyright">© Julio Carneiro. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
-    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
       });
     });
-    
-    // Navbar scroll effect
+
     window.addEventListener('scroll', function() {
       const navbar = document.querySelector('.navbar');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const navLogo = document.querySelector('.nav-logo');
+
       if (window.scrollY > 50) {
-        navbar.style.backgroundColor = 'rgba(30, 41, 59, 0.96)';
-        navbar.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+        navbar.style.backgroundColor = 'rgba(15, 23, 42, 0.96)';
+        navbar.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+        navLinks.forEach(link => link.style.color = '#e2e8f0');
+        navLogo.style.opacity = '0.95';
       } else {
         navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.96)';
-        navbar.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
+        navbar.style.borderBottom = '1px solid rgba(15, 23, 42, 0.06)';
+        navLinks.forEach(link => link.style.color = '#334155');
+        navLogo.style.opacity = '1';
       }
     });
   </script>
