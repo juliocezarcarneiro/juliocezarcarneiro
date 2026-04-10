@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/png" href="/juliocezarcarneiro/favicon.png" />
   <meta
     name="description"
     content="Julio Carneiro's Data Analytics Portfolio showcasing business-focused projects in Python, SQL, Looker Studio, PySpark, and machine learning."
@@ -252,12 +252,17 @@
       background: var(--surface);
       border: 1px solid rgba(226, 232, 240, 0.95);
       box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
     }
 
     .hero-image img {
       width: 100%;
       height: auto;
       display: block;
+      object-fit: cover;
     }
 
     .hero-content {
@@ -425,6 +430,7 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.6s ease;
+      display: block;
     }
 
     .project-card:hover .project-image-wrapper img,
@@ -690,9 +696,10 @@
       <div class="project-hero">
         <div class="hero-image">
           <img
-            src="./images/executive-summary.png"
+            src="/juliocezarcarneiro/images/executive-summary.png"
             alt="Executive summary preview for TechFlow financial dashboard"
-            onerror="this.onerror=null;this.src='https://via.placeholder.com/900x620/f8fafc/334155?text=Executive+Summary+Preview';"
+            loading="lazy"
+            onerror="this.onerror=null;this.src='https://placehold.co/900x620/f8fafc/334155?text=TechFlow+Executive+Summary';"
           />
         </div>
 
@@ -740,7 +747,7 @@
             </a>
 
             <a
-              href="./reports/executive-report.pdf"
+              href="/juliocezarcarneiro/reports/executive-report.pdf"
               class="project-link report-link"
               target="_blank"
               rel="noopener noreferrer"
@@ -755,9 +762,10 @@
         <div class="project-card">
           <div class="project-image-wrapper">
             <img
-              src="./images/sales-system.jpg"
+              src="/juliocezarcarneiro/images/sales-system.jpg"
               alt="Automated Sales Performance Reporting System"
-              onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Sales+Performance+Reporting';"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='https://placehold.co/800x400/f8fafc/334155?text=Sales+Performance+Reporting';"
             />
           </div>
           <div class="project-content">
@@ -788,9 +796,10 @@
         <div class="project-card">
           <div class="project-image-wrapper">
             <img
-              src="./images/e-commerce.jpg"
+              src="/juliocezarcarneiro/images/e-commerce.jpg"
               alt="E-Commerce Behavior Analytics"
-              onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=E-Commerce+Behavior+Analytics';"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='https://placehold.co/800x400/f8fafc/334155?text=E-Commerce+Behavior+Analytics';"
             />
           </div>
           <div class="project-content">
@@ -826,9 +835,10 @@
           <div class="featured-project">
             <div class="project-image-wrapper">
               <img
-                src="./images/funding-predictor.jpg"
+                src="/juliocezarcarneiro/images/funding-predictor.jpg"
                 alt="Nonprofit Funding Success Predictor"
-                onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Nonprofit+Funding+Prediction';"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x400/f8fafc/334155?text=Nonprofit+Funding+Prediction';"
               />
             </div>
             <div class="project-content">
@@ -860,9 +870,10 @@
           <div class="featured-project">
             <div class="project-image-wrapper">
               <img
-                src="./images/home-sales.jpg"
+                src="/juliocezarcarneiro/images/home-sales.jpg"
                 alt="Home Sales Analysis with SparkSQL"
-                onerror="this.onerror=null;this.src='https://via.placeholder.com/800x400/f8fafc/334155?text=Home+Sales+Analysis';"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x400/f8fafc/334155?text=Home+Sales+Analysis';"
               />
             </div>
             <div class="project-content">
@@ -893,9 +904,10 @@
           <div class="featured-project">
             <div class="project-image-wrapper">
               <img
-                src="./images/credit-risk.jpg"
+                src="/juliocezarcarneiro/images/credit-risk.jpg"
                 alt="Credit Risk Classification"
-                onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300/f8fafc/334155?text=Credit+Risk+Classification';"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/600x300/f8fafc/334155?text=Credit+Risk+Classification';"
               />
             </div>
             <div class="project-content">
