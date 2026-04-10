@@ -23,14 +23,11 @@
       --medium-grey: #64748b;
       --dark-grey: #334155;
       --darkest-grey: #0f172a;
-
       --primary-blue: #173b7a;
       --light-blue: #2563eb;
       --dark-blue: #102a56;
-
       --accent-teal: #0f766e;
       --accent-green: #15803d;
-
       --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
       --shadow-md: 0 8px 20px rgba(15, 23, 42, 0.07);
@@ -38,15 +35,8 @@
       --shadow-xl: 0 28px 60px rgba(15, 23, 42, 0.10);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -563,91 +553,35 @@
         grid-template-columns: 1fr;
         max-width: 760px;
       }
-
-      .hero-image {
-        max-width: 100%;
-      }
+      .hero-image { max-width: 100%; }
     }
 
     @media (max-width: 768px) {
-      .hero {
-        min-height: 760px;
-      }
-
-      .hero h1 {
-        font-size: 46px;
-      }
-
-      .hero .subtitle {
-        font-size: 19px;
-      }
-
-      .nav-links {
-        gap: 20px;
-      }
-
-      .section-title {
-        font-size: 36px;
-        margin-bottom: 60px;
-      }
-
-      .project-hero {
-        padding: 24px;
-      }
-
-      .project-hero h2 {
-        font-size: 28px;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
+      .hero { min-height: 760px; }
+      .hero h1 { font-size: 46px; }
+      .hero .subtitle { font-size: 19px; }
+      .nav-links { gap: 20px; }
+      .section-title { font-size: 36px; margin-bottom: 60px; }
+      .project-hero { padding: 24px; }
+      .project-hero h2 { font-size: 28px; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .hero .subtitle {
-        font-size: 17px;
-      }
-
-      .nav-logo {
-        font-size: 20px;
-      }
-
-      .nav-links {
-        gap: 16px;
-      }
-
-      .section-title {
-        font-size: 32px;
-      }
-
-      .project-hero {
-        padding: 20px;
-      }
-
-      .project-links {
-        flex-direction: column;
-      }
-
-      .project-link {
-        width: 100%;
-      }
-
-      .footer-links {
-        flex-direction: column;
-        gap: 16px;
-      }
-
+      .hero h1 { font-size: 36px; }
+      .hero .subtitle { font-size: 17px; }
+      .nav-logo { font-size: 20px; }
+      .nav-links { gap: 16px; }
+      .section-title { font-size: 32px; }
+      .project-hero { padding: 20px; }
+      .project-links { flex-direction: column; }
+      .project-link { width: 100%; }
+      .footer-links { flex-direction: column; gap: 16px; }
       .project-card .project-links,
       .featured-project .project-links {
         position: static;
         margin-top: 20px;
       }
-
       .project-content,
       .featured-project .project-content {
         padding-bottom: 24px;
