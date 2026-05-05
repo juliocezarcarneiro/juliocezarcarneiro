@@ -17,10 +17,10 @@ Analyzed operational data to identify margin loss drivers and cost inefficiencie
 ---
 
 ### CFO Executive Dashboard  
-Tableau  
+Tableau • Looker Studio  
 Developed an executive dashboard to monitor revenue, cost, and profitability KPIs.  
 
-[![View Dashboard](https://img.shields.io/badge/View_Dashboard-1F4E79?style=flat-square&logo=google-analytics&logoColor=white)](https://datastudio.google.com/u/0/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49/page/2vNtF)
+[![View Data Studio Dashboard](https://img.shields.io/badge/View_Data_Studio_Dashboard-1F4E79?style=flat-square&logo=looker&logoColor=white)](https://datastudio.google.com/u/0/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49/page/2vNtF)
 
 [![View Project](https://img.shields.io/badge/View_Project-1F4E79?style=flat-square&logo=github&logoColor=white)](https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow)
 
@@ -36,12 +36,13 @@ Reusable Python framework for cleaning, validating, and preparing datasets for a
 
 ## Skills
 
-SQL | Python (pandas, matplotlib) | Tableau  
+SQL | Python (pandas, matplotlib) | Tableau | Data Studio  
 Data Cleaning | Data Validation | ETL | Dashboard Development  
 
 ---
 
 ## Contact
 
-LinkedIn: https://linkedin.com/in/your-link  
-Email: your@email.com  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-1F4E79?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-link)
+
+[![Email](https://img.shields.io/badge/Email-1F4E79?style=flat-square&logo=gmail&logoColor=white)](mailto:your@email.com)
