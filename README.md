@@ -1,27 +1,47 @@
-## 🚀 Featured Projects
+# Julio Carneiro  
+**Data Analyst | SQL • Python • Tableau**  
+Focused on profitability, cost optimization, and business performance analytics  
 
-### Operations Profitability & Cost Optimization
+I analyze business performance to identify profitability drivers and cost inefficiencies.
+
+---
+
+## Featured Projects
+
+### Operations Profitability & Cost Optimization  
 SQL • Python • Tableau  
-Identified margin loss drivers and cost inefficiencies across operations.  
-→ https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization
+Analyzed operational data to identify margin loss drivers and cost inefficiencies across locations and product categories.  
+
+[![View Project](https://img.shields.io/badge/View_Project-1F4E79?style=flat-square&logo=github&logoColor=white)](https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization)
 
 ---
 
-### CFO Executive Dashboard
+### CFO Executive Dashboard  
 Tableau  
-Executive-level dashboard tracking revenue, cost, and profitability KPIs.  
-→ https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow
+Developed an executive dashboard to monitor revenue, cost, and profitability KPIs.  
+
+[![View Dashboard](https://img.shields.io/badge/View_Dashboard-1F4E79?style=flat-square&logo=google-analytics&logoColor=white)](https://datastudio.google.com/u/0/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49/page/2vNtF)
+
+[![View Project](https://img.shields.io/badge/View_Project-1F4E79?style=flat-square&logo=github&logoColor=white)](https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow)
 
 ---
 
-## 🧰 Tools & Reusable Assets
+## Tools & Reusable Assets
 
-[![Data Cleaning Framework](https://img.shields.io/badge/Data_Cleaning_Framework-1a365d?style=flat-square&logo=pandas&logoColor=white)](https://github.com/juliocezarcarneiro/data-cleaning-template)
+[![Data Cleaning Framework](https://img.shields.io/badge/Data_Cleaning_Framework-1F4E79?style=flat-square&logo=pandas&logoColor=white)](https://github.com/juliocezarcarneiro/data-cleaning-template)
 
-Reusable Python framework for cleaning, validating, and preparing datasets for analytics and business workflows.
+Reusable Python framework for cleaning, validating, and preparing datasets for analytics and reporting workflows.
 
 ---
 
-## 📊 Visualization
+## Skills
 
-[![Executive Financial Dashboard](https://img.shields.io/badge/Executive_Financial_Dashboard-View-purple?style=flat-square&logo=google-analytics&logoColor=white)](https://datastudio.google.com/u/0/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49/page/2vNtF)
+SQL | Python (pandas, matplotlib) | Tableau  
+Data Cleaning | Data Validation | ETL | Dashboard Development  
+
+---
+
+## Contact
+
+LinkedIn: https://linkedin.com/in/your-link  
+Email: your@email.com  
