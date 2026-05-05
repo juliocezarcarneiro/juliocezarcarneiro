@@ -20,13 +20,12 @@ Identified margin loss drivers and cost inefficiencies across locations and prod
 Tableau • Data Studio  
 Built an executive dashboard to monitor revenue, cost, and profitability KPIs.  
 
-[![View Dashboard](https://img.shields.io/badge/View_Dashboard-1F4E79?style=flat-square&logo=google-analytics&logoColor=white)](https://datastudio.google.com/u/0/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49/page/2vNtF)
-
+[![View Dashboard](https://img.shields.io/badge/View_Dashboard-1F4E79?style=flat-square&logo=google-analytics&logoColor=white)](https://datastudio.google.com/u/0/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49/page/2vNtF)  
 [![View Project](https://img.shields.io/badge/View_Project-1F4E79?style=flat-square&logo=github&logoColor=white)](https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow)
 
 ---
 
-## Tools
+## Tools & Reusable Assets
 
 [![Data Cleaning Framework](https://img.shields.io/badge/Data_Cleaning_Framework-1F4E79?style=flat-square&logo=pandas&logoColor=white)](https://github.com/juliocezarcarneiro/data-cleaning-template)
 
@@ -43,6 +42,4 @@ Data Cleaning | Data Validation | ETL | Dashboard Development
 
 ## Contact
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-1F4E79?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-link)
-
-[![Email](https://img.shields.io/badge/Email-1F4E79?style=flat-square&logo=gmail&logoColor=white)](mailto:your@email.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-1F4E79?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-link)  [![Email](https://img.shields.io/badge/Email-1F4E79?style=flat-square&logo=gmail&logoColor=white)](mailto:your@email.com)
