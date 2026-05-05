@@ -1,8 +1,8 @@
 # Julio Carneiro  
 **Data Analyst | SQL • Python • Tableau**  
-Focused on profitability, cost optimization, and business performance analytics  
+Focused on profitability, cost optimization, and business performance  
 
-I analyze business performance to identify profitability drivers and cost inefficiencies.
+I analyze business performance to identify profitability drivers and cost inefficiencies that impact results.
 
 ---
 
@@ -10,17 +10,17 @@ I analyze business performance to identify profitability drivers and cost ineffi
 
 ### Operations Profitability & Cost Optimization  
 SQL • Python • Tableau  
-Analyzed operational data to identify margin loss drivers and cost inefficiencies across locations and product categories.  
+Identified margin loss drivers and cost inefficiencies across locations and product categories.  
 
 [![View Project](https://img.shields.io/badge/View_Project-1F4E79?style=flat-square&logo=github&logoColor=white)](https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization)
 
 ---
 
 ### CFO Executive Dashboard  
-Tableau • Looker Studio  
-Developed an executive dashboard to monitor revenue, cost, and profitability KPIs.  
+Tableau • Data Studio  
+Built an executive dashboard to monitor revenue, cost, and profitability KPIs.  
 
-[![View Data Studio Dashboard](https://img.shields.io/badge/View_Data_Studio_Dashboard-1F4E79?style=flat-square&logo=looker&logoColor=white)](https://datastudio.google.com/u/0/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49/page/2vNtF)
+[![View Dashboard](https://img.shields.io/badge/View_Dashboard-1F4E79?style=flat-square&logo=google-analytics&logoColor=white)](https://datastudio.google.com/u/0/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49/page/2vNtF)
 
 [![View Project](https://img.shields.io/badge/View_Project-1F4E79?style=flat-square&logo=github&logoColor=white)](https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow)
 
