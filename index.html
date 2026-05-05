@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <meta
     name="description"
-    content="Julio Carneiro's Data Analytics Portfolio showcasing business-focused projects in Python, SQL, Looker Studio, PySpark, and machine learning."
+    content="Julio Carneiro's Data Analytics Portfolio showcasing business-focused projects in Python, SQL, Data Studio, PySpark, and machine learning."
   />
 
   <style>
@@ -380,15 +380,23 @@
       box-shadow: var(--shadow-md);
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 28px;
-      margin-bottom: 72px;
+    .projects-label {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--darkest-grey);
+      margin-bottom: 28px;
+      text-align: left;
     }
 
-    .project-card,
-    .featured-project {
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 20px;
+    }
+
+    .project-card {
       background-color: var(--white);
       border-radius: 18px;
       overflow: hidden;
@@ -396,17 +404,19 @@
       border: 1px solid var(--light-grey);
       box-shadow: var(--shadow-md);
       position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
     }
 
-    .project-card:hover,
-    .featured-project:hover {
+    .project-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-xl);
       border-color: rgba(23, 59, 122, 0.20);
     }
 
     .project-image-wrapper {
-      height: 220px;
+      height: 190px;
       overflow: hidden;
       background-color: #f8fafc;
       display: flex;
@@ -423,66 +433,43 @@
       display: block;
     }
 
-    .project-card:hover .project-image-wrapper img,
-    .featured-project:hover .project-image-wrapper img {
+    .project-card:hover .project-image-wrapper img {
       transform: scale(1.04);
     }
 
     .project-content {
-      padding: 24px;
-      padding-bottom: 84px;
-    }
-
-    .project-title {
-      font-size: 23px;
-      font-weight: 700;
-      margin-bottom: 14px;
-      color: var(--darkest-grey);
-    }
-
-    .project-description {
-      font-size: 15px;
-      color: var(--medium-grey);
-      margin-bottom: 22px;
-      line-height: 1.7;
-    }
-
-    .project-card .project-links {
-      position: absolute;
-      bottom: 22px;
-      left: 24px;
-      right: 24px;
-    }
-
-    .projects-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    .featured-project {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .featured-project .project-image-wrapper {
-      height: 200px;
-    }
-
-    .featured-project .project-content {
-      padding: 24px;
-      padding-bottom: 82px;
+      padding: 22px;
+      padding-bottom: 76px;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
 
-    .featured-project .project-links {
+    .project-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--darkest-grey);
+      line-height: 1.2;
+    }
+
+    .project-description {
+      font-size: 15px;
+      color: var(--medium-grey);
+      margin-bottom: 18px;
+      line-height: 1.62;
+    }
+
+    .project-card .project-tech-tags {
+      margin-top: auto;
+      margin-bottom: 18px;
+    }
+
+    .project-card .project-links {
       position: absolute;
       bottom: 22px;
-      left: 24px;
-      right: 24px;
-      justify-content: flex-start;
+      left: 22px;
+      right: 22px;
     }
 
     footer {
@@ -565,6 +552,7 @@
       .project-hero { padding: 24px; }
       .project-hero h2 { font-size: 28px; }
       .projects-grid { grid-template-columns: 1fr; }
+      .projects-label { font-size: 28px; }
     }
 
     @media (max-width: 480px) {
@@ -577,13 +565,11 @@
       .project-links { flex-direction: column; }
       .project-link { width: 100%; }
       .footer-links { flex-direction: column; gap: 16px; }
-      .project-card .project-links,
-      .featured-project .project-links {
+      .project-card .project-links {
         position: static;
         margin-top: 20px;
       }
-      .project-content,
-      .featured-project .project-content {
+      .project-content {
         padding-bottom: 24px;
       }
     }
@@ -625,7 +611,7 @@
 
   <section id="projects" class="projects-section">
     <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
+      <h2 class="section-title">Projects</h2>
 
       <div class="project-hero">
         <div class="hero-image">
@@ -645,7 +631,7 @@
           <p>
             Built an executive financial dashboard to replace static monthly reporting with a
             decision-ready view of revenue, profitability, budget variance, and departmental
-            performance. Designed in Looker Studio with Python-based data preparation to support
+            performance. Designed in Data Studio with Python-based data preparation to support
             faster and more consistent executive reporting.
           </p>
 
@@ -655,7 +641,7 @@
           </div>
 
           <div class="project-tech-tags">
-            <span class="project-tech">Looker Studio</span>
+            <span class="project-tech">Data Studio</span>
             <span class="project-tech">Python</span>
             <span class="project-tech">Pandas</span>
             <span class="project-tech">Google Colab</span>
@@ -685,13 +671,14 @@
               class="project-link report-link"
               target="_blank"
               rel="noopener noreferrer"
-              onclick="window.open(this.href, '_blank'); return false;"
             >
               Executive Report
             </a>
           </div>
         </div>
       </div>
+
+      <h3 class="projects-label">Project Library</h3>
 
       <div class="projects-grid">
         <div class="project-card">
@@ -761,116 +748,110 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <section class="projects-section" style="padding: 0;">
-        <h2 class="section-title">Additional Projects</h2>
-
-        <div class="projects-row">
-          <div class="featured-project">
-            <div class="project-image-wrapper">
-              <img
-                src="images/funding-predictor.jpg"
-                alt="Nonprofit Funding Success Predictor"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='https://placehold.co/800x400/f8fafc/334155?text=Nonprofit+Funding+Prediction';"
-              />
-            </div>
-            <div class="project-content">
-              <div class="featured-badge">Deep Learning</div>
-              <h3 class="project-title">Nonprofit Funding Success Predictor</h3>
-              <p class="project-description">
-                Built a deep learning model to predict whether charitable donation applications
-                would be successful, framing the problem as a binary classification task and
-                benchmarking performance against a 75% accuracy target.
-              </p>
-              <div class="project-tech-tags">
-                <span class="project-tech">TensorFlow</span>
-                <span class="project-tech">Keras</span>
-                <span class="project-tech">Python</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/juliocezarcarneiro/deep-learning-challenge"
-                  class="project-link github-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View on GitHub
-                </a>
-              </div>
-            </div>
+        <div class="project-card">
+          <div class="project-image-wrapper">
+            <img
+              src="images/funding-predictor.jpg"
+              alt="Nonprofit Funding Success Predictor"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='https://placehold.co/800x400/f8fafc/334155?text=Nonprofit+Funding+Prediction';"
+            />
           </div>
-
-          <div class="featured-project">
-            <div class="project-image-wrapper">
-              <img
-                src="images/home-sales.jpg"
-                alt="Home Sales Analysis with SparkSQL"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='https://placehold.co/800x400/f8fafc/334155?text=Home+Sales+Analysis';"
-              />
+          <div class="project-content">
+            <span class="featured-badge">Deep Learning</span>
+            <h3 class="project-title">Nonprofit Funding Success Predictor</h3>
+            <p class="project-description">
+              Built a deep learning model to predict whether charitable donation applications
+              would be successful, framing the problem as a binary classification task and
+              benchmarking performance against a 75% accuracy target.
+            </p>
+            <div class="project-tech-tags">
+              <span class="project-tech">TensorFlow</span>
+              <span class="project-tech">Keras</span>
+              <span class="project-tech">Python</span>
             </div>
-            <div class="project-content">
-              <div class="featured-badge">Data Engineering</div>
-              <h3 class="project-title">Home Sales Analysis with SparkSQL</h3>
-              <p class="project-description">
-                Used SparkSQL to analyze home sales data, create temporary views, partition files,
-                and compare cached versus uncached query performance across larger datasets.
-              </p>
-              <div class="project-tech-tags">
-                <span class="project-tech">PySpark</span>
-                <span class="project-tech">SparkSQL</span>
-                <span class="project-tech">Parquet</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/juliocezarcarneiro/Home_Sales.git"
-                  class="project-link github-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View on GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="featured-project">
-            <div class="project-image-wrapper">
-              <img
-                src="images/credit-risk.jpg"
-                alt="Credit Risk Classification"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='https://placehold.co/600x300/f8fafc/334155?text=Credit+Risk+Classification';"
-              />
-            </div>
-            <div class="project-content">
-              <div class="featured-badge">Machine Learning</div>
-              <h3 class="project-title">Credit Risk Classification</h3>
-              <p class="project-description">
-                Built a machine learning model to assess loan applicant risk using supervised
-                learning methods and evaluation techniques for imbalanced classification problems.
-              </p>
-              <div class="project-tech-tags">
-                <span class="project-tech">Python</span>
-                <span class="project-tech">Scikit-learn</span>
-                <span class="project-tech">Pandas</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/juliocezarcarneiro/credit-risk-classification"
-                  class="project-link github-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View on GitHub
-                </a>
-              </div>
+            <div class="project-links">
+              <a
+                href="https://github.com/juliocezarcarneiro/deep-learning-challenge"
+                class="project-link github-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </a>
             </div>
           </div>
         </div>
-      </section>
+
+        <div class="project-card">
+          <div class="project-image-wrapper">
+            <img
+              src="images/home-sales.jpg"
+              alt="Home Sales Analysis with SparkSQL"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='https://placehold.co/800x400/f8fafc/334155?text=Home+Sales+Analysis';"
+            />
+          </div>
+          <div class="project-content">
+            <span class="featured-badge">Data Engineering</span>
+            <h3 class="project-title">Home Sales Analysis with SparkSQL</h3>
+            <p class="project-description">
+              Used SparkSQL to analyze home sales data, create temporary views, partition files,
+              and compare cached versus uncached query performance across larger datasets.
+            </p>
+            <div class="project-tech-tags">
+              <span class="project-tech">PySpark</span>
+              <span class="project-tech">SparkSQL</span>
+              <span class="project-tech">Parquet</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://github.com/juliocezarcarneiro/Home_Sales.git"
+                class="project-link github-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image-wrapper">
+            <img
+              src="images/credit-risk.jpg"
+              alt="Credit Risk Classification"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x300/f8fafc/334155?text=Credit+Risk+Classification';"
+            />
+          </div>
+          <div class="project-content">
+            <span class="featured-badge">Machine Learning</span>
+            <h3 class="project-title">Credit Risk Classification</h3>
+            <p class="project-description">
+              Built a machine learning model to assess loan applicant risk using supervised
+              learning methods and evaluation techniques for imbalanced classification problems.
+            </p>
+            <div class="project-tech-tags">
+              <span class="project-tech">Python</span>
+              <span class="project-tech">Scikit-learn</span>
+              <span class="project-tech">Pandas</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://github.com/juliocezarcarneiro/credit-risk-classification"
+                class="project-link github-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
