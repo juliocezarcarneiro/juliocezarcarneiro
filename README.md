@@ -24,7 +24,7 @@ Built an executive dashboard to monitor revenue, cost, and profitability KPIs.
 
 ---
 
-## Tools & Reusable Assets
+## Tools
 
 [![Data Cleaning Framework](https://img.shields.io/badge/Data_Cleaning_Framework-1F4E79?style=flat-square&logo=pandas&logoColor=white)](https://github.com/juliocezarcarneiro/data-cleaning-template)
 
