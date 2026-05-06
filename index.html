@@ -1,126 +1,964 @@
-<!-- ONLY PROJECTS SECTION REPLACED — KEEP YOUR HEADER / FOOTER SAME -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julio Carneiro | Data Analytics Portfolio</title>
 
-<section id="projects" class="projects-section">
-  <div class="container">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta name="description" content="Julio Carneiro's Data Analytics Portfolio showcasing business focused projects in Python, SQL, Looker Studio, PySpark, Databricks, and machine learning." />
 
-    <h2 class="section-title">Business Analytics Projects</h2>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --ink: #1f2933;
+      --text: #334155;
+      --muted: #64748b;
+      --line: #d9e0e8;
+      --line-soft: #e8edf2;
+      --accent: #1f4e79;
+      --accent-muted: #486581;
+      --transition: all 0.2s ease;
+    }
 
-    <!-- HERO PROJECT -->
-    <div class="project-hero">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      <div class="hero-image">
-        <img src="images/executive-summary.jpg" alt="Executive Dashboard" />
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      background: var(--bg);
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background: var(--bg);
+      border-right: 1px solid var(--line);
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .identity {
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line-soft);
+      margin-bottom: 20px;
+    }
+
+    .name {
+      display: block;
+      color: var(--ink);
+      font-size: 18px;
+      letter-spacing: -0.025em;
+      font-weight: 650;
+      text-transform: lowercase;
+      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .role {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 450;
+      text-transform: lowercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .nav-label {
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      margin-top: 6px;
+    }
+
+    .nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 24px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 6px 0;
+      transition: var(--transition);
+    }
+
+    .nav-link i {
+      color: var(--accent-muted);
+      width: 18px;
+      font-size: 12px;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    .filter-bar {
+      margin: 8px 0 18px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .filter-chip {
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      padding: 3px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 500;
+      color: var(--accent-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: lowercase;
+    }
+    .filter-chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+    .filter-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--line-soft);
+    }
+    .sidebar-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .sidebar-socials a {
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .copyright {
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: lowercase;
+    }
+
+    /* MAIN */
+    .main {
+      min-width: 0;
+      padding: 28px 32px;
+      background: var(--bg);
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .portfolio-badge {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .portfolio-badge strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .right-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .contact-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      padding: 6px 14px;
+      border-radius: 48px;
+      border: 1px solid var(--line-soft);
+    }
+    .contact-badge-group a {
+      color: var(--accent);
+      font-size: 15px;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-badge-group a:hover {
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+    .time-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      padding: 6px 14px;
+      border-radius: 48px;
+      border: 1px solid var(--line-soft);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .time-location i {
+      color: var(--accent-muted);
+      font-size: 11px;
+    }
+    .time-location span {
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 40px 0 36px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-title {
+      color: var(--ink);
+      font-size: 48px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 650;
+      text-transform: lowercase;
+      margin-bottom: 16px;
+      max-width: 800px;
+    }
+    .hero-note {
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.4;
+      max-width: 640px;
+    }
+    .scroll-note {
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+    }
+    .scroll-note:hover {
+      border-color: var(--accent);
+    }
+
+    .section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 20px;
+    }
+    .section-title {
+      color: var(--ink);
+      font-size: 28px;
+      font-weight: 650;
+      text-transform: lowercase;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    /* ABOUT */
+    .about-single {
+      font-size: 1.2rem;
+      font-weight: 450;
+      color: var(--text);
+      line-height: 1.5;
+      max-width: 780px;
+      margin-bottom: 32px;
+    }
+    .focus-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .focus-item {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+    .focus-item h3 {
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: lowercase;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .focus-item p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+    .project-card {
+      background: var(--surface);
+      border-radius: 14px;
+      border: 1px solid var(--line-soft);
+      overflow: hidden;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-muted);
+      box-shadow: 0 8px 20px -12px rgba(0,0,0,0.1);
+    }
+    .project-card.hidden {
+      display: none;
+    }
+    .project-image {
+      height: 110px;
+      background: linear-gradient(135deg, #eef2f6 0%, #e2e8f0 100%);
+      border-bottom: 1px solid var(--line-soft);
+      overflow: hidden;
+    }
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .project-content {
+      padding: 12px 14px 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .project-title {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 650;
+      text-transform: lowercase;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .project-description {
+      color: var(--text);
+      font-size: 10.5px;
+      line-height: 1.45;
+      margin-bottom: 10px;
+      flex: 1;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+    .tag {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 2px 6px;
+      font-size: 7.5px;
+      font-weight: 500;
+      color: var(--accent-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .project-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 2px;
+    }
+    .project-link {
+      color: var(--accent);
+      font-size: 9px;
+      font-weight: 600;
+      border-bottom: 1px solid transparent;
+      transition: var(--transition);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .project-link:hover {
+      border-color: var(--accent);
+    }
+
+    /* NOTES & SNIPPETS - with copy button */
+    .notes-grid, .snippets-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .note-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .note-card:hover {
+      border-color: var(--accent-muted);
+      transform: translateY(-2px);
+    }
+    .note-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .note-title i {
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .code-container {
+      position: relative;
+      margin: 8px 0;
+    }
+    .code-snip {
+      background: #1e2933;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: #e2e8f0;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      padding-right: 50px;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: #334155;
+      border: none;
+      color: #e2e8f0;
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'JetBrains Mono', monospace;
+      transition: 0.2s;
+    }
+    .copy-btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+    .copy-btn.copied {
+      background: #2e7d5e;
+      color: white;
+    }
+    .note-meta {
+      color: var(--muted);
+      font-size: 9px;
+      border-left: 2px solid var(--accent);
+      padding-left: 8px;
+      margin-top: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .sub-badge {
+      display: inline-block;
+      font-size: 8px;
+      background: var(--line-soft);
+      padding: 2px 8px;
+      border-radius: 20px;
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .gh-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+      font-size: 9px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      border-bottom: 1px dotted var(--line);
+      transition: 0.2s;
+    }
+    .gh-link:hover {
+      color: var(--ink);
+      border-color: var(--accent);
+    }
+
+    .resume-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .resume-box span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--ink);
+    }
+    .resume-box a {
+      background: var(--accent);
+      color: white;
+      padding: 7px 24px;
+      border-radius: 40px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .resume-box a:hover {
+      background: #0f3b5a;
+    }
+
+    @media (max-width: 1400px) {
+      .projects-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 1100px) {
+      .projects-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .app-shell { grid-template-columns: 1fr; }
+      .sidebar { position: relative; height: auto; border-right: none; border-bottom: 1px solid var(--line); }
+      .main { padding: 20px; }
+      .hero { padding: 28px 0; }
+      .section { padding: 32px 0; }
+      .hero-title { font-size: 36px; }
+      .focus-list { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .top-bar { flex-direction: column; align-items: flex-start; }
+      .right-group { width: 100%; justify-content: space-between; }
+    }
+    @media (max-width: 640px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .focus-list { grid-template-columns: 1fr; }
+      .notes-grid, .snippets-grid { grid-template-columns: 1fr; }
+      .right-group { flex-direction: column; align-items: stretch; gap: 8px; }
+      .contact-badge-group, .time-location { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="identity">
+      <div class="name">julio carneiro</div>
+      <div class="role">data analyst</div>
+    </div>
+
+    <div class="nav-group">
+      <a href="#about" class="nav-link"><i class="fa-regular fa-file-lines"></i> about</a>
+      <a href="#projects" class="nav-link"><i class="fa-regular fa-folder"></i> projects</a>
+      <a href="#notes" class="nav-link"><i class="fa-regular fa-note-sticky"></i> notes</a>
+      <a href="#snippets" class="nav-link"><i class="fa-regular fa-code"></i> snippets</a>
+      <a href="#resume" class="nav-link"><i class="fa-regular fa-file-pdf"></i> resume</a>
+    </div>
+
+    <div class="nav-label">filter by tools</div>
+    <div class="filter-bar" id="toolFilterBar">
+      <button class="filter-chip active" data-tool="all">all</button>
+      <button class="filter-chip" data-tool="sql">sql</button>
+      <button class="filter-chip" data-tool="python">python</button>
+      <button class="filter-chip" data-tool="data studio">data studio</button>
+      <button class="filter-chip" data-tool="tableau">tableau</button>
+      <button class="filter-chip" data-tool="pyspark">pyspark</button>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-socials">
+        <a href="https://github.com/juliocezarcarneiro" target="_blank">github</a>
+        <a href="https://www.linkedin.com/in/juliocezarcarneiro/" target="_blank">linkedin</a>
+        <a href="mailto:carneiro.julio@proton.me">email</a>
       </div>
+      <p class="copyright">© julio carneiro</p>
+    </div>
+  </aside>
 
-      <div class="hero-content">
-        <span class="featured-badge">Featured</span>
-        <div class="project-subtitle">Executive Dashboard</div>
-
-        <h2>TechFlow Financial Performance Dashboard</h2>
-
-        <p>
-          Built an executive dashboard to replace static reporting with real-time
-          visibility into revenue, profitability, and budget performance.
-        </p>
-
-        <div class="executive-impact">
-          Reduced reporting time by 30% and improved visibility across financial KPIs.
+  <main class="main">
+    <div class="top-bar">
+      <div class="portfolio-badge">
+        <strong>portfolio</strong> business analytics
+      </div>
+      <div class="right-group">
+        <div class="contact-badge-group">
+          <a href="mailto:carneiro.julio@proton.me" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+          <a href="https://github.com/juliocezarcarneiro" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/juliocezarcarneiro/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
         </div>
-
-        <div class="project-tech-tags">
-          <span class="project-tech">Data Studio</span>
-          <span class="project-tech">Python</span>
-          <span class="project-tech">Pandas</span>
-        </div>
-
-        <div class="project-links">
-          <a href="https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow" class="project-link github-link" target="_blank">
-            View Project
-          </a>
-
-          <a href="https://datastudio.google.com/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49" class="project-link demo-link" target="_blank">
-            Live Dashboard
-          </a>
+        <div class="time-location">
+          <i class="fa-regular fa-location-dot"></i> <span>toronto</span>
+          <span style="color: var(--line);">|</span>
+          <i class="fa-regular fa-clock"></i> <span id="toronto-time">--:--</span>
         </div>
       </div>
     </div>
 
-    <!-- GRID PROJECTS -->
-    <div class="projects-grid">
+    <section class="hero">
+      <h1 class="hero-title">Data analytics for business decisions</h1>
+      <p class="hero-note">Dashboards, reporting systems, SQL analysis, Python workflows, and decision ready insights across finance, operations, and customer behavior.</p>
+      <a href="#projects" class="scroll-note">View projects →</a>
+    </section>
 
-      <!-- PROJECT -->
-      <div class="project-card">
-        <div class="project-image-wrapper">
-          <img src="images/sales-system.jpg" alt="Sales System">
+    <section id="about" class="section">
+      <h2 class="section-title">about</h2>
+      <div class="about-single">
+        Business focused analytics using SQL, Python, and modern BI to turn data into executive narratives.
+      </div>
+      <div class="focus-list">
+        <div class="focus-item"><h3>reporting</h3><p>executive dashboards, KPI tracking</p></div>
+        <div class="focus-item"><h3>sql</h3><p>data validation, profitability, cost trends</p></div>
+        <div class="focus-item"><h3>python</h3><p>automation, reproducible analysis</p></div>
+        <div class="focus-item"><h3>business</h3><p>finance, operations, sales insights</p></div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2 class="section-title">projects</h2>
+      <div class="projects-grid" id="projectsGrid">
+        <article class="project-card" data-tools="data studio,python,finance">
+          <div class="project-image"><img src="images/executive-summary.jpg" alt="TechFlow" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Financial';"> </div>
+          <div class="project-content">
+            <div class="project-meta"><span>dashboard</span><span>2026</span></div>
+            <h3 class="project-title">TechFlow Financial</h3>
+            <p class="project-description">Executive dashboard replacing static reports with revenue and variance views.</p>
+            <div class="tags"><span class="tag">data studio</span><span class="tag">python</span></div>
+            <div class="project-links"><a href="#" class="project-link">github</a><a href="#" class="project-link">demo</a></div>
+          </div>
+        </article>
+        <article class="project-card" data-tools="python,sql">
+          <div class="project-image"><img src="images/sales-system.jpg" alt="Sales" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Sales+Auto';"> </div>
+          <div class="project-content">
+            <div class="project-meta"><span>automation</span><span>2026</span></div>
+            <h3 class="project-title">Automated Sales Reporting</h3>
+            <p class="project-description">ETL pipeline automating daily sales and KPI tracking. 85 percent less manual work.</p>
+            <div class="tags"><span class="tag">python</span><span class="tag">sql</span></div>
+            <div class="project-links"><a href="#" class="project-link">github</a></div>
+          </div>
+        </article>
+        <article class="project-card" data-tools="pyspark,sql">
+          <div class="project-image"><img src="images/e-commerce.jpg" alt="E-Commerce" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=E-Commerce';"> </div>
+          <div class="project-content">
+            <div class="project-meta"><span>big data</span><span>2026</span></div>
+            <h3 class="project-title">E-Commerce Behavior</h3>
+            <p class="project-description">10 million user events analysis with PySpark on Databricks.</p>
+            <div class="tags"><span class="tag">pyspark</span><span class="tag">databricks</span></div>
+            <div class="project-links"><a href="#" class="project-link">github</a></div>
+          </div>
+        </article>
+        <article class="project-card" data-tools="tableau,python">
+          <div class="project-image"><img src="images/funding-predictor.jpg" alt="Funding" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Funding+ML';"> </div>
+          <div class="project-content">
+            <div class="project-meta"><span>deep learning</span><span>2026</span></div>
+            <h3 class="project-title">Funding Success Predictor</h3>
+            <p class="project-description">Deep learning model predicting donation success with Tableau dashboards.</p>
+            <div class="tags"><span class="tag">tensorflow</span><span class="tag">tableau</span></div>
+            <div class="project-links"><a href="#" class="project-link">github</a></div>
+          </div>
+        </article>
+        <article class="project-card" data-tools="sql,tableau">
+          <div class="project-image"><img src="images/home-sales.jpg" alt="Home Sales" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Home+Sales';"> </div>
+          <div class="project-content">
+            <div class="project-meta"><span>data eng</span><span>2026</span></div>
+            <h3 class="project-title">Home Sales Analysis</h3>
+            <p class="project-description">SparkSQL, Parquet partitions, cache optimization for real estate insights.</p>
+            <div class="tags"><span class="tag">sparksql</span><span class="tag">parquet</span></div>
+            <div class="project-links"><a href="#" class="project-link">github</a></div>
+          </div>
+        </article>
+        <article class="project-card" data-tools="python,sql">
+          <div class="project-image"><img src="images/credit-risk.jpg" alt="Credit risk" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Credit+Risk';"> </div>
+          <div class="project-content">
+            <div class="project-meta"><span>machine learning</span><span>2026</span></div>
+            <h3 class="project-title">Credit Risk Classification</h3>
+            <p class="project-description">Supervised ML for loan risk assessment with imbalanced financial data.</p>
+            <div class="tags"><span class="tag">scikit-learn</span><span class="tag">python</span></div>
+            <div class="project-links"><a href="#" class="project-link">github</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- NOTES for junior analysts -->
+    <section id="notes" class="section">
+      <h2 class="section-title">notes</h2>
+      <div class="notes-grid">
+        <div class="note-card">
+          <div class="sub-badge">📘 beginner sql</div>
+          <div class="note-title"><i class="fa-regular fa-table"></i> Basic SELECT query</div>
+          <div class="code-container">
+            <div class="code-snip" id="sql-basic">SELECT 
+    customer_id,
+    COUNT(*) as total_orders,
+    SUM(amount) as total_spent
+FROM orders
+WHERE order_date >= '2025-01-01'
+GROUP BY customer_id
+ORDER BY total_spent DESC
+LIMIT 10;</div>
+            <button class="copy-btn" data-target="sql-basic">copy</button>
+          </div>
+          <div class="note-meta">Learn to aggregate and filter data. This query finds top customers by spending.</div>
         </div>
+        <div class="note-card">
+          <div class="sub-badge">🐍 python basics</div>
+          <div class="note-title"><i class="fa-regular fa-code"></i> Pandas filter & groupby</div>
+          <div class="code-container">
+            <div class="code-snip" id="python-basic">import pandas as pd
 
-        <div class="project-content">
-          <h3 class="project-title">Sales Performance Reporting System</h3>
-
-          <p class="project-description">
-            Automated daily reporting, KPI tracking, and alerting workflows.
-          </p>
-
-          <div class="project-tech-tags">
-            <span class="project-tech">Python</span>
-            <span class="project-tech">SQL</span>
-            <span class="project-tech">Airflow</span>
+df = pd.read_csv('sales.csv')
+# Filter rows where revenue > 1000
+filtered = df[df['revenue'] > 1000]
+# Group by region and calculate average
+result = filtered.groupby('region')['revenue'].mean().reset_index()
+print(result)</div>
+            <button class="copy-btn" data-target="python-basic">copy</button>
           </div>
-
-          <div class="project-links">
-            <a href="#" class="project-link github-link">View Project</a>
+          <div class="note-meta">Essential pattern for data manipulation and aggregation in Python.</div>
+        </div>
+        <div class="note-card">
+          <div class="sub-badge">📊 window functions</div>
+          <div class="note-title"><i class="fa-regular fa-chart-line"></i> Running total & ranking</div>
+          <div class="code-container">
+            <div class="code-snip" id="sql-window">SELECT 
+    date,
+    product,
+    sales,
+    SUM(sales) OVER(PARTITION BY product ORDER BY date) as running_total,
+    ROW_NUMBER() OVER(PARTITION BY product ORDER BY sales DESC) as rank_in_product
+FROM daily_sales
+ORDER BY product, date;</div>
+            <button class="copy-btn" data-target="sql-window">copy</button>
           </div>
+          <div class="note-meta">Window functions let you calculate running totals and rankings without subqueries.</div>
+        </div>
+        <div class="note-card">
+          <div class="sub-badge">🔄 etl pattern</div>
+          <div class="note-title"><i class="fa-regular fa-clock"></i> Incremental load</div>
+          <div class="code-container">
+            <div class="code-snip" id="etl-pattern">def incremental_load(new_data, existing_table, key_column='id', timestamp_column='updated_at'):
+    # Get latest timestamp from existing data
+    latest = existing_table[timestamp_column].max()
+    # Only get new or updated records
+    new_records = new_data[new_data[timestamp_column] > latest]
+    # Append to table
+    return pd.concat([existing_table, new_records], ignore_index=True)</div>
+            <button class="copy-btn" data-target="etl-pattern">copy</button>
+          </div>
+          <div class="note-meta">Efficient ETL pattern that only processes changed data, saving time and resources.</div>
         </div>
       </div>
+    </section>
 
-      <!-- PROJECT -->
-      <div class="project-card">
-        <div class="project-image-wrapper">
-          <img src="images/e-commerce.jpg" alt="Ecommerce">
+    <!-- SNIPPETS - junior friendly -->
+    <section id="snippets" class="section">
+      <h2 class="section-title">snippets</h2>
+      <div class="snippets-grid">
+        <div class="note-card">
+          <div class="sub-badge">📅 date functions</div>
+          <div class="note-title"><i class="fa-regular fa-calendar"></i> SQL date truncation</div>
+          <div class="code-container">
+            <div class="code-snip" id="date-trunc">-- Group by month, quarter, or year
+SELECT 
+    DATE_TRUNC('month', transaction_date) as month,
+    SUM(amount) as monthly_revenue
+FROM transactions
+GROUP BY 1
+ORDER BY 1 DESC;</div>
+            <button class="copy-btn" data-target="date-trunc">copy</button>
+          </div>
+          <div class="note-meta">Use DATE_TRUNC to aggregate time series data by month, week, or quarter.</div>
         </div>
-
-        <div class="project-content">
-          <h3 class="project-title">E-Commerce Behavior Analytics</h3>
-
-          <p class="project-description">
-            Analyzed user behavior to identify high-conversion paths.
-          </p>
-
-          <div class="project-tech-tags">
-            <span class="project-tech">PySpark</span>
-            <span class="project-tech">Databricks</span>
+        <div class="note-card">
+          <div class="sub-badge">🔗 join patterns</div>
+          <div class="note-title"><i class="fa-regular fa-link"></i> LEFT JOIN with COALESCE</div>
+          <div class="code-container">
+            <div class="code-snip" id="join-pattern">SELECT 
+    u.user_id,
+    u.name,
+    COALESCE(o.total_orders, 0) as order_count,
+    COALESCE(o.total_spent, 0) as lifetime_value
+FROM users u
+LEFT JOIN (
+    SELECT user_id, COUNT(*) as total_orders, SUM(amount) as total_spent
+    FROM orders
+    GROUP BY user_id
+) o ON u.user_id = o.user_id;</div>
+            <button class="copy-btn" data-target="join-pattern">copy</button>
           </div>
+          <div class="note-meta">LEFT JOIN keeps all users, COALESCE replaces NULL with 0 for cleaner results.</div>
+        </div>
+        <div class="note-card">
+          <div class="sub-badge">📈 python visualization</div>
+          <div class="note-title"><i class="fa-regular fa-chart-simple"></i> Quick matplotlib chart</div>
+          <div class="code-container">
+            <div class="code-snip" id="viz">import matplotlib.pyplot as plt
+import seaborn as sns
 
-          <div class="project-links">
-            <a href="#" class="project-link github-link">View Project</a>
+# Simple bar chart
+df.groupby('category')['sales'].sum().plot(kind='bar')
+plt.title('Sales by Category')
+plt.xlabel('Category')
+plt.ylabel('Total Sales')
+plt.tight_layout()
+plt.show()</div>
+            <button class="copy-btn" data-target="viz">copy</button>
           </div>
+          <div class="note-meta">Quick exploratory visualization to spot trends and outliers in your data.</div>
+        </div>
+        <div class="note-card">
+          <div class="sub-badge">🧹 data cleaning</div>
+          <div class="note-title"><i class="fa-regular fa-broom"></i> Handle missing values</div>
+          <div class="code-container">
+            <div class="code-snip" id="cleaning"># Python pandas - handle missing data
+# Fill numeric nulls with median
+df['price'].fillna(df['price'].median(), inplace=True)
+# Fill categorical with mode
+df['category'].fillna(df['category'].mode()[0], inplace=True)
+# Drop rows missing critical columns
+df.dropna(subset=['customer_id', 'transaction_date'], inplace=True)</div>
+            <button class="copy-btn" data-target="cleaning">copy</button>
+          </div>
+          <div class="note-meta">Always clean missing values before analysis. Choose fill strategy based on data type.</div>
         </div>
       </div>
+    </section>
 
-      <!-- PROJECT -->
-      <div class="project-card">
-        <div class="project-image-wrapper">
-          <img src="images/funding-predictor.jpg" alt="ML">
-        </div>
-
-        <div class="project-content">
-          <h3 class="project-title">Funding Success Prediction</h3>
-
-          <p class="project-description">
-            Built a neural network model to predict application success.
-          </p>
-
-          <div class="project-tech-tags">
-            <span class="project-tech">TensorFlow</span>
-            <span class="project-tech">Python</span>
-          </div>
-
-          <div class="project-links">
-            <a href="#" class="project-link github-link">View Project</a>
-          </div>
-        </div>
+    <section id="resume" class="section">
+      <h2 class="section-title">resume</h2>
+      <div class="resume-box">
+        <span>📄 julio_carneiro_data_analytics.pdf</span>
+        <a href="resume-julio-carneiro.pdf" download>download resume</a>
       </div>
+    </section>
+  </main>
+</div>
 
-    </div>
-  </div>
-</section>
+<script>
+  function updateToronto() {
+    const now = new Date();
+    const time = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', hour: 'numeric', minute: '2-digit', hour12: true }).format(now).toLowerCase();
+    document.getElementById('toronto-time').textContent = time;
+  }
+  updateToronto();
+  setInterval(updateToronto, 30000);
+
+  document.querySelectorAll('.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // filter projects
+  const chips = document.querySelectorAll('.filter-chip');
+  const projects = document.querySelectorAll('.project-card');
+  function filterProjects(tool) {
+    projects.forEach(p => {
+      const toolsAttr = p.getAttribute('data-tools')?.toLowerCase() || '';
+      if (tool === 'all') {
+        p.classList.remove('hidden');
+      } else {
+        const toolMatches = toolsAttr.split(',').map(t => t.trim());
+        if (toolMatches.includes(tool.toLowerCase())) {
+          p.classList.remove('hidden');
+        } else {
+          p.classList.add('hidden');
+        }
+      }
+    });
+  }
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      filterProjects(chip.getAttribute('data-tool'));
+    });
+  });
+  filterProjects('all');
+
+  // Copy functionality for all code snippets
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-target');
+      const codeElement = document.getElementById(targetId);
+      if (codeElement) {
+        const textToCopy = codeElement.innerText;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          // Visual feedback
+          const originalText = this.innerText;
+          this.innerText = 'copied!';
+          this.classList.add('copied');
+          setTimeout(() => {
+            this.innerText = originalText;
+            this.classList.remove('copied');
+          }, 1500);
+        }).catch(err => {
+          console.error('Copy failed: ', err);
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>
