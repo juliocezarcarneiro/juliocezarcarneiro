@@ -1,0 +1,34 @@
+---
+layout: default
+title: Notes
+nav: notes
+---
+<h1>Notes</h1>
+<p class="lead">Short, practical posts on data for hospitality: SQL, Python, Excel, Power BI and the numbers that run a restaurant.</p>
+<p class="q">-- SELECT title, date FROM notes ORDER BY date DESC;</p>
+
+{% assign tags = " " %}
+{% for post in site.posts %}{% for t in post.tags %}{% assign key = " " | append: t | append: " " %}{% unless tags contains key %}{% assign tags = tags | append: t | append: " " %}{% endunless %}{% endfor %}{% endfor %}
+{% assign tag_list = tags | strip | split: " " | sort %}
+<div class="filters" data-filter>
+  <button type="button" data-tag="all" aria-pressed="true">all</button>
+  {% for t in tag_list %}<button type="button" data-tag="{{ t }}" aria-pressed="false">#{{ t }}</button>{% endfor %}
+</div>
+
+{% if site.posts.size == 0 %}
+<p class="empty">No notes yet. The first one is on its way.</p>
+{% else %}
+<ul class="list">
+  {% for post in site.posts %}
+  <li data-tags="{{ post.tags | join: ' ' }}">
+    <div class="row">
+      <a class="item-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span class="item-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+    </div>
+    {% if post.summary %}<p class="item-text">{{ post.summary }}</p>{% endif %}
+    <div class="item-foot"><span>{% for t in post.tags %}<span class="tag">#{{ t }}</span>{% endfor %}</span></div>
+  </li>
+  {% endfor %}
+</ul>
+<p class="count" id="count">{{ site.posts.size }} items</p>
+{% endif %}

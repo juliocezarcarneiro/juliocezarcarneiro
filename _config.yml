@@ -1,0 +1,32 @@
+title: Julio Carneiro
+tagline: Hospitality analytics
+description: Data analyst for restaurants, cafés and hotels. Food cost, labour, margins and guest data, turned into decisions.
+author: Julio Carneiro
+baseurl: "/juliocezarcarneiro"
+url: "https://juliocezarcarneiro.github.io"
+timezone: America/Toronto
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /notes/:year/:month/:title/
+
+collections:
+  projects:
+    output: false
+  resources:
+    output: false
+
+links:
+  github: https://github.com/juliocezarcarneiro
+  linkedin: https://www.linkedin.com/in/juliocezarcarneiro/
+  email: carneiro.julio@proton.me
+  resume: /resume-julio-carneiro.pdf
+
+exclude:
+  - README.md
+  - HOW-TO-POST.md
+  - LICENSE
+  - requirements.txt

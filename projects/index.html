@@ -1,0 +1,34 @@
+---
+layout: default
+title: Projects
+nav: projects
+---
+<h1>Projects</h1>
+<p class="lead">Case studies with a business question, the analysis, and the number that answered it. New ones get added as I finish them.</p>
+<p class="q">-- SELECT * FROM projects ORDER BY date DESC;</p>
+
+{% assign projects = site.projects | sort: "date" | reverse %}
+{% assign tags = " " %}
+{% for p in projects %}{% for t in p.tags %}{% assign key = " " | append: t | append: " " %}{% unless tags contains key %}{% assign tags = tags | append: t | append: " " %}{% endunless %}{% endfor %}{% endfor %}
+{% assign tag_list = tags | strip | split: " " | sort %}
+<div class="filters" data-filter>
+  <button type="button" data-tag="all" aria-pressed="true">all</button>
+  {% for t in tag_list %}<button type="button" data-tag="{{ t }}" aria-pressed="false">#{{ t }}</button>{% endfor %}
+</div>
+
+<ul class="list">
+  {% for p in projects %}
+  <li data-tags="{{ p.tags | join: ' ' }}">
+    <div class="row">
+      <a class="item-title" href="{{ p.repo }}" target="_blank" rel="noopener noreferrer">{{ p.title }}</a>
+      {% if p.metric %}<span class="metric"><span class="k">{{ p.metric_name }}</span><span class="{{ p.trend }}">{{ p.metric }}</span></span>{% endif %}
+    </div>
+    <p class="item-text">{{ p.summary }}</p>
+    <div class="item-foot">
+      <span>{% for t in p.tags %}<span class="tag">#{{ t }}</span>{% endfor %}<span class="item-date">{{ p.date | date: "%Y-%m" }}</span></span>
+      <span class="links"><a href="{{ p.repo }}" target="_blank" rel="noopener noreferrer">repo</a>{% if p.live %}<a href="{{ p.live }}" target="_blank" rel="noopener noreferrer">{{ p.live_label | default: "live" }}</a>{% endif %}</span>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+<p class="count" id="count">{{ projects.size }} items</p>
