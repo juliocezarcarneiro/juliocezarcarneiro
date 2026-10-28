@@ -8,6 +8,6 @@ trend: down
 featured: true
 tags: [looker-studio, python, finance]
 repo: https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow
-live: https://lookerstudio.google.com/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49
-live_label: dashboard
+live: https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow/blob/main/reports/techflow-inc-dashboard.pdf
+live_label: report
 ---
