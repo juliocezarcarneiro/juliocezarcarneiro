@@ -4,7 +4,7 @@ summary: Fill numbers with the median, categories with the most common value, an
 tags: [python, data-quality]
 ---
 
-Missing values are normal in POS exports and supplier files. The mistake is filling them without thinking. A short rule set keeps it honest:
+Missing values are normal in sales exports and supplier files. The mistake is filling them without thinking. A short rule set keeps it honest:
 
 ```python
 # Numbers: the median is safer than the mean when there are outliers
@@ -19,7 +19,7 @@ df = df.dropna(subset=['order_id', 'order_date'])
 
 ## The rule behind each line
 
-1. **Numbers get the median.** One catering order can drag the mean far from a normal day.
+1. **Numbers get the median.** One unusually large order can drag the mean far from a normal day.
 2. **Categories get the mode.** It's the least surprising guess.
 3. **Rows without an ID or date are dropped.** You can't put them on a timeline or match them to anything.
 

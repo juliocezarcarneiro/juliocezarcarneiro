@@ -4,8 +4,8 @@ title: Home
 nav: home
 ---
 <h1>Hi, I'm Julio Carneiro</h1>
-<p class="lead">I'm a data analyst focused on hospitality. I help restaurants, cafés and hotels see where their money goes: food cost, labour, margins and guest data, turned into decisions a manager can act on this week.</p>
-<p>Before analytics I ran kitchen operations for five years and cut food waste from 8% to 2%. Here I write notes on data, share projects, and collect free resources. More <a href="{{ '/about/' | relative_url }}">about me</a>.</p>
+<p class="lead">I'm a data analyst in Toronto. I work with Excel, Power BI, SQL, Python and Tableau to find where profit is lost, which costs are growing, and what to fix first.</p>
+<p>Here I write notes on data, share projects, and collect free resources. More <a href="{{ '/about/' | relative_url }}">about me</a>.</p>
 
 <h2>Latest</h2>
 {% assign everything = site.posts | concat: site.projects | concat: site.resources | sort: "date" | reverse %}
@@ -30,7 +30,7 @@ nav: home
 {% assign featured = site.projects | sort: "date" | reverse %}
 <ul class="lines">
   {% for p in featured %}{% if p.featured %}
-  <li><span class="d">{{ p.date | date: "%Y-%m" }}</span><span class="t"><a href="{{ p.repo }}" target="_blank" rel="noopener noreferrer">{{ p.title }}</a>{% if p.metric %} <span class="k">{{ p.metric }}</span>{% endif %}</span></li>
+  <li><span class="d">{{ p.date | date: "%b %Y" }}</span><span class="t"><a href="{{ p.repo }}" target="_blank" rel="noopener noreferrer">{{ p.title }}</a>{% if p.metric %} <span class="k">{{ p.metric }}</span>{% endif %}</span></li>
   {% endif %}{% endfor %}
 </ul>
 <a class="section-link" href="{{ '/projects/' | relative_url }}">All projects →</a>

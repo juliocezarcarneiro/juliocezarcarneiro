@@ -7,13 +7,13 @@ Everything is a small text file. Add one on GitHub (**Add file → Create new fi
 ## New note (blog post)
 
 Folder: `_posts/`
-File name: `YEAR-MONTH-DAY-short-title.md`, for example `_posts/2026-11-04-food-cost-formula.md`
+File name: `YEAR-MONTH-DAY-short-title.md`, for example `_posts/2026-11-04-sql-joins.md`
 
 ~~~markdown
 ---
-title: How to calculate food cost percentage
+title: SQL joins explained with one example
 summary: One sentence that shows on the Latest and Notes pages.
-tags: [hospitality, excel]
+tags: [sql]
 ---
 
 Write the post here in Markdown.
@@ -35,18 +35,18 @@ Tags are lowercase, one word each (use a dash for two words, like `power-bi`). E
 ## New project
 
 Folder: `_projects/`
-File name: `short-name.md`, for example `_projects/menu-engineering.md`
+File name: `short-name.md`, for example `_projects/sales-forecast.md`
 
 ```markdown
 ---
-title: Menu Engineering Analysis
+title: Sales Forecast Dashboard
 date: 2026-11-10
 summary: One or two sentences: the business question and what you found.
-metric_name: margin_lift
-metric: +3.2 pts
+metric_name: forecast_error
+metric: 4.8%
 trend: up
-tags: [hospitality, power-bi, sql]
-repo: https://github.com/juliocezarcarneiro/menu-engineering
+tags: [power-bi, sql]
+repo: https://github.com/juliocezarcarneiro/sales-forecast
 live: https://link-to-dashboard
 live_label: dashboard
 ---

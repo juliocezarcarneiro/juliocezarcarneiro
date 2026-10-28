@@ -1,6 +1,6 @@
 ---
 title: R for Data Science, 2nd edition
-author: Hadley Wickham, Mine Çetinkaya-Rundel and Garrett Grolemund
+author: Hadley Wickham et al.
 date: 2026-10-26
 type: book
 link: https://r4ds.hadley.nz/

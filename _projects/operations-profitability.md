@@ -6,7 +6,7 @@ metric_name: gross_margin
 metric: 31.45% → 24.41%
 trend: down
 featured: true
-tags: [hospitality, sql, python, tableau]
+tags: [sql, python, tableau]
 repo: https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization
 live: https://public.tableau.com/app/profile/julio.carneiro/viz/OperationsProfitabilityCostOptimization/ExecutiveSummary
 live_label: dashboard
