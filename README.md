@@ -65,4 +65,4 @@ Data Cleaning | Data Validation | ETL | Dashboard Development
 
 ## Contact
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-1F4E79?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juliocezarcarneiro/)  [![Email](https://img.shields.io/badge/Email-1F4E79?style=flat-square&logo=protonmail&logoColor=white)](mailto:carneiro.julio@proton.me)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-1F4E79?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juliocezarcarneiro/)  [![Email](https://img.shields.io/badge/Email-1F4E79?style=flat-square&logo=protonmail&logoColor=white)](mailto:juliocezarcarneiro@outlook.com)
