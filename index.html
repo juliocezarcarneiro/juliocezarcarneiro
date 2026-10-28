@@ -1,28 +1,45 @@
 ---
 layout: default
-title: Latest
-nav: latest
+title: Home
+nav: home
 ---
-<div class="intro">
-  <h1>Hospitality analytics</h1>
-  <p class="lead">I help restaurants, cafés and hotels see where their money goes: food cost, labour, margins and guest data, turned into decisions a manager can act on this week.</p>
-  <p>Notes on data, projects and free resources. New posts land here first.</p>
-</div>
+<h1>Hi, I'm Julio Carneiro</h1>
+<p class="lead">I'm a data analyst focused on hospitality. I help restaurants, cafés and hotels see where their money goes: food cost, labour, margins and guest data, turned into decisions a manager can act on this week.</p>
+<p>Before analytics I ran kitchen operations for five years and cut food waste from 8% to 2%. Here I write notes on data, share projects, and collect free resources. More <a href="{{ '/about/' | relative_url }}">about me</a>.</p>
 
-<p class="q">-- SELECT * FROM everything ORDER BY date DESC LIMIT 12;</p>
-
+<h2>Latest</h2>
 {% assign everything = site.posts | concat: site.projects | concat: site.resources | sort: "date" | reverse %}
-<ul class="list">
-  {% for item in everything limit: 12 %}
+<ul class="lines">
+  {% for item in everything limit: 10 %}
     {% if item.collection == "posts" %}{% assign kind = "note" %}{% assign href = item.url | relative_url %}{% assign ext = false %}
     {% elsif item.collection == "projects" %}{% assign kind = "project" %}{% assign href = item.repo %}{% assign ext = true %}
-    {% else %}{% assign kind = "resource" %}{% assign href = item.link %}{% assign ext = true %}{% endif %}
-  <li>
-    <div class="row">
-      <span><span class="kind {{ kind }}">{{ kind }}</span><a class="item-title" href="{{ href }}"{% if ext %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.title }}</a></span>
-      <span class="item-date">{{ item.date | date: "%Y-%m-%d" }}</span>
-    </div>
-    {% if item.summary %}<p class="item-text">{{ item.summary }}</p>{% endif %}
-  </li>
+    {% else %}{% assign kind = "free " | append: item.type | default: "resource" %}{% assign href = item.link %}{% assign ext = true %}{% endif %}
+  <li><span class="d">{{ item.date | date: "%Y-%m-%d" }}</span><span class="t"><a href="{{ href }}"{% if ext %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.title }}</a> <span class="k">{{ kind }}</span></span></li>
   {% endfor %}
 </ul>
+
+<h2>Notes</h2>
+<ul class="lines">
+  {% for post in site.posts limit: 5 %}
+  <li><span class="d">{{ post.date | date: "%Y-%m-%d" }}</span><span class="t"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span></li>
+  {% endfor %}
+</ul>
+<a class="section-link" href="{{ '/notes/' | relative_url }}">All notes →</a>
+
+<h2>Featured projects</h2>
+{% assign featured = site.projects | sort: "date" | reverse %}
+<ul class="lines">
+  {% for p in featured %}{% if p.featured %}
+  <li><span class="d">{{ p.date | date: "%Y-%m" }}</span><span class="t"><a href="{{ p.repo }}" target="_blank" rel="noopener noreferrer">{{ p.title }}</a>{% if p.metric %} <span class="k">{{ p.metric }}</span>{% endif %}</span></li>
+  {% endif %}{% endfor %}
+</ul>
+<a class="section-link" href="{{ '/projects/' | relative_url }}">All projects →</a>
+
+<h2>Free resources</h2>
+<ul class="lines">
+  {% assign res = site.resources | sort: "date" | reverse %}
+  {% for r in res limit: 5 %}
+  <li><span class="d">{{ r.type | default: "book" }}</span><span class="t"><a href="{{ r.link }}" target="_blank" rel="noopener noreferrer">{{ r.title }}</a> <span class="k">{{ r.author }}</span></span></li>
+  {% endfor %}
+</ul>
+<a class="section-link" href="{{ '/resources/' | relative_url }}">All resources →</a>

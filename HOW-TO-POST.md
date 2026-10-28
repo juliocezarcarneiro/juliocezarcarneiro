@@ -53,7 +53,8 @@ live_label: dashboard
 ```
 
 - `trend` colours the metric: `up` is green, `down` is red, `wip` is amber (use it with `metric: in progress`).
-- `metric_name`, `metric`, `trend`, `live` and `live_label` are optional. Delete the lines you don't need.
+- Add `featured: true` to show the project on the home page under Featured projects.
+- `metric_name`, `metric`, `trend`, `live`, `live_label` and `featured` are optional. Delete the lines you don't need.
 
 ---
 

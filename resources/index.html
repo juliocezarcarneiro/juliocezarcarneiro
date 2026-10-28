@@ -5,7 +5,6 @@ nav: resources
 ---
 <h1>Resources</h1>
 <p class="lead">Free books, courses and tools I recommend for learning data. Everything here is free and legal to read online.</p>
-<p class="q">-- SELECT title, author, link FROM resources WHERE price = 0;</p>
 
 {% assign resources = site.resources | sort: "date" | reverse %}
 {% assign tags = " " %}
@@ -13,20 +12,21 @@ nav: resources
 {% assign tag_list = tags | strip | split: " " | sort %}
 <div class="filters" data-filter>
   <button type="button" data-tag="all" aria-pressed="true">all</button>
-  {% for t in tag_list %}<button type="button" data-tag="{{ t }}" aria-pressed="false">#{{ t }}</button>{% endfor %}
+  {% for t in tag_list %}<button type="button" data-tag="{{ t }}" aria-pressed="false">{{ t }}</button>{% endfor %}
 </div>
 
-<ul class="list">
+<ul class="entries">
   {% for r in resources %}
   <li data-tags="{{ r.tags | join: ' ' }}">
-    <div class="row">
-      <a class="item-title" href="{{ r.link }}" target="_blank" rel="noopener noreferrer">{{ r.title }}</a>
-      <span class="item-date">{{ r.type | default: "book" }}, free</span>
+    <div class="top">
+      <a class="title" href="{{ r.link }}" target="_blank" rel="noopener noreferrer">{{ r.title }}</a>
+      <span class="metric">free {{ r.type | default: "book" }}</span>
     </div>
-    <p class="item-text">{% if r.author %}{{ r.author }}. {% endif %}{{ r.summary }}</p>
-    <div class="item-foot">
-      <span>{% for t in r.tags %}<span class="tag">#{{ t }}</span>{% endfor %}</span>
-      <span class="links"><a href="{{ r.link }}" target="_blank" rel="noopener noreferrer">read free</a></span>
+    <p class="sum">{{ r.summary }}</p>
+    <div class="meta">
+      {% if r.author %}<span>{{ r.author }}</span>{% endif %}
+      <span>{{ r.tags | join: ", " }}</span>
+      <a href="{{ r.link }}" target="_blank" rel="noopener noreferrer">read free</a>
     </div>
   </li>
   {% endfor %}
