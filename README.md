@@ -1,44 +1,34 @@
-# Julio Carneiro  
-**Data Analyst | SQL • Python • Tableau**  
-Focused on profitability, cost optimization, and business performance  
+![Julio Carneiro · Data Analyst](assets/banner.svg)
 
-I analyze business performance to identify profitability drivers and cost inefficiencies that impact results.
+### I find where profit is lost, and show leaders what to fix first.
 
----
+Data analyst in Toronto focused on profitability, cost optimization and executive reporting. Before analytics, I ran kitchen operations and cut food waste from 8% to 2%.
 
-## Featured Projects
+![Excel](https://img.shields.io/badge/Excel-1F4E79?style=flat-square&logo=microsoftexcel&logoColor=white) ![Power BI](https://img.shields.io/badge/Power_BI-1F4E79?style=flat-square&logo=powerbi&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-1F4E79?style=flat-square&logo=postgresql&logoColor=white) ![Python](https://img.shields.io/badge/Python-1F4E79?style=flat-square&logo=python&logoColor=white) ![Tableau](https://img.shields.io/badge/Tableau-1F4E79?style=flat-square&logo=tableau&logoColor=white)
 
-### Operations Profitability & Cost Optimization  
-SQL • Python • Tableau  
-Identified margin loss drivers and cost inefficiencies across locations and product categories.  
-
-[![View Project](https://img.shields.io/badge/View_Project-1F4E79?style=flat-square&logo=github&logoColor=white)](https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization)
+[LinkedIn](https://www.linkedin.com/in/juliocezarcarneiro/) · [Resume](resume-julio-carneiro.pdf) · [Email](mailto:juliocezarcarneiro@outlook.com)
 
 ---
 
-### CFO Executive Dashboard  
-Tableau • Data Studio  
-Built an executive dashboard to monitor revenue, cost, and profitability KPIs.  
+## Case studies
 
-[![View Dashboard](https://img.shields.io/badge/View_Dashboard-1F4E79?style=flat-square&logo=google-analytics&logoColor=white)](https://datastudio.google.com/u/0/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49/page/2vNtF)  [![View Project](https://img.shields.io/badge/View_Project-1F4E79?style=flat-square&logo=github&logoColor=white)](https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow)
+| Project | Result | Tools |
+|---|---|---|
+| **[Operations Profitability & Cost Optimization](https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization)** | Traced a margin drop from 31.45% to 24.41% to a +14.85% cost spike and two weak locations | SQL, Python, Tableau |
+| **[Canada–Brazil Trade Opportunities](https://github.com/juliocezarcarneiro/canada-brazil-trade-report)** · for FCBB | CAD $14.5B in trade, +16.0% YoY; growth categories and Ontario concentration risk | Python, forecasting |
+| **[CFO Executive Dashboard: TechFlow](https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow)** | $110.2M revenue, 10.1% below budget; Sales and Engineering isolated as drivers | Looker Studio, Python |
+| **[Early Diabetes Risk Prediction](https://github.com/juliocezarcarneiro/diabetes-risk-prediction-model)** · team | 91% accuracy on 253,680 CDC responses, deployed as a [live app](https://juliocarneiro-diabetes-risk-predictor.hf.space/) | Python, scikit-learn |
+| **[Data Cleaning Template](https://github.com/juliocezarcarneiro/data-cleaning-template)** | Reusable 10-step workflow with a before/after quality report | Python, pandas |
+| **[Global Wealth and Wellbeing](https://github.com/juliocezarcarneiro/global-wealth-and-wellbeing)** · team | Interactive maps of GDP, health spending and inequality | JavaScript, D3, Leaflet |
 
----
-
-## Tools
-
-[![Data Cleaning Framework](https://img.shields.io/badge/Data_Cleaning_Framework-1F4E79?style=flat-square&logo=pandas&logoColor=white)](https://github.com/juliocezarcarneiro/data-cleaning-template)
-
-Reusable Python framework for cleaning, validating, and preparing datasets for analytics and reporting workflows.
-
----
+More foundations (SQL, ETL, NoSQL, ML, Excel) in the **[training archive](https://github.com/juliocezarcarneiro/data-analytics-learning)**.
 
 ## Skills
 
-SQL | Python (pandas, matplotlib) | Tableau | Data Studio  
-Data Cleaning | Data Validation | ETL | Dashboard Development  
-
----
+**Core:** Excel · Power BI · SQL (PostgreSQL) · Python (pandas) · Tableau
+**Also:** Looker Studio · MongoDB · PySpark · ETL pipelines · data validation · executive reporting
 
 ## Contact
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-1F4E79?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-link)  [![Email](https://img.shields.io/badge/Email-1F4E79?style=flat-square&logo=gmail&logoColor=white)](mailto:your@email.com)
+**Julio Carneiro** · Data Analyst · Toronto, ON
+[LinkedIn](https://www.linkedin.com/in/juliocezarcarneiro/) · [Email](mailto:juliocezarcarneiro@outlook.com)

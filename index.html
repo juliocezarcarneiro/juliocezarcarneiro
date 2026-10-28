@@ -1,1016 +1,323 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julio Carneiro | Data Analytics Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Julio Carneiro · Data Analyst</title>
+<meta name="description" content="Julio Carneiro, Data Analyst in Toronto. Profitability analysis, executive dashboards and reporting with Excel, Power BI, SQL, Python and Tableau.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B2545;
+    --steel: #1F4E79;
+    --gold: #C9A227;
+    --cloud: #F4F6F9;
+    --white: #FFFFFF;
+    --ink: #0B2545;
+    --muted: #4A5B70;
+    --line: #DCE3EC;
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--steel); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <meta name="description" content="Julio Carneiro's Data Analytics Portfolio showcasing business focused projects in Python, SQL, Looker Studio, PySpark, Databricks, and machine learning." />
+  /* Nav */
+  header.nav { position: sticky; top: 0; z-index: 10; background: var(--navy); border-bottom: 3px solid var(--gold); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; color: var(--white); letter-spacing: 0.2px; }
+  .brand:hover { text-decoration: none; }
+  .nav ul { list-style: none; display: flex; gap: 28px; }
+  .nav ul a { color: #C9D3E0; font-size: 0.92rem; font-weight: 500; }
+  .nav ul a:hover { color: var(--white); text-decoration: none; }
 
-  <style>
-    :root {
-      --bg: #f7f8fa;
-      --surface: #ffffff;
-      --ink: #1f2933;
-      --text: #334155;
-      --muted: #64748b;
-      --line: #d9e0e8;
-      --line-soft: #e8edf2;
-      --accent: #1f4e79;
-      --accent-muted: #486581;
-      --transition: all 0.2s ease;
-    }
+  /* Hero */
+  .hero { background: var(--navy); color: var(--white); padding: 88px 0 96px; }
+  .kicker { font-size: 0.78rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+  .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.12; margin: 18px 0 20px; max-width: 820px; }
+  .hero p.lead { font-size: 1.15rem; color: #C9D3E0; max-width: 680px; }
+  .rule { width: 72px; height: 3px; background: var(--gold); margin: 28px 0; }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 760px; }
+  .stat .num { font-family: var(--serif); font-size: 2rem; font-weight: 600; color: var(--white); }
+  .stat .lbl { font-size: 0.85rem; color: #9FB1C7; }
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+  .btn { display: inline-block; padding: 12px 22px; border-radius: 4px; font-weight: 600; font-size: 0.95rem; }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-ghost { border: 1px solid #5C7896; color: var(--white); }
+  .btn:hover { text-decoration: none; opacity: 0.92; }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  /* Sections */
+  section { padding: 88px 0; }
+  section.alt { background: var(--cloud); }
+  .section-head { margin-bottom: 44px; max-width: 720px; }
+  .section-head h2 { font-family: var(--serif); font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 600; margin-top: 10px; }
+  .section-head p { color: var(--muted); margin-top: 12px; }
+  .section-head .kicker { color: var(--steel); }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  /* Projects */
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
+  .card .thumb { aspect-ratio: 16 / 9; background: var(--navy); overflow: hidden; border-bottom: 1px solid var(--line); }
+  .card .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .card .thumb.text { display: flex; flex-direction: column; justify-content: center; padding: 32px; color: var(--white); }
+  .thumb.text .big { font-family: var(--serif); font-size: 2.6rem; font-weight: 600; color: var(--gold); line-height: 1.1; }
+  .thumb.text .small { color: #C9D3E0; margin-top: 8px; }
+  .card .body { padding: 26px 26px 24px; display: flex; flex-direction: column; flex: 1; }
+  .card .meta { font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--steel); }
+  .card h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; margin: 8px 0 10px; line-height: 1.25; }
+  .card .impact { border-left: 3px solid var(--gold); padding-left: 14px; font-weight: 500; margin-bottom: 12px; }
+  .card p.desc { color: var(--muted); font-size: 0.95rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 20px; }
+  .tag { font-size: 0.78rem; font-weight: 500; color: var(--steel); background: var(--cloud); border: 1px solid var(--line); padding: 3px 10px; border-radius: 3px; }
+  .links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 18px; font-size: 0.92rem; font-weight: 600; }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
+  /* Also */
+  .also { margin-top: 44px; border-top: 1px solid var(--line); padding-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .also h4 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+  .also p { font-size: 0.9rem; color: var(--muted); }
+  .badge-dev { white-space: nowrap; display: inline-block; font-size: 0.7rem; font-weight: 600; color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 1px 6px; margin-left: 6px; vertical-align: middle; }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+  .skill { background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--steel); border-radius: 4px; padding: 22px 20px; }
+  .skill h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; }
+  .skill p { font-size: 0.88rem; color: var(--muted); margin-top: 6px; }
+  .also-tools { margin-top: 24px; color: var(--muted); font-size: 0.92rem; }
 
-    .app-shell {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      background: var(--bg);
-    }
+  /* About */
+  .about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: start; }
+  .about p { margin-bottom: 16px; font-size: 1.05rem; }
+  .about-side { background: var(--cloud); border-radius: 6px; padding: 28px; }
+  .about-side dt { font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--steel); margin-top: 16px; }
+  .about-side dt:first-child { margin-top: 0; }
+  .about-side dd { margin-top: 4px; }
 
-    /* SIDEBAR */
-    .sidebar {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      background: var(--bg);
-      border-right: 1px solid var(--line);
-      padding: 28px 20px;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-    }
+  /* Contact */
+  .contact { background: var(--navy); color: var(--white); text-align: center; }
+  .contact h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3.6vw, 2.4rem); font-weight: 600; margin: 10px 0 14px; }
+  .contact p { color: #C9D3E0; }
+  .contact .cta { justify-content: center; }
+  footer { background: var(--navy); color: #7E93AD; text-align: center; font-size: 0.82rem; padding: 0 0 32px; }
 
-    .identity {
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--line-soft);
-      margin-bottom: 20px;
-    }
-
-    .name {
-      display: block;
-      color: var(--ink);
-      font-size: 18px;
-      letter-spacing: -0.025em;
-      font-weight: 650;
-      text-transform: lowercase;
-      margin-bottom: 6px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .role {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 450;
-      text-transform: lowercase;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .nav-label {
-      color: var(--muted);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      margin-top: 6px;
-    }
-
-    .nav-group {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      margin-bottom: 24px;
-    }
-
-    .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12.5px;
-      font-weight: 500;
-      padding: 6px 0;
-      transition: var(--transition);
-    }
-
-    .nav-link i {
-      color: var(--accent-muted);
-      width: 18px;
-      font-size: 12px;
-    }
-
-    .nav-link:hover {
-      color: var(--accent);
-      transform: translateX(3px);
-    }
-
-    .filter-bar {
-      margin: 8px 0 18px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .filter-chip {
-      background: transparent;
-      border: 1px solid var(--line);
-      border-radius: 100px;
-      padding: 3px 10px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5px;
-      font-weight: 500;
-      color: var(--accent-muted);
-      cursor: pointer;
-      transition: var(--transition);
-      text-transform: lowercase;
-    }
-    .filter-chip.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: white;
-    }
-    .filter-chip:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .sidebar-footer {
-      margin-top: auto;
-      padding-top: 18px;
-      border-top: 1px solid var(--line-soft);
-    }
-    .sidebar-socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .sidebar-socials a {
-      color: var(--accent);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 500;
-    }
-    .copyright {
-      color: var(--muted);
-      font-size: 10px;
-      text-transform: lowercase;
-    }
-
-    /* MAIN */
-    .main {
-      min-width: 0;
-      padding: 28px 32px;
-      background: var(--bg);
-    }
-
-    /* TOP BAR */
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 14px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--line);
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .portfolio-badge {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
-    .portfolio-badge strong {
-      color: var(--ink);
-      font-weight: 600;
-    }
-    .right-group {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .contact-badge-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--surface);
-      padding: 6px 14px;
-      border-radius: 48px;
-      border: 1px solid var(--line-soft);
-    }
-    .contact-badge-group a {
-      color: var(--accent);
-      font-size: 15px;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .contact-badge-group a:hover {
-      color: var(--ink);
-      transform: translateY(-1px);
-    }
-    .time-location {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--surface);
-      padding: 6px 14px;
-      border-radius: 48px;
-      border: 1px solid var(--line-soft);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-    }
-    .time-location i {
-      color: var(--accent-muted);
-      font-size: 11px;
-    }
-    .time-location span {
-      color: var(--ink);
-    }
-
-    .hero {
-      padding: 40px 0 36px;
-      border-bottom: 1px solid var(--line);
-    }
-    .hero-title {
-      color: var(--ink);
-      font-size: 48px;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      font-weight: 650;
-      text-transform: lowercase;
-      margin-bottom: 16px;
-      max-width: 800px;
-    }
-    .hero-note {
-      color: var(--text);
-      font-size: 16px;
-      line-height: 1.4;
-      max-width: 640px;
-    }
-    .scroll-note {
-      display: inline-block;
-      margin-top: 24px;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 500;
-      border-bottom: 1px solid transparent;
-    }
-    .scroll-note:hover {
-      border-color: var(--accent);
-    }
-
-    .section {
-      padding: 48px 0;
-      border-bottom: 1px solid var(--line);
-      scroll-margin-top: 20px;
-    }
-    .section-title {
-      color: var(--ink);
-      font-size: 28px;
-      font-weight: 650;
-      text-transform: lowercase;
-      margin-bottom: 24px;
-      letter-spacing: -0.03em;
-    }
-
-    /* ABOUT */
-    .about-single {
-      font-size: 1.2rem;
-      font-weight: 450;
-      color: var(--text);
-      line-height: 1.5;
-      max-width: 780px;
-      margin-bottom: 32px;
-    }
-    .focus-list {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 8px;
-    }
-    .focus-item {
-      border-top: 1px solid var(--line);
-      padding-top: 14px;
-    }
-    .focus-item h3 {
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: lowercase;
-      margin-bottom: 6px;
-      color: var(--ink);
-    }
-    .focus-item p {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    /* PROJECTS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-    }
-    .project-card {
-      background: var(--surface);
-      border-radius: 14px;
-      border: 1px solid var(--line-soft);
-      overflow: hidden;
-      transition: all 0.2s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .project-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--accent-muted);
-      box-shadow: 0 8px 20px -12px rgba(0,0,0,0.1);
-    }
-    .project-card.hidden {
-      display: none;
-    }
-    .project-image {
-      height: 110px;
-      background: linear-gradient(135deg, #eef2f6 0%, #e2e8f0 100%);
-      border-bottom: 1px solid var(--line-soft);
-      overflow: hidden;
-    }
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .project-content {
-      padding: 12px 14px 14px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .project-meta {
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 9px;
-      font-weight: 500;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .project-title {
-      color: var(--ink);
-      font-size: 14px;
-      font-weight: 650;
-      text-transform: lowercase;
-      margin-bottom: 6px;
-      line-height: 1.3;
-    }
-    .project-description {
-      color: var(--text);
-      font-size: 10.5px;
-      line-height: 1.45;
-      margin-bottom: 10px;
-      flex: 1;
-    }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-bottom: 10px;
-    }
-    .tag {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 2px 6px;
-      font-size: 7.5px;
-      font-weight: 500;
-      color: var(--accent-muted);
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .project-links {
-      display: flex;
-      gap: 12px;
-      margin-top: 2px;
-    }
-    .project-link {
-      color: var(--accent);
-      font-size: 9px;
-      font-weight: 600;
-      border-bottom: 1px solid transparent;
-      transition: var(--transition);
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .project-link:hover {
-      border-color: var(--accent);
-    }
-
-    /* NOTES & SNIPPETS - with copy button */
-    .notes-grid, .snippets-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    .note-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px 16px;
-      transition: var(--transition);
-      position: relative;
-    }
-    .note-card:hover {
-      border-color: var(--accent-muted);
-      transform: translateY(-2px);
-    }
-    .note-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-    .note-title i {
-      font-size: 12px;
-      color: var(--accent);
-    }
-    .code-container {
-      position: relative;
-      margin: 8px 0;
-    }
-    .code-snip {
-      background: #1e2933;
-      padding: 10px 12px;
-      border-radius: 10px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      color: #e2e8f0;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      word-break: break-word;
-      padding-right: 50px;
-    }
-    .copy-btn {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      background: #334155;
-      border: none;
-      color: #e2e8f0;
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: 'JetBrains Mono', monospace;
-      transition: 0.2s;
-    }
-    .copy-btn:hover {
-      background: var(--accent);
-      color: white;
-    }
-    .copy-btn.copied {
-      background: #2e7d5e;
-      color: white;
-    }
-    .note-meta {
-      color: var(--muted);
-      font-size: 9px;
-      border-left: 2px solid var(--accent);
-      padding-left: 8px;
-      margin-top: 6px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .sub-badge {
-      display: inline-block;
-      font-size: 8px;
-      background: var(--line-soft);
-      padding: 2px 8px;
-      border-radius: 20px;
-      color: var(--accent);
-      margin-bottom: 8px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .gh-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 10px;
-      font-size: 9px;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--accent);
-      border-bottom: 1px dotted var(--line);
-      transition: 0.2s;
-    }
-    .gh-link:hover {
-      color: var(--ink);
-      border-color: var(--accent);
-    }
-
-    .resume-box {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 20px 26px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .resume-box span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: var(--ink);
-    }
-    .resume-box a {
-      background: var(--accent);
-      color: white;
-      padding: 7px 24px;
-      border-radius: 40px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 500;
-      transition: 0.2s;
-    }
-    .resume-box a:hover {
-      background: #0f3b5a;
-    }
-
-    @media (max-width: 1400px) {
-      .projects-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    @media (max-width: 1100px) {
-      .projects-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (max-width: 860px) {
-      .app-shell { grid-template-columns: 1fr; }
-      .sidebar { position: relative; height: auto; border-right: none; border-bottom: 1px solid var(--line); }
-      .main { padding: 20px; }
-      .hero { padding: 28px 0; }
-      .section { padding: 32px 0; }
-      .hero-title { font-size: 36px; }
-      .focus-list { grid-template-columns: repeat(2, 1fr); }
-      .projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .top-bar { flex-direction: column; align-items: flex-start; }
-      .right-group { width: 100%; justify-content: space-between; }
-    }
-    @media (max-width: 640px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      .focus-list { grid-template-columns: 1fr; }
-      .notes-grid, .snippets-grid { grid-template-columns: 1fr; }
-      .right-group { flex-direction: column; align-items: stretch; gap: 8px; }
-      .contact-badge-group, .time-location { justify-content: center; }
-    }
-  </style>
+  @media (max-width: 900px) {
+    .grid, .about { grid-template-columns: 1fr; }
+    .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .also { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .nav ul { display: none; }
+    .hero { padding: 56px 0 64px; }
+    .hero-stats { grid-template-columns: 1fr; gap: 14px; }
+    section { padding: 64px 0; }
+    .wrap { padding: 0 16px; }
+  }
+</style>
 </head>
 <body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="identity">
-      <div class="name">julio carneiro</div>
-      <div class="role">business analytics | sql | python | tableau</div>
-    </div>
 
-    <div class="nav-group">
-      <a href="#about" class="nav-link"><i class="fa-regular fa-file-lines"></i> about</a>
-      <a href="#projects" class="nav-link"><i class="fa-regular fa-folder"></i> projects</a>
-      <a href="#notes" class="nav-link"><i class="fa-regular fa-note-sticky"></i> notes</a>
-      <a href="#snippets" class="nav-link"><i class="fa-regular fa-code"></i> snippets</a>
-      <a href="#resume" class="nav-link"><i class="fa-regular fa-file-pdf"></i> resume</a>
-    </div>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Julio Carneiro</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="resume-julio-carneiro.pdf">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div class="nav-label">filter by tools</div>
-    <div class="filter-bar" id="toolFilterBar">
-      <button class="filter-chip active" data-tool="all">all</button>
-      <button class="filter-chip" data-tool="sql">sql</button>
-      <button class="filter-chip" data-tool="python">python</button>
-      <button class="filter-chip" data-tool="data studio">data studio</button>
-      <button class="filter-chip" data-tool="tableau">tableau</button>
-      <button class="filter-chip" data-tool="pyspark">pyspark</button>
-    </div>
-
-    <div class="sidebar-footer">
-      <div class="sidebar-socials">
-        <a href="https://github.com/juliocezarcarneiro" target="_blank" rel="noopener noreferrer">github</a>
-        <a href="https://www.linkedin.com/in/juliocezarcarneiro/" target="_blank" rel="noopener noreferrer">linkedin</a>
-        <a href="mailto:carneiro.julio@proton.me">email</a>
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="kicker">Data Analyst · Toronto</div>
+      <h1>I find where profit is lost, and show leaders what to fix first.</h1>
+      <p class="lead">Profitability analysis, executive dashboards and decision-ready reporting with Excel, Power BI, SQL, Python and Tableau. Before analytics, I ran kitchen operations and cut food waste from 8% to 2%.</p>
+      <div class="rule"></div>
+      <div class="hero-stats">
+        <div class="stat"><div class="num">CAD $14.5B</div><div class="lbl">trade analyzed for FCBB</div></div>
+        <div class="stat"><div class="num">−7 pts</div><div class="lbl">margin loss traced to its causes</div></div>
+        <div class="stat"><div class="num">8% → 2%</div><div class="lbl">food waste reduced in operations</div></div>
       </div>
-      <p class="copyright">© julio carneiro</p>
-    </div>
-  </aside>
-
-  <main class="main">
-    <div class="top-bar">
-      <div class="portfolio-badge">
-        <strong>portfolio</strong> data analytics & business intelligence
-      </div>
-      <div class="right-group">
-        <div class="contact-badge-group">
-          <a href="mailto:carneiro.julio@proton.me" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
-          <a href="https://github.com/juliocezarcarneiro" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/juliocezarcarneiro/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        </div>
-        <div class="time-location">
-          <i class="fa-regular fa-location-dot"></i> <span>toronto</span>
-          <span style="color: var(--line);">|</span>
-          <i class="fa-regular fa-clock"></i> <span id="toronto-time">--:--</span>
-        </div>
+      <div class="cta">
+        <a class="btn btn-gold" href="#work">View case studies</a>
+        <a class="btn btn-ghost" href="resume-julio-carneiro.pdf">Download resume</a>
       </div>
     </div>
+  </section>
 
-    <section class="hero">
-      <h1 class="hero-title">Turning business data into profitability insights</h1>
-      <p class="hero-note">Business-focused analytics using SQL, Python, and Tableau to identify profitability drivers, operational inefficiencies, and decision-ready insights.</p>
-      <a href="#projects" class="scroll-note">View projects →</a>
-    </section>
-
-    <section id="about" class="section">
-      <h2 class="section-title">about</h2>
-      <div class="about-single">
-        Business-focused analytics using SQL, Python, Tableau, and modern BI tools to transform operational and financial data into actionable business insights and executive decision support.
+  <section id="work" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Selected work</div>
+        <h2>Case studies</h2>
+        <p>Each project starts with a business question and ends with a recommendation.</p>
       </div>
-      <div class="focus-list">
-        <div class="focus-item"><h3>reporting</h3><p>executive dashboards, KPI tracking</p></div>
-        <div class="focus-item"><h3>sql</h3><p>data validation, profitability, cost trends</p></div>
-        <div class="focus-item"><h3>python</h3><p>automation, reproducible analysis</p></div>
-        <div class="focus-item"><h3>business</h3><p>finance, operations, sales insights</p></div>
-      </div>
-    </section>
 
-    <section id="projects" class="section">
-      <h2 class="section-title">projects</h2>
-      <div class="projects-grid" id="projectsGrid">
-        <article class="project-card" data-tools="sql,python,tableau">
-          <div class="project-image"><img src="images/operations-profitability.png" alt="Operations Profitability Dashboard Screenshot"></div>
-          <div class="project-content">
-            <div class="project-meta"><span>main project</span><span>2026</span></div>
-            <h3 class="project-title">Operations Profitability & Cost Optimization</h3>
-            <p class="project-description">Executive-style profitability analysis using SQL, Python, and Tableau to identify margin compression, operational inefficiencies, cost growth trends, and business optimization opportunities.</p>
-            <div class="tags"><span class="tag">sql</span><span class="tag">python</span><span class="tag">tableau</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization" target="_blank" rel="noopener noreferrer" class="project-link">github</a><a href="https://public.tableau.com/app/profile/julio.carneiro/viz/OperationsProfitabilityCostOptimization/ExecutiveSummary" target="_blank" rel="noopener noreferrer" class="project-link">dashboard</a></div>
-          </div>
-        </article>
-        <article class="project-card" data-tools="python">
-          <div class="project-image">
-            <img src="images/canada-brazil-2025-trade-outlook.png" alt="Canada Brazil Trade Opportunities Analysis">
-          </div>
-        
-          <div class="project-content">
-            <div class="project-meta">
-              <span>executive analytics</span>
-              <span>2026</span>
-            </div>
-        
-            <h3 class="project-title">
-              Canada–Brazil Trade Opportunities Analysis
-            </h3>
-        
-            <p class="project-description">
-              Executive trade analysis prepared for FCBB using Statistics Canada data. The project evaluates bilateral trade performance, product growth opportunities, provincial trade concentration, and 2026 forecasting to support strategic decision-making.
-            </p>
-        
-            <div class="tags">
-              <span class="tag">python</span>
-              <span class="tag">forecasting</span>
-              <span class="tag">business intelligence</span>
-            </div>
-        
-            <div class="project-links">
-              <a href="https://github.com/juliocezarcarneiro/canada-brazil-trade-report"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="project-link">
-                 github
-              </a>
-        
-              <a href="https://github.com/juliocezarcarneiro/canada-brazil-trade-report/blob/main/reports/fcbb-canada-brazil-trade-report.pdf"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="project-link">
-                 report
-              </a>
+      <div class="grid">
+        <article class="card">
+          <div class="thumb"><img src="images/projects/operations.jpg" alt="Monthly profitability chart from the operations analysis" loading="lazy"></div>
+          <div class="body">
+            <div class="meta">Operations · 2026</div>
+            <h3>Operations Profitability &amp; Cost Optimization</h3>
+            <div class="impact">Gross margin fell from 31.45% to 24.41% while revenue held steady. Traced to a +14.85% March cost spike and two weak locations.</div>
+            <p class="desc">SQL validation framework, profitability and cost-growth analysis, and a three-page executive dashboard for a multi-location restaurant group.</p>
+            <div class="tags"><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Python</span><span class="tag">Tableau</span></div>
+            <div class="links">
+              <a href="https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization">Case study →</a>
+              <a href="https://public.tableau.com/app/profile/julio.carneiro/viz/OperationsProfitabilityCostOptimization/ExecutiveSummary">Live dashboard →</a>
             </div>
           </div>
         </article>
-        <article class="project-card" data-tools="data studio,python,finance">
-          <div class="project-image"><img src="images/executive-summary.jpg" alt="TechFlow" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Financial';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>dashboard</span><span>2026</span></div>
-            <h3 class="project-title">TechFlow Financial</h3>
-            <p class="project-description">Executive dashboard replacing static reports with revenue and variance views.</p>
-            <div class="tags"><span class="tag">data studio</span><span class="tag">python</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow.git" target="_blank" rel="noopener noreferrer" class="project-link">github</a></div>
+
+        <article class="card">
+          <div class="thumb"><img src="images/projects/canada-brazil.jpg" alt="Canada–Brazil trade outlook infographic" loading="lazy"></div>
+          <div class="body">
+            <div class="meta">Trade analytics · Prepared for FCBB · 2026</div>
+            <h3>Canada–Brazil Trade Opportunities</h3>
+            <div class="impact">Bilateral trade reached CAD $14.5B in 2025, up 16.0%. Identified the fastest-growing categories and Ontario's concentration risk.</div>
+            <p class="desc">Statistics Canada data, provincial opportunity mapping, a 2026 forecast and an automated executive PDF report.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Forecasting</span><span class="tag">ReportLab</span></div>
+            <div class="links">
+              <a href="https://github.com/juliocezarcarneiro/canada-brazil-trade-report">Case study →</a>
+              <a href="https://github.com/juliocezarcarneiro/canada-brazil-trade-report/blob/main/reports/canada_brazil_trade_report.pdf">Report (PDF) →</a>
+            </div>
           </div>
         </article>
-        <article class="project-card" data-tools="python,sql">
-          <div class="project-image"><img src="images/sales-system.jpg" alt="Sales" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Sales+Auto';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>automation</span><span>2026</span></div>
-            <h3 class="project-title">Automated Sales Reporting</h3>
-            <p class="project-description">ETL pipeline automating daily sales and KPI tracking. 85 percent less manual work.</p>
-            <div class="tags"><span class="tag">python</span><span class="tag">sql</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/projects-in-progress/automated-sales-reporting-system" target="_blank" rel="noopener noreferrer" class="project-link">github</a></div>
+
+        <article class="card">
+          <div class="thumb"><img src="images/projects/cfo.jpg" alt="TechFlow executive financial dashboard overview page" loading="lazy"></div>
+          <div class="body">
+            <div class="meta">Finance · 2026</div>
+            <h3>CFO Executive Dashboard: TechFlow</h3>
+            <div class="impact">$110.2M revenue, but 10.1% below budget. Isolated Sales and Engineering as the drivers and a $12.3M revenue gap.</div>
+            <p class="desc">Four executive pages, each titled with its conclusion, with KPI definitions and a weekly north-star metric: profit margin vs budget.</p>
+            <div class="tags"><span class="tag">Looker Studio</span><span class="tag">Python</span><span class="tag">Financial KPIs</span></div>
+            <div class="links">
+              <a href="https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow">Case study →</a>
+              <a href="https://lookerstudio.google.com/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49">Live dashboard →</a>
+            </div>
           </div>
         </article>
-        <article class="project-card" data-tools="pyspark,sql">
-          <div class="project-image"><img src="images/e-commerce.jpg" alt="E-Commerce" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=E-Commerce';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>big data</span><span>2026</span></div>
-            <h3 class="project-title">E-Commerce Behavior</h3>
-            <p class="project-description">10 million user events analysis with PySpark on Databricks.</p>
-            <div class="tags"><span class="tag">pyspark</span><span class="tag">databricks</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/projects-in-progress/e-commerce-conversion-analytics" target="_blank" rel="noopener noreferrer" class="project-link">github</a></div>
+
+        <article class="card">
+          <div class="thumb"><img src="images/projects/diabetes.jpg" alt="Chart of BMI against diabetes status" loading="lazy"></div>
+          <div class="body">
+            <div class="meta">Machine learning · Team project · 2025</div>
+            <h3>Early Diabetes Risk Prediction</h3>
+            <div class="impact">Random Forest model with 91% accuracy on 253,680 CDC survey responses, deployed as a live web app.</div>
+            <p class="desc">Compared four models; BMI, age, general health, income and blood pressure were the strongest predictors.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">XGBoost</span><span class="tag">Gradio</span></div>
+            <div class="links">
+              <a href="https://github.com/juliocezarcarneiro/diabetes-risk-prediction-model">Case study →</a>
+              <a href="https://juliocarneiro-diabetes-risk-predictor.hf.space/">Live demo →</a>
+            </div>
           </div>
         </article>
-        <article class="project-card" data-tools="python">
-          <div class="project-image"><img src="images/funding-predictor.jpg" alt="Funding" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Funding+ML';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>deep learning</span><span>2026</span></div>
-            <h3 class="project-title">Funding Success Predictor</h3>
-            <p class="project-description">Deep learning model predicting charity funding success using neural networks.</p>
-            <div class="tags"><span class="tag">tensorflow</span><span class="tag">python</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/machine-learning/bootcamp/deep-learning-challenge" target="_blank" rel="noopener noreferrer" class="project-link">github</a></div>
+
+        <article class="card">
+          <div class="thumb text"><div class="big">25 → 2</div><div class="small">missing cells after one documented run</div></div>
+          <div class="body">
+            <div class="meta">Reusable tool · 2025</div>
+            <h3>Data Cleaning Template</h3>
+            <div class="impact">A 10-step pandas workflow that leaves a before/after data quality report every time it runs.</div>
+            <p class="desc">Duplicates, types, currency fields, missing values with written reasons, invalid values, and export to CSV and Excel.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Data quality</span></div>
+            <div class="links"><a href="https://github.com/juliocezarcarneiro/data-cleaning-template">Repository →</a></div>
           </div>
         </article>
-        <article class="project-card" data-tools="sql,tableau">
-          <div class="project-image"><img src="images/home-sales.jpg" alt="Home Sales" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Home+Sales';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>data eng</span><span>2026</span></div>
-            <h3 class="project-title">Home Sales Analysis</h3>
-            <p class="project-description">SparkSQL, Parquet partitions, cache optimization for real estate insights.</p>
-            <div class="tags"><span class="tag">sparksql</span><span class="tag">parquet</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/projects-in-progress/home-sales-analysis" target="_blank" rel="noopener noreferrer" class="project-link">github</a></div>
-          </div>
-        </article>
-        <article class="project-card" data-tools="python,sql">
-          <div class="project-image"><img src="images/credit-risk.jpg" alt="Credit risk" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Credit+Risk';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>machine learning</span><span>2026</span></div>
-            <h3 class="project-title">Credit Risk Classification</h3>
-            <p class="project-description">Supervised ML for loan risk assessment with imbalanced financial data.</p>
-            <div class="tags"><span class="tag">scikit-learn</span><span class="tag">python</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/machine-learning/bootcamp/credit-risk-classification" target="_blank" rel="noopener noreferrer" class="project-link">github</a></div>
+
+        <article class="card">
+          <div class="thumb text"><div class="big">5 live maps</div><div class="small">GDP, health spending and inequality worldwide</div></div>
+          <div class="body">
+            <div class="meta">Data visualization · Team project · 2025</div>
+            <h3>Global Wealth and Wellbeing</h3>
+            <div class="impact">Interactive dashboard and maps comparing wealth, healthcare spending and income inequality across countries.</div>
+            <p class="desc">Our World in Data series cleaned in pandas, stored in MongoDB and published with D3, Plotly and Leaflet.</p>
+            <div class="tags"><span class="tag">JavaScript</span><span class="tag">D3</span><span class="tag">Leaflet</span><span class="tag">MongoDB</span></div>
+            <div class="links">
+              <a href="https://github.com/juliocezarcarneiro/global-wealth-and-wellbeing">Repository →</a>
+              <a href="https://juliocezarcarneiro.github.io/global-wealth-and-wellbeing/Dashboard/index.html">Live dashboard →</a>
+            </div>
           </div>
         </article>
       </div>
-    </section>
 
-    <!-- NOTES for junior analysts -->
-    <section id="notes" class="section">
-      <h2 class="section-title">notes</h2>
-      <div class="notes-grid">
-        <div class="note-card">
-          <div class="sub-badge">📘 beginner sql</div>
-          <div class="note-title"><i class="fa-regular fa-table"></i> Basic SELECT query</div>
-          <div class="code-container">
-            <div class="code-snip" id="sql-basic">SELECT 
-    customer_id,
-    COUNT(*) as total_orders,
-    SUM(amount) as total_spent
-FROM orders
-WHERE order_date >= '2025-01-01'
-GROUP BY customer_id
-ORDER BY total_spent DESC
-LIMIT 10;</div>
-            <button class="copy-btn" data-target="sql-basic">copy</button>
-          </div>
-          <div class="note-meta">Learn to aggregate and filter data. This query finds top customers by spending.</div>
+      <div class="also">
+        <div>
+          <h4>E-Commerce Customer Analytics <span class="badge-dev">In development</span></h4>
+          <p>RFM segmentation and market basket analysis on 500k+ retail transactions.</p>
         </div>
-        <div class="note-card">
-          <div class="sub-badge">🐍 python basics</div>
-          <div class="note-title"><i class="fa-regular fa-code"></i> Pandas filter & groupby</div>
-          <div class="code-container">
-            <div class="code-snip" id="python-basic">import pandas as pd
-
-df = pd.read_csv('sales.csv')
-# Filter rows where revenue > 1000
-filtered = df[df['revenue'] > 1000]
-# Group by region and calculate average
-result = filtered.groupby('region')['revenue'].mean().reset_index()
-print(result)</div>
-            <button class="copy-btn" data-target="python-basic">copy</button>
-          </div>
-          <div class="note-meta">Essential pattern for data manipulation and aggregation in Python.</div>
+        <div>
+          <h4>Automated Sales Reporting <span class="badge-dev">In development</span></h4>
+          <p>Daily sales briefings generated automatically as HTML, PDF and email.</p>
         </div>
-        <div class="note-card">
-          <div class="sub-badge">📊 window functions</div>
-          <div class="note-title"><i class="fa-regular fa-chart-line"></i> Running total & ranking</div>
-          <div class="code-container">
-            <div class="code-snip" id="sql-window">SELECT 
-    date,
-    product,
-    sales,
-    SUM(sales) OVER(PARTITION BY product ORDER BY date) as running_total,
-    ROW_NUMBER() OVER(PARTITION BY product ORDER BY sales DESC) as rank_in_product
-FROM daily_sales
-ORDER BY product, date;</div>
-            <button class="copy-btn" data-target="sql-window">copy</button>
-          </div>
-          <div class="note-meta">Window functions let you calculate running totals and rankings without subqueries.</div>
-        </div>
-        <div class="note-card">
-          <div class="sub-badge">🔄 etl pattern</div>
-          <div class="note-title"><i class="fa-regular fa-clock"></i> Incremental load</div>
-          <div class="code-container">
-            <div class="code-snip" id="etl-pattern">def incremental_load(new_data, existing_table, key_column='id', timestamp_column='updated_at'):
-    # Get latest timestamp from existing data
-    latest = existing_table[timestamp_column].max()
-    # Only get new or updated records
-    new_records = new_data[new_data[timestamp_column] > latest]
-    # Append to table
-    return pd.concat([existing_table, new_records], ignore_index=True)</div>
-            <button class="copy-btn" data-target="etl-pattern">copy</button>
-          </div>
-          <div class="note-meta">Efficient ETL pattern that only processes changed data, saving time and resources.</div>
+        <div>
+          <h4>Training archive</h4>
+          <p>SQL, ETL, NoSQL, ML and Excel projects from the UofT bootcamp. <a href="https://github.com/juliocezarcarneiro/data-analytics-learning">Browse →</a></p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SNIPPETS - junior friendly -->
-    <section id="snippets" class="section">
-      <h2 class="section-title">snippets</h2>
-      <div class="snippets-grid">
-        <div class="note-card">
-          <div class="sub-badge">📅 date functions</div>
-          <div class="note-title"><i class="fa-regular fa-calendar"></i> SQL date truncation</div>
-          <div class="code-container">
-            <div class="code-snip" id="date-trunc">-- Group by month, quarter, or year
-SELECT 
-    DATE_TRUNC('month', transaction_date) as month,
-    SUM(amount) as monthly_revenue
-FROM transactions
-GROUP BY 1
-ORDER BY 1 DESC;</div>
-            <button class="copy-btn" data-target="date-trunc">copy</button>
-          </div>
-          <div class="note-meta">Use DATE_TRUNC to aggregate time series data by month, week, or quarter.</div>
-        </div>
-        <div class="note-card">
-          <div class="sub-badge">🔗 join patterns</div>
-          <div class="note-title"><i class="fa-regular fa-link"></i> LEFT JOIN with COALESCE</div>
-          <div class="code-container">
-            <div class="code-snip" id="join-pattern">SELECT 
-    u.user_id,
-    u.name,
-    COALESCE(o.total_orders, 0) as order_count,
-    COALESCE(o.total_spent, 0) as lifetime_value
-FROM users u
-LEFT JOIN (
-    SELECT user_id, COUNT(*) as total_orders, SUM(amount) as total_spent
-    FROM orders
-    GROUP BY user_id
-) o ON u.user_id = o.user_id;</div>
-            <button class="copy-btn" data-target="join-pattern">copy</button>
-          </div>
-          <div class="note-meta">LEFT JOIN keeps all users, COALESCE replaces NULL with 0 for cleaner results.</div>
-        </div>
-        <div class="note-card">
-          <div class="sub-badge">📈 python visualization</div>
-          <div class="note-title"><i class="fa-regular fa-chart-simple"></i> Quick matplotlib chart</div>
-          <div class="code-container">
-            <div class="code-snip" id="viz">import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Simple bar chart
-df.groupby('category')['sales'].sum().plot(kind='bar')
-plt.title('Sales by Category')
-plt.xlabel('Category')
-plt.ylabel('Total Sales')
-plt.tight_layout()
-plt.show()</div>
-            <button class="copy-btn" data-target="viz">copy</button>
-          </div>
-          <div class="note-meta">Quick exploratory visualization to spot trends and outliers in your data.</div>
-        </div>
-        <div class="note-card">
-          <div class="sub-badge">🧹 data cleaning</div>
-          <div class="note-title"><i class="fa-regular fa-broom"></i> Handle missing values</div>
-          <div class="code-container">
-            <div class="code-snip" id="cleaning"># Python pandas - handle missing data
-# Fill numeric nulls with median
-df['price'].fillna(df['price'].median(), inplace=True)
-# Fill categorical with mode
-df['category'].fillna(df['category'].mode()[0], inplace=True)
-# Drop rows missing critical columns
-df.dropna(subset=['customer_id', 'transaction_date'], inplace=True)</div>
-            <button class="copy-btn" data-target="cleaning">copy</button>
-          </div>
-          <div class="note-meta">Always clean missing values before analysis. Choose fill strategy based on data type.</div>
-        </div>
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Toolkit</div>
+        <h2>Skills</h2>
       </div>
-    </section>
-
-    <section id="resume" class="section">
-      <h2 class="section-title">resume</h2>
-      <div class="resume-box">
-        <span>📄 resume-julio-carneiro.pdf</span>
-        <a href="resume-julio-carneiro.pdf" download>download resume</a>
+      <div class="skills">
+        <div class="skill"><h3>Excel</h3><p>PivotTables, lookups, VBA automation, reporting</p></div>
+        <div class="skill"><h3>Power BI</h3><p>Interactive dashboards and KPI reporting</p></div>
+        <div class="skill"><h3>SQL</h3><p>PostgreSQL, validation frameworks, window functions</p></div>
+        <div class="skill"><h3>Python</h3><p>pandas, automation, forecasting, scikit-learn</p></div>
+        <div class="skill"><h3>Tableau</h3><p>Executive dashboards, Tableau Public</p></div>
       </div>
-    </section>
-  </main>
-</div>
+      <p class="also-tools">Also: Looker Studio, MongoDB, PySpark, ETL pipelines, data validation, executive reporting.</p>
+    </div>
+  </section>
 
-<script>
-  function updateToronto() {
-    const now = new Date();
-    const time = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', hour: 'numeric', minute: '2-digit', hour12: true }).format(now).toLowerCase();
-    document.getElementById('toronto-time').textContent = time;
-  }
-  updateToronto();
-  setInterval(updateToronto, 30000);
+  <section id="about" class="alt">
+    <div class="wrap about">
+      <div>
+        <div class="section-head" style="margin-bottom: 24px;">
+          <div class="kicker">About</div>
+          <h2>Operations background, analytics toolkit</h2>
+        </div>
+        <p>I spent five years running kitchen operations, where I used sales, inventory and waste data to control costs. That experience shapes how I analyze: start from the business question, find the number that matters, and recommend an action.</p>
+        <p>Today I build profitability analyses, executive dashboards and automated reports, and I run my own small businesses in Toronto, so I see the numbers from the owner's side too.</p>
+      </div>
+      <dl class="about-side">
+        <dt>Focus</dt><dd>Profitability, cost optimization, KPI reporting</dd>
+        <dt>Education</dt><dd>Data Analytics Bootcamp, University of Toronto</dd>
+        <dt>Location</dt><dd>Toronto, Ontario</dd>
+        <dt>Languages</dt><dd>English, Portuguese</dd>
+      </dl>
+    </div>
+  </section>
 
-  document.querySelectorAll('.nav-link').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-
-  // filter projects
-  const chips = document.querySelectorAll('.filter-chip');
-  const projects = document.querySelectorAll('.project-card');
-  function filterProjects(tool) {
-    projects.forEach(p => {
-      const toolsAttr = p.getAttribute('data-tools')?.toLowerCase() || '';
-      if (tool === 'all') {
-        p.classList.remove('hidden');
-      } else {
-        const toolMatches = toolsAttr.split(',').map(t => t.trim());
-        if (toolMatches.includes(tool.toLowerCase())) {
-          p.classList.remove('hidden');
-        } else {
-          p.classList.add('hidden');
-        }
-      }
-    });
-  }
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      chips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      filterProjects(chip.getAttribute('data-tool'));
-    });
-  });
-  filterProjects('all');
-
-  // Copy functionality for all code snippets
-  document.querySelectorAll('.copy-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const targetId = this.getAttribute('data-target');
-      const codeElement = document.getElementById(targetId);
-      if (codeElement) {
-        const textToCopy = codeElement.innerText;
-        navigator.clipboard.writeText(textToCopy).then(() => {
-          // Visual feedback
-          const originalText = this.innerText;
-          this.innerText = 'copied!';
-          this.classList.add('copied');
-          setTimeout(() => {
-            this.innerText = originalText;
-            this.classList.remove('copied');
-          }, 1500);
-        }).catch(err => {
-          console.error('Copy failed: ', err);
-        });
-      }
-    });
-  });
-</script>
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="kicker">Contact</div>
+      <h2>Let's talk about your data.</h2>
+      <p>Open to data analyst roles in Toronto.</p>
+      <div class="cta">
+        <a class="btn btn-gold" href="mailto:juliocezarcarneiro@outlook.com">Email me</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/juliocezarcarneiro/">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/juliocezarcarneiro">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>© 2026 Julio Carneiro</footer>
 </body>
 </html>
