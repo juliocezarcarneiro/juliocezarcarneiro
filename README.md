@@ -1,34 +1,51 @@
-![Julio Carneiro · Data Analyst](assets/banner.svg)
+![Julio Carneiro, data analyst](assets/banner.svg)
 
-### I find where profit is lost, and show leaders what to fix first.
+```sql
+portfolio=> SELECT project, key_finding, stack
+portfolio->   FROM case_studies
+portfolio->  ORDER BY business_impact DESC;
+```
 
-Data analyst in Toronto focused on profitability, cost optimization and executive reporting. Before analytics, I ran kitchen operations and cut food waste from 8% to 2%.
+| project | key_finding | stack |
+|:---|:---|:---|
+| [**Operations Profitability & Cost Optimization**](https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization) | Gross margin `31.45% → 24.41%` while revenue held; traced to a `+14.85%` March cost spike and two weak locations | `SQL` `PostgreSQL` `Python` `Tableau` |
+| [**Canada–Brazil Trade Opportunities**](https://github.com/juliocezarcarneiro/canada-brazil-trade-report) <br><sub>prepared for FCBB</sub> | Trade reached `CAD $14.5B` in 2025, `+16.0%` YoY; growth categories and Ontario concentration risk | `Python` `pandas` `forecasting` |
+| [**CFO Executive Dashboard: TechFlow**](https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow) | Revenue `$110.2M` but `−10.1%` vs budget; Sales and Engineering isolated as drivers | `Looker Studio` `Python` |
+| [**Early Diabetes Risk Prediction**](https://github.com/juliocezarcarneiro/diabetes-risk-prediction-model) <br><sub>team project</sub> | `91%` accuracy on `253,680` CDC responses; [live demo](https://juliocarneiro-diabetes-risk-predictor.hf.space/) | `Python` `scikit-learn` `XGBoost` |
+| [**Data Cleaning Template**](https://github.com/juliocezarcarneiro/data-cleaning-template) | Missing cells `25 → 2` in one run, with a before/after quality report | `Python` `pandas` |
+| [**Global Wealth and Wellbeing**](https://github.com/juliocezarcarneiro/global-wealth-and-wellbeing) <br><sub>team project</sub> | `5` interactive maps of GDP, health spending and inequality | `JavaScript` `D3` `Leaflet` |
 
-![Excel](https://img.shields.io/badge/Excel-1F4E79?style=flat-square&logo=microsoftexcel&logoColor=white) ![Power BI](https://img.shields.io/badge/Power_BI-1F4E79?style=flat-square&logo=powerbi&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-1F4E79?style=flat-square&logo=postgresql&logoColor=white) ![Python](https://img.shields.io/badge/Python-1F4E79?style=flat-square&logo=python&logoColor=white) ![Tableau](https://img.shields.io/badge/Tableau-1F4E79?style=flat-square&logo=tableau&logoColor=white)
+<sub>(6 rows)</sub>
 
-[LinkedIn](https://www.linkedin.com/in/juliocezarcarneiro/) · [Resume](resume-julio-carneiro.pdf) · [Email](mailto:juliocezarcarneiro@outlook.com)
+```console
+julio@toronto:~$ cat skills.csv
+tool,used_for
+Excel,"PivotTables, lookups, VBA automation, operational reporting"
+Power BI,"interactive dashboards, KPI reporting"
+SQL,"PostgreSQL, validation frameworks, window functions"
+Python,"pandas, automation, forecasting, scikit-learn"
+Tableau,"executive dashboards on Tableau Public"
+also,"Looker Studio, MongoDB, PySpark, ETL pipelines"
+```
 
----
+```console
+julio@toronto:~$ ls -l in-progress/ archive/
+drwxr-xr-x  wip  e-commerce-customer-analytics   RFM segmentation and market basket analysis
+drwxr-xr-x  wip  automated-sales-reporting       daily briefings as HTML, PDF and email
+drwxr-xr-x       analytics-training-archive      SQL, ETL, NoSQL, ML and Excel (UofT bootcamp)
+```
 
-## Case studies
+Training archive: [data-analytics-learning](https://github.com/juliocezarcarneiro/data-analytics-learning)
 
-| Project | Result | Tools |
-|---|---|---|
-| **[Operations Profitability & Cost Optimization](https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization)** | Traced a margin drop from 31.45% to 24.41% to a +14.85% cost spike and two weak locations | SQL, Python, Tableau |
-| **[Canada–Brazil Trade Opportunities](https://github.com/juliocezarcarneiro/canada-brazil-trade-report)** · for FCBB | CAD $14.5B in trade, +16.0% YoY; growth categories and Ontario concentration risk | Python, forecasting |
-| **[CFO Executive Dashboard: TechFlow](https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow)** | $110.2M revenue, 10.1% below budget; Sales and Engineering isolated as drivers | Looker Studio, Python |
-| **[Early Diabetes Risk Prediction](https://github.com/juliocezarcarneiro/diabetes-risk-prediction-model)** · team | 91% accuracy on 253,680 CDC responses, deployed as a [live app](https://juliocarneiro-diabetes-risk-predictor.hf.space/) | Python, scikit-learn |
-| **[Data Cleaning Template](https://github.com/juliocezarcarneiro/data-cleaning-template)** | Reusable 10-step workflow with a before/after quality report | Python, pandas |
-| **[Global Wealth and Wellbeing](https://github.com/juliocezarcarneiro/global-wealth-and-wellbeing)** · team | Interactive maps of GDP, health spending and inequality | JavaScript, D3, Leaflet |
+```console
+julio@toronto:~$ cat about.txt
+Five years running kitchen operations, using sales, inventory and waste
+data to control costs (food waste cut from 8% to 2%). Now I build
+profitability analyses, executive dashboards and automated reports.
+```
 
-More foundations (SQL, ETL, NoSQL, ML, Excel) in the **[training archive](https://github.com/juliocezarcarneiro/data-analytics-learning)**.
+```console
+julio@toronto:~$ ./contact.sh
+```
 
-## Skills
-
-**Core:** Excel · Power BI · SQL (PostgreSQL) · Python (pandas) · Tableau
-**Also:** Looker Studio · MongoDB · PySpark · ETL pipelines · data validation · executive reporting
-
-## Contact
-
-**Julio Carneiro** · Data Analyst · Toronto, ON
-[LinkedIn](https://www.linkedin.com/in/juliocezarcarneiro/) · [Email](mailto:juliocezarcarneiro@outlook.com)
+[email](mailto:juliocezarcarneiro@outlook.com) &nbsp;|&nbsp; [linkedin](https://www.linkedin.com/in/juliocezarcarneiro/) &nbsp;|&nbsp; [resume.pdf](resume-julio-carneiro.pdf)
