@@ -1,941 +1,480 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julio Carneiro | Data Analytics Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>julio carneiro · data analyst</title>
+<meta name="description" content="Julio Carneiro, data analyst in Toronto. Profitability analysis, executive dashboards and reporting with Excel, Power BI, SQL, Python and Tableau.">
+<style>
+  :root {
+    --desktop: #008080;
+    --face: #C0C0C0;
+    --face-light: #DFDFDF;
+    --hi: #FFFFFF;
+    --shadow: #808080;
+    --dark: #0A0A0A;
+    --title-a: #000080;
+    --title-b: #1084D0;
+    --title-off-a: #808080;
+    --title-off-b: #B5B5B5;
+    --ink: #0A0A0A;
+    --muted: #4A4A4A;
+    --link: #0000CC;
+    --sel: #000080;
+    --up: #006B2E;
+    --down: #A3000F;
+    --ui: Tahoma, 'Segoe UI', Verdana, 'DejaVu Sans', Arial, sans-serif;
+    --code: 'Lucida Console', 'Courier New', 'DejaVu Sans Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--ui); font-size: 13px; line-height: 1.45; color: var(--ink); background: var(--desktop); padding: 20px 20px 64px; -webkit-font-smoothing: antialiased; }
+  a { color: var(--link); }
+  a:focus-visible, button:focus-visible { outline: 1px dotted var(--dark); outline-offset: -4px; }
+  img { display: block; max-width: 100%; }
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <meta name="description" content="Julio Carneiro's Data Analytics Portfolio showcasing business focused projects in Python, SQL, Looker Studio, PySpark, Databricks, and machine learning." />
+  /* Bevels */
+  .raised { background: var(--face); box-shadow: inset -1px -1px var(--dark), inset 1px 1px var(--face-light), inset -2px -2px var(--shadow), inset 2px 2px var(--hi); }
+  .sunken { box-shadow: inset -1px -1px var(--hi), inset 1px 1px var(--shadow), inset -2px -2px var(--face-light), inset 2px 2px var(--dark); }
+  .field { background: var(--hi); }
 
-  <style>
-    :root {
-      --bg: #f7f8fa;
-      --surface: #ffffff;
-      --ink: #1f2933;
-      --text: #334155;
-      --muted: #64748b;
-      --line: #d9e0e8;
-      --line-soft: #e8edf2;
-      --accent: #1f4e79;
-      --accent-muted: #486581;
-      --transition: all 0.2s ease;
-    }
+  /* Buttons */
+  .btn { font: inherit; color: var(--ink); background: var(--face); border: 0; min-width: 75px; padding: 5px 14px; cursor: pointer; text-decoration: none; display: inline-block; text-align: center;
+         box-shadow: inset -1px -1px var(--dark), inset 1px 1px var(--hi), inset -2px -2px var(--shadow), inset 2px 2px var(--face-light); }
+  .btn:active, .btn[aria-pressed="true"] { box-shadow: inset -1px -1px var(--hi), inset 1px 1px var(--dark), inset -2px -2px var(--face-light), inset 2px 2px var(--shadow); padding: 6px 13px 4px 15px; }
+  .btn.default { box-shadow: inset -1px -1px var(--dark), inset 1px 1px var(--dark), inset -2px -2px var(--dark), inset 2px 2px var(--hi), inset -3px -3px var(--shadow), inset 3px 3px var(--face-light); font-weight: 700; }
+  .btn.small { min-width: 0; padding: 2px 9px; font-size: 12px; }
+  .btn.small:active, .btn.small[aria-pressed="true"] { padding: 3px 8px 1px 10px; }
+  .btn[aria-pressed="true"] { background: repeating-conic-gradient(var(--face) 0 25%, var(--hi) 0 50%) 0 0 / 2px 2px; }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  /* Windows */
+  .window { padding: 3px; margin-bottom: 18px; }
+  .titlebar { display: flex; align-items: center; gap: 6px; padding: 3px 3px 3px 5px; color: #fff; font-weight: 700; font-size: 13px;
+              background: linear-gradient(90deg, var(--title-a), var(--title-b)); }
+  .window.inactive .titlebar { background: linear-gradient(90deg, var(--title-off-a), var(--title-off-b)); color: var(--face-light); }
+  .titlebar .t { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .titlebar svg { flex: none; }
+  .tb-btn { width: 18px; height: 16px; min-width: 0; padding: 0; font: 700 11px/1 var(--ui); display: grid; place-items: center; }
+  .tb-btn:active { padding: 0; }
+  .menubar { display: flex; gap: 2px; padding: 2px 2px 3px; font-size: 13px; }
+  .menubar span { padding: 1px 6px; }
+  .menubar span::first-letter { text-decoration: underline; }
+  .wbody { padding: 14px 16px 16px; }
+  .window.min .wbody, .window.min .menubar, .window.min .addressbar, .window.min .statusbar, .window.min .welcome, .window.min .files { display: none; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  /* Layout */
+  .desktop { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 20px; align-items: start; }
+  .side { position: sticky; top: 20px; }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
+  /* Sidebar */
+  .identity { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
+  .identity .name { font-size: 17px; font-weight: 700; }
+  .identity .role { color: var(--muted); font-size: 12px; }
+  .tree { padding: 6px 4px; margin-bottom: 18px; }
+  .tree a { display: flex; align-items: center; gap: 8px; padding: 3px 8px; color: var(--ink); text-decoration: none; }
+  .tree a:hover, .tree a:focus-visible { background: var(--sel); color: #fff; outline: none; }
+  fieldset { border: 0; padding: 14px 10px 10px; position: relative; margin-bottom: 18px;
+             box-shadow: inset -1px -1px var(--hi), inset 1px 1px var(--shadow), inset -2px -2px var(--shadow), inset 2px 2px var(--hi); }
+  legend { position: absolute; top: -8px; left: 8px; background: var(--face); padding: 0 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 6px; }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+  /* Welcome dialog (hero) */
+  .welcome { display: grid; grid-template-columns: 64px minmax(0, 1fr); }
+  .welcome .band { background: linear-gradient(180deg, var(--title-a), var(--title-b)); position: relative; min-height: 200px; }
+  .welcome .band span { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%) rotate(-90deg); width: 0; display: flex; justify-content: flex-start; white-space: nowrap; color: #fff; font-weight: 700; font-size: 20px; letter-spacing: 1px; transform-origin: center; }
+  .welcome .band span b { color: #FFD966; font-weight: 400; }
+  .welcome .content { padding: 22px 24px 20px; }
+  .welcome h1 { font-family: 'Franklin Gothic Medium', 'Arial Narrow', var(--ui); font-size: clamp(26px, 3.6vw, 40px); line-height: 1.12; font-weight: 700; margin-bottom: 12px; max-width: 22ch; }
+  .welcome p { font-size: 14px; max-width: 64ch; }
+  .welcome .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .tip { margin-top: 18px; padding: 10px 12px; background: #FFFFE1; border: 1px solid var(--dark); display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; max-width: 640px; }
+  .tip svg { flex: none; }
 
-    .app-shell {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      background: var(--bg);
-    }
+  /* About */
+  .about-text { padding: 12px 14px; font-size: 14px; margin-bottom: 18px; }
+  .focus { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .focus fieldset { margin: 6px 0 0; }
+  .focus p { color: var(--muted); font-size: 12px; }
 
-    /* SIDEBAR */
-    .sidebar {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      background: var(--bg);
-      border-right: 1px solid var(--line);
-      padding: 28px 20px;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-    }
+  /* Explorer */
+  .addressbar { display: flex; align-items: center; gap: 8px; padding: 4px 6px; font-size: 12px; }
+  .addressbar .addr { flex: 1; padding: 4px 6px; font-family: var(--code); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .files { margin: 0 2px; padding: 14px; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+  .file { padding: 3px; display: flex; flex-direction: column; }
+  .file.hidden { display: none; }
+  .file .thumb { aspect-ratio: 16 / 10; overflow: hidden; background: var(--hi); margin: 4px 4px 0; padding: 2px; }
+  .file .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .file .fbody { padding: 10px; display: flex; flex-direction: column; flex: 1; }
+  .file .meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .file .meta .wip { color: var(--down); font-weight: 700; }
+  .file h3 { font-size: 14px; line-height: 1.25; margin-bottom: 6px; }
+  .file p { font-size: 12px; color: #222; flex: 1; }
+  .metric { display: flex; justify-content: space-between; gap: 8px; margin: 10px 0 0; padding: 4px 6px; font-family: var(--code); font-size: 11.5px; background: var(--hi); }
+  .metric .k { color: var(--muted); }
+  .metric .v { font-weight: 700; }
+  .metric .v.up { color: var(--up); }
+  .metric .v.down { color: var(--down); }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; margin: 10px 0; }
+  .tag { font-size: 11px; padding: 0 6px; background: var(--face-light); border: 1px solid var(--shadow); }
+  .flinks { display: flex; gap: 6px; flex-wrap: wrap; }
+  .statusbar { display: flex; gap: 3px; padding: 4px 2px 2px; font-size: 12px; }
+  .statusbar > div { padding: 2px 8px; }
+  .statusbar > div:first-child { flex: 1; }
 
-    .identity {
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--line-soft);
-      margin-bottom: 20px;
-    }
+  /* Notepads */
+  .pads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 18px; }
+  .pad { margin: 0; }
+  .pad .wbody { padding: 0 3px 3px; }
+  .pad pre { font-family: var(--code); font-size: 12px; line-height: 1.5; padding: 10px 12px; white-space: pre; overflow-x: auto; min-height: 150px; color: var(--ink); }
+  .pad .foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 6px 4px; font-size: 12px; color: var(--muted); }
+  .section-label { color: #fff; font-weight: 700; font-size: 15px; margin: 28px 0 10px; text-shadow: 1px 1px 0 #003c3c; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+  .section-label code { font-family: var(--code); font-weight: 400; font-size: 12px; color: #D9F2F2; }
 
-    .name {
-      display: block;
-      color: var(--ink);
-      font-size: 18px;
-      letter-spacing: -0.025em;
-      font-weight: 650;
-      text-transform: lowercase;
-      margin-bottom: 6px;
-      font-family: 'JetBrains Mono', monospace;
-    }
+  /* Resume dialog */
+  .dialog { max-width: 520px; }
+  .dialog .wbody { display: flex; gap: 16px; align-items: flex-start; }
+  .dialog .actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
 
-    .role {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 450;
-      text-transform: lowercase;
-      font-family: 'JetBrains Mono', monospace;
-    }
+  /* Taskbar + start menu */
+  .taskbar { position: fixed; left: 0; right: 0; bottom: 0; height: 36px; display: flex; align-items: center; gap: 4px; padding: 3px 4px; z-index: 20;
+             background: var(--face); box-shadow: inset 0 1px var(--face-light), inset 0 2px var(--hi); }
+  .start { font-weight: 700; display: flex; align-items: center; gap: 5px; padding: 3px 8px; min-width: 0; height: 28px; }
+  .start:active, .start[aria-pressed="true"] { padding: 4px 7px 2px 9px; }
+  .tasks { flex: 1; display: flex; gap: 4px; overflow: hidden; }
+  .tasks a { min-width: 0; max-width: 150px; height: 28px; display: flex; align-items: center; gap: 6px; padding: 0 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink); text-decoration: none; }
+  .tray { height: 28px; display: flex; align-items: center; gap: 6px; padding: 0 10px; font-size: 12px; white-space: nowrap; }
+  .startmenu { position: fixed; left: 4px; bottom: 36px; width: 240px; padding: 3px; display: none; z-index: 30; }
+  .startmenu.open { display: grid; grid-template-columns: 26px 1fr; }
+  .startmenu .side-band { background: linear-gradient(0deg, var(--title-a), var(--title-b)); position: relative; }
+  .startmenu .side-band span { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%) rotate(-90deg); width: 0; display: flex; justify-content: flex-start; white-space: nowrap; color: #fff; font-weight: 700; font-size: 15px; }
+  .startmenu ul { list-style: none; padding: 2px 0; }
+  .startmenu li a { display: flex; align-items: center; gap: 10px; padding: 7px 10px; color: var(--ink); text-decoration: none; }
+  .startmenu li a:hover, .startmenu li a:focus-visible { background: var(--sel); color: #fff; outline: none; }
+  .startmenu hr { border: 0; border-top: 1px solid var(--shadow); border-bottom: 1px solid var(--hi); margin: 3px 4px; }
 
-    .nav-label {
-      color: var(--muted);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      margin-top: 6px;
-    }
-
-    .nav-group {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      margin-bottom: 24px;
-    }
-
-    .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12.5px;
-      font-weight: 500;
-      padding: 6px 0;
-      transition: var(--transition);
-    }
-
-    .nav-link i {
-      color: var(--accent-muted);
-      width: 18px;
-      font-size: 12px;
-    }
-
-    .nav-link:hover {
-      color: var(--accent);
-      transform: translateX(3px);
-    }
-
-    .filter-bar {
-      margin: 8px 0 18px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .filter-chip {
-      background: transparent;
-      border: 1px solid var(--line);
-      border-radius: 100px;
-      padding: 3px 10px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5px;
-      font-weight: 500;
-      color: var(--accent-muted);
-      cursor: pointer;
-      transition: var(--transition);
-      text-transform: lowercase;
-    }
-    .filter-chip.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: white;
-    }
-    .filter-chip:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .sidebar-footer {
-      margin-top: auto;
-      padding-top: 18px;
-      border-top: 1px solid var(--line-soft);
-    }
-    .sidebar-socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .sidebar-socials a {
-      color: var(--accent);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 500;
-    }
-    .copyright {
-      color: var(--muted);
-      font-size: 10px;
-      text-transform: lowercase;
-    }
-
-    /* MAIN */
-    .main {
-      min-width: 0;
-      padding: 28px 32px;
-      background: var(--bg);
-    }
-
-    /* TOP BAR */
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 14px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--line);
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .portfolio-badge {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
-    .portfolio-badge strong {
-      color: var(--ink);
-      font-weight: 600;
-    }
-    .right-group {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .contact-badge-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--surface);
-      padding: 6px 14px;
-      border-radius: 48px;
-      border: 1px solid var(--line-soft);
-    }
-    .contact-badge-group a {
-      color: var(--accent);
-      font-size: 15px;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .contact-badge-group a:hover {
-      color: var(--ink);
-      transform: translateY(-1px);
-    }
-    .time-location {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--surface);
-      padding: 6px 14px;
-      border-radius: 48px;
-      border: 1px solid var(--line-soft);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-    }
-    .time-location i {
-      color: var(--accent-muted);
-      font-size: 11px;
-    }
-    .time-location span {
-      color: var(--ink);
-    }
-
-    .hero {
-      padding: 40px 0 36px;
-      border-bottom: 1px solid var(--line);
-    }
-    .hero-title {
-      color: var(--ink);
-      font-size: 48px;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      font-weight: 650;
-      text-transform: lowercase;
-      margin-bottom: 16px;
-      max-width: 800px;
-    }
-    .hero-note {
-      color: var(--text);
-      font-size: 16px;
-      line-height: 1.4;
-      max-width: 640px;
-    }
-    .scroll-note {
-      display: inline-block;
-      margin-top: 24px;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 500;
-      border-bottom: 1px solid transparent;
-    }
-    .scroll-note:hover {
-      border-color: var(--accent);
-    }
-
-    .section {
-      padding: 48px 0;
-      border-bottom: 1px solid var(--line);
-      scroll-margin-top: 20px;
-    }
-    .section-title {
-      color: var(--ink);
-      font-size: 28px;
-      font-weight: 650;
-      text-transform: lowercase;
-      margin-bottom: 24px;
-      letter-spacing: -0.03em;
-    }
-
-    /* ABOUT */
-    .about-single {
-      font-size: 1.2rem;
-      font-weight: 450;
-      color: var(--text);
-      line-height: 1.5;
-      max-width: 780px;
-      margin-bottom: 32px;
-    }
-    .focus-list {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 8px;
-    }
-    .focus-item {
-      border-top: 1px solid var(--line);
-      padding-top: 14px;
-    }
-    .focus-item h3 {
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: lowercase;
-      margin-bottom: 6px;
-      color: var(--ink);
-    }
-    .focus-item p {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    /* PROJECTS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-    }
-    .project-card {
-      background: var(--surface);
-      border-radius: 14px;
-      border: 1px solid var(--line-soft);
-      overflow: hidden;
-      transition: all 0.2s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .project-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--accent-muted);
-      box-shadow: 0 8px 20px -12px rgba(0,0,0,0.1);
-    }
-    .project-card.hidden {
-      display: none;
-    }
-    .project-image {
-      height: 110px;
-      background: linear-gradient(135deg, #eef2f6 0%, #e2e8f0 100%);
-      border-bottom: 1px solid var(--line-soft);
-      overflow: hidden;
-    }
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .project-content {
-      padding: 12px 14px 14px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .project-meta {
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 9px;
-      font-weight: 500;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .project-title {
-      color: var(--ink);
-      font-size: 14px;
-      font-weight: 650;
-      text-transform: lowercase;
-      margin-bottom: 6px;
-      line-height: 1.3;
-    }
-    .project-description {
-      color: var(--text);
-      font-size: 10.5px;
-      line-height: 1.45;
-      margin-bottom: 10px;
-      flex: 1;
-    }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-bottom: 10px;
-    }
-    .tag {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 2px 6px;
-      font-size: 7.5px;
-      font-weight: 500;
-      color: var(--accent-muted);
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .project-links {
-      display: flex;
-      gap: 12px;
-      margin-top: 2px;
-    }
-    .project-link {
-      color: var(--accent);
-      font-size: 9px;
-      font-weight: 600;
-      border-bottom: 1px solid transparent;
-      transition: var(--transition);
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .project-link:hover {
-      border-color: var(--accent);
-    }
-
-    /* NOTES & SNIPPETS - with copy button */
-    .notes-grid, .snippets-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    .note-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px 16px;
-      transition: var(--transition);
-      position: relative;
-    }
-    .note-card:hover {
-      border-color: var(--accent-muted);
-      transform: translateY(-2px);
-    }
-    .note-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-    .note-title i {
-      font-size: 12px;
-      color: var(--accent);
-    }
-    .code-container {
-      position: relative;
-      margin: 8px 0;
-    }
-    .code-snip {
-      background: #1e2933;
-      padding: 10px 12px;
-      border-radius: 10px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      color: #e2e8f0;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      word-break: break-word;
-      padding-right: 50px;
-    }
-    .copy-btn {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      background: #334155;
-      border: none;
-      color: #e2e8f0;
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: 'JetBrains Mono', monospace;
-      transition: 0.2s;
-    }
-    .copy-btn:hover {
-      background: var(--accent);
-      color: white;
-    }
-    .copy-btn.copied {
-      background: #2e7d5e;
-      color: white;
-    }
-    .note-meta {
-      color: var(--muted);
-      font-size: 9px;
-      border-left: 2px solid var(--accent);
-      padding-left: 8px;
-      margin-top: 6px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .sub-badge {
-      display: inline-block;
-      font-size: 8px;
-      background: var(--line-soft);
-      padding: 2px 8px;
-      border-radius: 20px;
-      color: var(--accent);
-      margin-bottom: 8px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .gh-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 10px;
-      font-size: 9px;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--accent);
-      border-bottom: 1px dotted var(--line);
-      transition: 0.2s;
-    }
-    .gh-link:hover {
-      color: var(--ink);
-      border-color: var(--accent);
-    }
-
-    .resume-box {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 20px 26px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .resume-box span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: var(--ink);
-    }
-    .resume-box a {
-      background: var(--accent);
-      color: white;
-      padding: 7px 24px;
-      border-radius: 40px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 500;
-      transition: 0.2s;
-    }
-    .resume-box a:hover {
-      background: #0f3b5a;
-    }
-
-    @media (max-width: 1400px) {
-      .projects-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    @media (max-width: 1100px) {
-      .projects-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (max-width: 860px) {
-      .app-shell { grid-template-columns: 1fr; }
-      .sidebar { position: relative; height: auto; border-right: none; border-bottom: 1px solid var(--line); }
-      .main { padding: 20px; }
-      .hero { padding: 28px 0; }
-      .section { padding: 32px 0; }
-      .hero-title { font-size: 36px; }
-      .focus-list { grid-template-columns: repeat(2, 1fr); }
-      .projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .top-bar { flex-direction: column; align-items: flex-start; }
-      .right-group { width: 100%; justify-content: space-between; }
-    }
-    @media (max-width: 640px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      .focus-list { grid-template-columns: 1fr; }
-      .notes-grid, .snippets-grid { grid-template-columns: 1fr; }
-      .right-group { flex-direction: column; align-items: stretch; gap: 8px; }
-      .contact-badge-group, .time-location { justify-content: center; }
-    }
-
-    /* database touches */
-    .query-line { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin: -14px 0 24px; }
-    .q-prompt { color: var(--accent); margin-right: 4px; }
-    .metric { display: flex; justify-content: space-between; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 9.5px; border-top: 1px dashed var(--line); border-bottom: 1px dashed var(--line); padding: 5px 0; margin-bottom: 10px; }
-    .m-key { color: var(--muted); }
-    .m-val { color: var(--ink); font-weight: 600; }
-    .m-val.up { color: #2E7D4F; }
-    .m-val.down { color: #B3412E; }
-    .project-meta .wip { color: #B3412E; }
-    .row-count { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 16px; }
-  </style>
+  @media (max-width: 980px) {
+    .desktop { grid-template-columns: minmax(0, 1fr); }
+    .side { position: static; order: 2; }
+    .focus { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pads { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 600px) {
+    body { padding: 10px 8px 56px; }
+    .welcome { grid-template-columns: minmax(0, 1fr); }
+    .welcome .band { display: none; }
+    .focus { grid-template-columns: minmax(0, 1fr); }
+    .tasks { display: none; }
+    .tray { margin-left: auto; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
 </head>
 <body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="identity">
-      <div class="name">julio carneiro</div>
-      <div class="role">data analyst | excel | power bi | sql | python | tableau</div>
-    </div>
 
-    <div class="nav-group">
-      <a href="#about" class="nav-link"><i class="fa-regular fa-file-lines"></i> about</a>
-      <a href="#projects" class="nav-link"><i class="fa-regular fa-folder"></i> projects</a>
-      <a href="#notes" class="nav-link"><i class="fa-regular fa-note-sticky"></i> notes</a>
-      <a href="#snippets" class="nav-link"><i class="fa-regular fa-code"></i> snippets</a>
-      <a href="#resume" class="nav-link"><i class="fa-regular fa-file-pdf"></i> resume</a>
-    </div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-pc" viewBox="0 0 16 16"><rect x="1" y="2" width="14" height="9" fill="#C0C0C0" stroke="#000"/><rect x="3" y="4" width="10" height="5" fill="#008080"/><rect x="5" y="12" width="6" height="1" fill="#000"/><rect x="3" y="13" width="10" height="2" fill="#C0C0C0" stroke="#000" stroke-width=".8"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 16 16"><path d="M1 4h5l1 1.5h8V14H1z" fill="#FFD966" stroke="#806000"/><path d="M1 6.5h14" stroke="#806000"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 16 16"><path d="M3 1h7l3 3v11H3z" fill="#fff" stroke="#000"/><path d="M10 1v3h3" fill="none" stroke="#000"/><path d="M5 7h6M5 9h6M5 11h4" stroke="#000080"/></symbol>
+  <symbol id="i-pad" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="13" fill="#fff" stroke="#000"/><rect x="2" y="2" width="12" height="2.5" fill="#1084D0" stroke="#000"/><path d="M4 7h8M4 9h8M4 11h6M4 13h7" stroke="#808080"/></symbol>
+  <symbol id="i-pdf" viewBox="0 0 16 16"><path d="M3 1h7l3 3v11H3z" fill="#fff" stroke="#000"/><rect x="4" y="8" width="8" height="5" fill="#A3000F"/><path d="M5 10.5h6" stroke="#fff"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" fill="#fff" stroke="#000"/><rect x="3" y="9" width="2" height="4" fill="#000080"/><rect x="7" y="6" width="2" height="7" fill="#1084D0"/><rect x="11" y="3" width="2" height="10" fill="#008080"/></symbol>
+  <symbol id="i-win" viewBox="0 0 16 16"><path d="M1 3l6-1v6H1z" fill="#E33"/><path d="M8 2l7-1v7H8z" fill="#2B2"/><path d="M1 9h6v6l-6-1z" fill="#36F"/><path d="M8 9h7v7l-7-1z" fill="#FC0"/></symbol>
+  <symbol id="i-info" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#fff" stroke="#000"/><rect x="14" y="13" width="4" height="11" fill="#000080"/><rect x="14" y="7" width="4" height="4" fill="#000080"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 16 16"><rect x="1" y="3" width="14" height="10" fill="#fff" stroke="#000"/><path d="M1 3l7 6 7-6" fill="none" stroke="#000"/></symbol>
+</svg>
 
-    <div class="nav-label">filter by tools</div>
-    <div class="filter-bar" id="toolFilterBar">
-      <button class="filter-chip active" data-tool="all">all</button>
-      <button class="filter-chip" data-tool="sql">sql</button>
-      <button class="filter-chip" data-tool="python">python</button>
-      <button class="filter-chip" data-tool="looker studio">looker studio</button>
-      <button class="filter-chip" data-tool="tableau">tableau</button>
-      <button class="filter-chip" data-tool="pyspark">pyspark</button>
-      <button class="filter-chip" data-tool="ml">ml</button>
-    </div>
+<div class="desktop">
 
-    <div class="sidebar-footer">
-      <div class="sidebar-socials">
-        <a href="https://github.com/juliocezarcarneiro" target="_blank" rel="noopener noreferrer">github</a>
-        <a href="https://www.linkedin.com/in/juliocezarcarneiro/" target="_blank" rel="noopener noreferrer">linkedin</a>
-        <a href="mailto:carneiro.julio@proton.me">email</a>
+  <!-- Sidebar: My Computer -->
+  <aside class="side">
+    <div class="window raised">
+      <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-pc"/></svg><span class="t">My Computer</span></div>
+      <div class="wbody">
+        <div class="identity">
+          <svg width="32" height="32" aria-hidden="true"><use href="#i-pc"/></svg>
+          <div><div class="name">julio carneiro</div><div class="role">data analyst, toronto</div></div>
+        </div>
+        <nav class="tree field sunken" aria-label="Sections">
+          <a href="#about"><svg width="16" height="16" aria-hidden="true"><use href="#i-doc"/></svg>about.txt</a>
+          <a href="#projects"><svg width="16" height="16" aria-hidden="true"><use href="#i-folder"/></svg>projects</a>
+          <a href="#notes"><svg width="16" height="16" aria-hidden="true"><use href="#i-folder"/></svg>notes</a>
+          <a href="#snippets"><svg width="16" height="16" aria-hidden="true"><use href="#i-folder"/></svg>snippets</a>
+          <a href="#resume"><svg width="16" height="16" aria-hidden="true"><use href="#i-pdf"/></svg>resume.pdf</a>
+        </nav>
+        <fieldset>
+          <legend>Filter by tool</legend>
+          <div class="chips" id="toolFilterBar">
+            <button class="btn small" data-tool="all" aria-pressed="true">all</button>
+            <button class="btn small" data-tool="sql" aria-pressed="false">sql</button>
+            <button class="btn small" data-tool="python" aria-pressed="false">python</button>
+            <button class="btn small" data-tool="tableau" aria-pressed="false">tableau</button>
+            <button class="btn small" data-tool="looker studio" aria-pressed="false">looker studio</button>
+            <button class="btn small" data-tool="pyspark" aria-pressed="false">pyspark</button>
+            <button class="btn small" data-tool="ml" aria-pressed="false">ml</button>
+          </div>
+        </fieldset>
+        <fieldset style="margin-bottom:0">
+          <legend>Skills</legend>
+          <div style="font-size:12px">Excel, Power BI, SQL, Python, Tableau</div>
+        </fieldset>
       </div>
-      <p class="copyright">© julio carneiro</p>
+    </div>
+    <div class="contact-links">
+      <a class="btn small" href="https://github.com/juliocezarcarneiro" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="btn small" href="https://www.linkedin.com/in/juliocezarcarneiro/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn small" href="mailto:carneiro.julio@proton.me">Email</a>
     </div>
   </aside>
 
-  <main class="main">
-    <div class="top-bar">
-      <div class="portfolio-badge">
-        <strong>portfolio</strong> data analytics & business intelligence
-      </div>
-      <div class="right-group">
-        <div class="contact-badge-group">
-          <a href="mailto:carneiro.julio@proton.me" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
-          <a href="https://github.com/juliocezarcarneiro" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/juliocezarcarneiro/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+  <main>
+    <!-- Welcome -->
+    <section class="window raised" id="top">
+      <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-win"/></svg><span class="t">Welcome</span>
+        <button class="btn tb-btn" data-min aria-label="Minimize">_</button></div>
+      <div class="welcome">
+        <div class="band" aria-hidden="true"><span>julio&nbsp;<b>carneiro</b></span></div>
+        <div class="content">
+          <h1>Turning business data into profitability insights</h1>
+          <p>Business-focused analytics using Excel, Power BI, SQL, Python and Tableau to find profitability drivers, operational inefficiencies and decision-ready insights.</p>
+          <div class="actions">
+            <a class="btn default" href="#projects">View projects</a>
+            <a class="btn" href="resume-julio-carneiro.pdf" download>Download resume</a>
+          </div>
+          <div class="tip"><svg width="20" height="20" aria-hidden="true"><use href="#i-info"/></svg>
+            <div><b>Did you know?</b> Before analytics I ran kitchen operations and cut food waste from 8% to 2% using sales, inventory and waste data.</div></div>
         </div>
-        <div class="time-location">
-          <i class="fa-regular fa-location-dot"></i> <span>toronto</span>
-          <span style="color: var(--line);">|</span>
-          <i class="fa-regular fa-clock"></i> <span id="toronto-time">--:--</span>
-        </div>
-      </div>
-    </div>
-
-    <section class="hero">
-      <h1 class="hero-title">Turning business data into profitability insights</h1>
-      <p class="hero-note">Business-focused analytics using Excel, Power BI, SQL, Python, and Tableau to identify profitability drivers, operational inefficiencies, and decision-ready insights.</p>
-      <a href="#projects" class="scroll-note">View projects →</a>
-    </section>
-
-    <section id="about" class="section">
-      <h2 class="section-title">about</h2>
-      <p class="query-line"><span class="q-prompt">&gt;</span> SELECT bio, focus FROM analyst WHERE name = 'julio';</p>
-      <div class="about-single">
-        Business-focused analytics using Excel, Power BI, SQL, Python and Tableau to turn operational and financial data into executive decisions. Before analytics, I ran kitchen operations and cut food waste from 8% to 2%.
-      </div>
-      <div class="focus-list">
-        <div class="focus-item"><h3>reporting</h3><p>excel, power bi, executive dashboards, KPI tracking</p></div>
-        <div class="focus-item"><h3>sql</h3><p>data validation, profitability, cost trends</p></div>
-        <div class="focus-item"><h3>python</h3><p>automation, reproducible analysis</p></div>
-        <div class="focus-item"><h3>business</h3><p>finance, operations, sales insights</p></div>
       </div>
     </section>
 
-    <section id="projects" class="section">
-      <h2 class="section-title">projects</h2>
-      <p class="query-line"><span class="q-prompt">&gt;</span> SELECT * FROM projects ORDER BY business_impact DESC;</p>
-      <div class="projects-grid" id="projectsGrid">
-        <article class="project-card" data-tools="sql,python,tableau">
-          <div class="project-image"><img src="images/operations-profitability.jpg" alt="Operations Profitability Dashboard Screenshot"></div>
-          <div class="project-content">
-            <div class="project-meta"><span>main project</span><span>2026</span></div>
-            <h3 class="project-title">Operations Profitability & Cost Optimization</h3>
-            <p class="project-description">Executive-style profitability analysis using SQL, Python, and Tableau to identify margin compression, operational inefficiencies, cost growth trends, and business optimization opportunities.</p>
-            <div class="metric"><span class="m-key">gross_margin</span><span class="m-val down">31.45% → 24.41%</span></div>
+    <!-- About -->
+    <section class="window raised" id="about">
+      <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg><span class="t">about.txt - Notepad</span>
+        <button class="btn tb-btn" data-min aria-label="Minimize">_</button></div>
+      <div class="menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>Search</span><span>Help</span></div>
+      <div class="wbody">
+        <div class="about-text field sunken">Business-focused analytics using Excel, Power BI, SQL, Python and Tableau to turn operational and financial data into executive decisions.</div>
+        <div class="focus">
+          <fieldset><legend>reporting</legend><p>excel, power bi, executive dashboards, KPI tracking</p></fieldset>
+          <fieldset><legend>sql</legend><p>data validation, profitability, cost trends</p></fieldset>
+          <fieldset><legend>python</legend><p>automation, reproducible analysis</p></fieldset>
+          <fieldset><legend>business</legend><p>finance, operations, sales insights</p></fieldset>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects: Explorer -->
+    <section class="window raised" id="projects">
+      <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-folder"/></svg><span class="t">Exploring - C:\portfolio\projects</span>
+        <button class="btn tb-btn" data-min aria-label="Minimize">_</button></div>
+      <div class="menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Favorites</span><span>Help</span></div>
+      <div class="addressbar"><span>Address</span><div class="addr field sunken">SELECT * FROM projects ORDER BY business_impact DESC;</div></div>
+
+      <div class="files field sunken" id="projectsGrid">
+        <article class="file raised" data-tools="sql,python,tableau">
+          <div class="thumb sunken"><img src="images/operations-profitability.jpg" alt="Profitability by location chart" loading="lazy"></div>
+          <div class="fbody">
+            <div class="meta"><span>main project</span><span>2026</span></div>
+            <h3>Operations Profitability &amp; Cost Optimization</h3>
+            <p>Profitability analysis of a restaurant group to find margin compression, cost growth and underperforming locations.</p>
+            <div class="metric sunken"><span class="k">gross_margin</span><span class="v down">31.45% → 24.41%</span></div>
             <div class="tags"><span class="tag">sql</span><span class="tag">python</span><span class="tag">tableau</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization" target="_blank" rel="noopener noreferrer" class="project-link">github</a><a href="https://public.tableau.com/app/profile/julio.carneiro/viz/OperationsProfitabilityCostOptimization/ExecutiveSummary" target="_blank" rel="noopener noreferrer" class="project-link">dashboard</a></div>
+            <div class="flinks"><a class="btn small" href="https://github.com/juliocezarcarneiro/operations-profitability-cost-optimization" target="_blank" rel="noopener noreferrer">GitHub</a><a class="btn small" href="https://public.tableau.com/app/profile/julio.carneiro/viz/OperationsProfitabilityCostOptimization/ExecutiveSummary" target="_blank" rel="noopener noreferrer">Dashboard</a></div>
           </div>
         </article>
-        <article class="project-card" data-tools="python">
-          <div class="project-image">
-            <img src="images/canada-brazil-2025-trade-outlook.jpg" alt="Canada Brazil Trade Opportunities Analysis">
-          </div>
-        
-          <div class="project-content">
-            <div class="project-meta">
-              <span>executive analytics</span>
-              <span>2026</span>
-            </div>
-        
-            <h3 class="project-title">
-              Canada–Brazil Trade Opportunities Analysis
-            </h3>
-        
-            <p class="project-description">
-              Executive trade analysis prepared for FCBB using Statistics Canada data. The project evaluates bilateral trade performance, product growth opportunities, provincial trade concentration, and 2026 forecasting to support strategic decision-making.
-            </p>
-            <div class="metric"><span class="m-key">trade_2025</span><span class="m-val up">CAD $14.5B, +16.0%</span></div>
-        
-            <div class="tags">
-              <span class="tag">python</span>
-              <span class="tag">forecasting</span>
-              <span class="tag">business intelligence</span>
-            </div>
-        
-            <div class="project-links">
-              <a href="https://github.com/juliocezarcarneiro/canada-brazil-trade-report"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="project-link">
-                 github
-              </a>
-        
-              <a href="https://github.com/juliocezarcarneiro/canada-brazil-trade-report/blob/main/reports/canada_brazil_trade_report.pdf"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="project-link">
-                 report
-              </a>
-            </div>
+
+        <article class="file raised" data-tools="python">
+          <div class="thumb sunken"><img src="images/canada-brazil-2025-trade-outlook.jpg" alt="Canada–Brazil 2025 trade outlook" loading="lazy"></div>
+          <div class="fbody">
+            <div class="meta"><span>executive analytics</span><span>2026</span></div>
+            <h3>Canada–Brazil Trade Opportunities</h3>
+            <p>Trade analysis prepared for FCBB with Statistics Canada data: product growth, provincial concentration and a 2026 forecast.</p>
+            <div class="metric sunken"><span class="k">trade_2025</span><span class="v up">CAD $14.5B, +16.0%</span></div>
+            <div class="tags"><span class="tag">python</span><span class="tag">forecasting</span><span class="tag">reporting</span></div>
+            <div class="flinks"><a class="btn small" href="https://github.com/juliocezarcarneiro/canada-brazil-trade-report" target="_blank" rel="noopener noreferrer">GitHub</a><a class="btn small" href="https://github.com/juliocezarcarneiro/canada-brazil-trade-report/blob/main/reports/canada_brazil_trade_report.pdf" target="_blank" rel="noopener noreferrer">Report</a></div>
           </div>
         </article>
-        <article class="project-card" data-tools="python,ml,tableau">
-          <div class="project-image"><img src="images/diabetes.jpg" alt="BMI versus diabetes status chart"></div>
-          <div class="project-content">
-            <div class="project-meta"><span>machine learning</span><span>2025</span></div>
-            <h3 class="project-title">Early Diabetes Risk Prediction</h3>
-            <p class="project-description">Team project. Compared four models on 253,680 CDC survey responses and deployed the best one as a live web app.</p>
-            <div class="metric"><span class="m-key">accuracy</span><span class="m-val up">91%</span></div>
+
+        <article class="file raised" data-tools="python,ml,tableau">
+          <div class="thumb sunken"><img src="images/diabetes.jpg" alt="BMI versus diabetes status chart" loading="lazy"></div>
+          <div class="fbody">
+            <div class="meta"><span>machine learning</span><span>2025</span></div>
+            <h3>Early Diabetes Risk Prediction</h3>
+            <p>Team project. Compared four models on 253,680 CDC survey responses and deployed the best one as a live web app.</p>
+            <div class="metric sunken"><span class="k">accuracy</span><span class="v up">91%</span></div>
             <div class="tags"><span class="tag">python</span><span class="tag">scikit-learn</span><span class="tag">gradio</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/diabetes-risk-prediction-model" target="_blank" rel="noopener noreferrer" class="project-link">github</a><a href="https://juliocarneiro-diabetes-risk-predictor.hf.space/" target="_blank" rel="noopener noreferrer" class="project-link">demo</a></div>
+            <div class="flinks"><a class="btn small" href="https://github.com/juliocezarcarneiro/diabetes-risk-prediction-model" target="_blank" rel="noopener noreferrer">GitHub</a><a class="btn small" href="https://juliocarneiro-diabetes-risk-predictor.hf.space/" target="_blank" rel="noopener noreferrer">Demo</a></div>
           </div>
         </article>
-        <article class="project-card" data-tools="looker studio,python,finance">
-          <div class="project-image"><img src="images/executive-summary.jpg" alt="TechFlow" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Financial';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>dashboard</span><span>2026</span></div>
-            <h3 class="project-title">TechFlow CFO Dashboard</h3>
-            <p class="project-description">Executive dashboard replacing static reports with revenue, budget variance and cash flow views. Isolated Sales and Engineering as the drivers of a $12.3M revenue gap.</p>
-            <div class="metric"><span class="m-key">vs_budget</span><span class="m-val down">$110.2M, −10.1%</span></div>
+
+        <article class="file raised" data-tools="looker studio,python">
+          <div class="thumb sunken"><img src="images/executive-summary.jpg" alt="TechFlow executive financial dashboard" loading="lazy"></div>
+          <div class="fbody">
+            <div class="meta"><span>dashboard</span><span>2026</span></div>
+            <h3>TechFlow CFO Dashboard</h3>
+            <p>Revenue, budget variance and cash flow views. Isolated Sales and Engineering as the drivers of a $12.3M revenue gap.</p>
+            <div class="metric sunken"><span class="k">vs_budget</span><span class="v down">$110.2M, −10.1%</span></div>
             <div class="tags"><span class="tag">looker studio</span><span class="tag">python</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow" target="_blank" rel="noopener noreferrer" class="project-link">github</a><a href="https://lookerstudio.google.com/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49" target="_blank" rel="noopener noreferrer" class="project-link">dashboard</a></div>
+            <div class="flinks"><a class="btn small" href="https://github.com/juliocezarcarneiro/cfo-executive-dashboard-techflow" target="_blank" rel="noopener noreferrer">GitHub</a><a class="btn small" href="https://lookerstudio.google.com/reporting/7edc9bf7-a093-4a6d-af91-8fd97fbd6e49" target="_blank" rel="noopener noreferrer">Dashboard</a></div>
           </div>
         </article>
-        <article class="project-card" data-tools="python,sql">
-          <div class="project-image"><img src="images/sales-system.jpg" alt="Sales" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Sales+Auto';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>automation</span><span class="wip">in progress</span></div>
-            <h3 class="project-title">Automated Sales Reporting</h3>
-            <p class="project-description">Pipeline that generates daily sales and KPI briefings as HTML, PDF and email.</p>
+
+        <article class="file raised" data-tools="python,sql">
+          <div class="thumb sunken"><img src="images/sales-system.jpg" alt="Point of sale terminal" loading="lazy"></div>
+          <div class="fbody">
+            <div class="meta"><span>automation</span><span class="wip">in progress</span></div>
+            <h3>Automated Sales Reporting</h3>
+            <p>Pipeline that generates daily sales and KPI briefings as HTML, PDF and email.</p>
             <div class="tags"><span class="tag">python</span><span class="tag">sql</span><span class="tag">airflow</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/projects-in-progress/automated-sales-reporting-system" target="_blank" rel="noopener noreferrer" class="project-link">github</a></div>
+            <div class="flinks"><a class="btn small" href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/projects-in-progress/automated-sales-reporting-system" target="_blank" rel="noopener noreferrer">GitHub</a></div>
           </div>
         </article>
-        <article class="project-card" data-tools="python">
-          <div class="project-image"><img src="images/e-commerce.jpg" alt="E-Commerce" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=E-Commerce';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>customer analytics</span><span class="wip">in progress</span></div>
-            <h3 class="project-title">E-Commerce Customer Analytics</h3>
-            <p class="project-description">RFM segmentation and market basket analysis on 500k+ online retail transactions.</p>
+
+        <article class="file raised" data-tools="python">
+          <div class="thumb sunken"><img src="images/e-commerce.jpg" alt="Server racks" loading="lazy"></div>
+          <div class="fbody">
+            <div class="meta"><span>customer analytics</span><span class="wip">in progress</span></div>
+            <h3>E-Commerce Customer Analytics</h3>
+            <p>RFM segmentation and market basket analysis on 500k+ online retail transactions.</p>
             <div class="tags"><span class="tag">python</span><span class="tag">pandas</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/projects-in-progress/e-commerce-conversion-analytics" target="_blank" rel="noopener noreferrer" class="project-link">github</a></div>
+            <div class="flinks"><a class="btn small" href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/projects-in-progress/e-commerce-conversion-analytics" target="_blank" rel="noopener noreferrer">GitHub</a></div>
           </div>
         </article>
-        <article class="project-card" data-tools="python,ml">
-          <div class="project-image"><img src="images/funding-predictor.jpg" alt="Funding" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Funding+ML';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>deep learning</span><span>2025</span></div>
-            <h3 class="project-title">Funding Success Predictor</h3>
-            <p class="project-description">Deep learning model predicting charity funding success using neural networks.</p>
+
+        <article class="file raised" data-tools="python,ml">
+          <div class="thumb sunken"><img src="images/funding-predictor.jpg" alt="Abstract neural network illustration" loading="lazy"></div>
+          <div class="fbody">
+            <div class="meta"><span>deep learning</span><span>2025</span></div>
+            <h3>Funding Success Predictor</h3>
+            <p>Deep learning model predicting charity funding success with neural networks.</p>
             <div class="tags"><span class="tag">tensorflow</span><span class="tag">python</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/machine-learning/bootcamp/deep-learning-challenge" target="_blank" rel="noopener noreferrer" class="project-link">github</a></div>
+            <div class="flinks"><a class="btn small" href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/machine-learning/bootcamp/deep-learning-challenge" target="_blank" rel="noopener noreferrer">GitHub</a></div>
           </div>
         </article>
-        <article class="project-card" data-tools="pyspark,sql">
-          <div class="project-image"><img src="images/home-sales.jpg" alt="Home Sales" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Home+Sales';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>data eng</span><span>2025</span></div>
-            <h3 class="project-title">Home Sales Analysis</h3>
-            <p class="project-description">SparkSQL, Parquet partitions, cache optimization for real estate insights.</p>
+
+        <article class="file raised" data-tools="pyspark,sql">
+          <div class="thumb sunken"><img src="images/home-sales.jpg" alt="Abacus" loading="lazy"></div>
+          <div class="fbody">
+            <div class="meta"><span>data eng</span><span>2025</span></div>
+            <h3>Home Sales Analysis</h3>
+            <p>SparkSQL, Parquet partitions and cache optimization for real estate insights.</p>
             <div class="tags"><span class="tag">sparksql</span><span class="tag">parquet</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/projects-in-progress/home-sales-analysis" target="_blank" rel="noopener noreferrer" class="project-link">github</a></div>
+            <div class="flinks"><a class="btn small" href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/projects-in-progress/home-sales-analysis" target="_blank" rel="noopener noreferrer">GitHub</a></div>
           </div>
         </article>
-        <article class="project-card" data-tools="python,ml">
-          <div class="project-image"><img src="images/credit-risk.jpg" alt="Credit risk" onerror="this.src='https://placehold.co/600x400/eef2f6/1f4e79?text=Credit+Risk';"> </div>
-          <div class="project-content">
-            <div class="project-meta"><span>machine learning</span><span>2025</span></div>
-            <h3 class="project-title">Credit Risk Classification</h3>
-            <p class="project-description">Supervised ML for loan risk assessment with imbalanced financial data.</p>
+
+        <article class="file raised" data-tools="python,ml">
+          <div class="thumb sunken"><img src="images/credit-risk.jpg" alt="Letter tiles spelling credit risk" loading="lazy"></div>
+          <div class="fbody">
+            <div class="meta"><span>machine learning</span><span>2025</span></div>
+            <h3>Credit Risk Classification</h3>
+            <p>Supervised ML for loan risk assessment with imbalanced financial data.</p>
             <div class="tags"><span class="tag">scikit-learn</span><span class="tag">python</span></div>
-            <div class="project-links"><a href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/machine-learning/bootcamp/credit-risk-classification" target="_blank" rel="noopener noreferrer" class="project-link">github</a></div>
+            <div class="flinks"><a class="btn small" href="https://github.com/juliocezarcarneiro/data-analytics-learning/tree/main/machine-learning/bootcamp/credit-risk-classification" target="_blank" rel="noopener noreferrer">GitHub</a></div>
           </div>
         </article>
       </div>
-      <p class="row-count" id="rowCount">(9 rows)</p>
+      <div class="statusbar"><div class="sunken" id="rowCount">9 object(s)</div><div class="sunken">My Computer</div></div>
     </section>
 
-    <!-- NOTES for junior analysts -->
-    <section id="notes" class="section">
-      <h2 class="section-title">notes</h2>
-      <p class="query-line"><span class="q-prompt">&gt;</span> SELECT title, code FROM notes WHERE level = 'fundamentals';</p>
-      <div class="notes-grid">
-        <div class="note-card">
-          <div class="sub-badge">📘 beginner sql</div>
-          <div class="note-title"><i class="fa-regular fa-table"></i> Basic SELECT query</div>
-          <div class="code-container">
-            <div class="code-snip" id="sql-basic">SELECT 
+    <!-- Notes -->
+    <h2 class="section-label" id="notes">notes <code>SELECT title, code FROM notes WHERE level = 'fundamentals';</code></h2>
+    <div class="pads">
+      <div class="window raised pad">
+        <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg><span class="t">basic_select.sql - Notepad</span></div>
+        <div class="wbody">
+<pre class="field sunken" id="sql-basic">SELECT
     customer_id,
-    COUNT(*) as total_orders,
-    SUM(amount) as total_spent
+    COUNT(*) AS total_orders,
+    SUM(amount) AS total_spent
 FROM orders
 WHERE order_date >= '2025-01-01'
 GROUP BY customer_id
 ORDER BY total_spent DESC
-LIMIT 10;</div>
-            <button class="copy-btn" data-target="sql-basic">copy</button>
-          </div>
-          <div class="note-meta">Learn to aggregate and filter data. This query finds top customers by spending.</div>
+LIMIT 10;</pre>
+          <div class="foot"><span>Top customers by spending.</span><button class="btn small" data-copy="sql-basic">Copy</button></div>
         </div>
-        <div class="note-card">
-          <div class="sub-badge">🐍 python basics</div>
-          <div class="note-title"><i class="fa-regular fa-code"></i> Pandas filter & groupby</div>
-          <div class="code-container">
-            <div class="code-snip" id="python-basic">import pandas as pd
+      </div>
+      <div class="window raised pad">
+        <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg><span class="t">filter_groupby.py - Notepad</span></div>
+        <div class="wbody">
+<pre class="field sunken" id="python-basic">import pandas as pd
 
 df = pd.read_csv('sales.csv')
 # Filter rows where revenue > 1000
 filtered = df[df['revenue'] > 1000]
 # Group by region and calculate average
 result = filtered.groupby('region')['revenue'].mean().reset_index()
-print(result)</div>
-            <button class="copy-btn" data-target="python-basic">copy</button>
-          </div>
-          <div class="note-meta">Essential pattern for data manipulation and aggregation in Python.</div>
+print(result)</pre>
+          <div class="foot"><span>Filter and aggregate with pandas.</span><button class="btn small" data-copy="python-basic">Copy</button></div>
         </div>
-        <div class="note-card">
-          <div class="sub-badge">📊 window functions</div>
-          <div class="note-title"><i class="fa-regular fa-chart-line"></i> Running total & ranking</div>
-          <div class="code-container">
-            <div class="code-snip" id="sql-window">SELECT 
+      </div>
+      <div class="window raised pad">
+        <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg><span class="t">running_total.sql - Notepad</span></div>
+        <div class="wbody">
+<pre class="field sunken" id="sql-window">SELECT
     date,
     product,
     sales,
-    SUM(sales) OVER(PARTITION BY product ORDER BY date) as running_total,
-    ROW_NUMBER() OVER(PARTITION BY product ORDER BY sales DESC) as rank_in_product
+    SUM(sales) OVER (PARTITION BY product ORDER BY date) AS running_total,
+    ROW_NUMBER() OVER (PARTITION BY product ORDER BY sales DESC) AS rank_in_product
 FROM daily_sales
-ORDER BY product, date;</div>
-            <button class="copy-btn" data-target="sql-window">copy</button>
-          </div>
-          <div class="note-meta">Window functions let you calculate running totals and rankings without subqueries.</div>
+ORDER BY product, date;</pre>
+          <div class="foot"><span>Running totals and ranks without subqueries.</span><button class="btn small" data-copy="sql-window">Copy</button></div>
         </div>
-        <div class="note-card">
-          <div class="sub-badge">🔄 etl pattern</div>
-          <div class="note-title"><i class="fa-regular fa-clock"></i> Incremental load</div>
-          <div class="code-container">
-            <div class="code-snip" id="etl-pattern">def incremental_load(new_data, existing_table, key_column='id', timestamp_column='updated_at'):
+      </div>
+      <div class="window raised pad">
+        <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg><span class="t">incremental_load.py - Notepad</span></div>
+        <div class="wbody">
+<pre class="field sunken" id="etl-pattern">def incremental_load(new_data, existing_table, key_column='id', timestamp_column='updated_at'):
     # Get latest timestamp from existing data
     latest = existing_table[timestamp_column].max()
     # Only get new or updated records
     new_records = new_data[new_data[timestamp_column] > latest]
     # Append to table
-    return pd.concat([existing_table, new_records], ignore_index=True)</div>
-            <button class="copy-btn" data-target="etl-pattern">copy</button>
-          </div>
-          <div class="note-meta">Efficient ETL pattern that only processes changed data, saving time and resources.</div>
+    return pd.concat([existing_table, new_records], ignore_index=True)</pre>
+          <div class="foot"><span>Process only changed records.</span><button class="btn small" data-copy="etl-pattern">Copy</button></div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- SNIPPETS - junior friendly -->
-    <section id="snippets" class="section">
-      <h2 class="section-title">snippets</h2>
-      <p class="query-line"><span class="q-prompt">&gt;</span> SELECT title, code FROM snippets ORDER BY topic;</p>
-      <div class="snippets-grid">
-        <div class="note-card">
-          <div class="sub-badge">📅 date functions</div>
-          <div class="note-title"><i class="fa-regular fa-calendar"></i> SQL date truncation</div>
-          <div class="code-container">
-            <div class="code-snip" id="date-trunc">-- Group by month, quarter, or year
-SELECT 
-    DATE_TRUNC('month', transaction_date) as month,
-    SUM(amount) as monthly_revenue
+    <!-- Snippets -->
+    <h2 class="section-label" id="snippets">snippets <code>SELECT title, code FROM snippets ORDER BY topic;</code></h2>
+    <div class="pads">
+      <div class="window raised pad">
+        <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg><span class="t">date_trunc.sql - Notepad</span></div>
+        <div class="wbody">
+<pre class="field sunken" id="date-trunc">-- Group by month, quarter, or year
+SELECT
+    DATE_TRUNC('month', transaction_date) AS month,
+    SUM(amount) AS monthly_revenue
 FROM transactions
 GROUP BY 1
-ORDER BY 1 DESC;</div>
-            <button class="copy-btn" data-target="date-trunc">copy</button>
-          </div>
-          <div class="note-meta">Use DATE_TRUNC to aggregate time series data by month, week, or quarter.</div>
+ORDER BY 1 DESC;</pre>
+          <div class="foot"><span>Aggregate time series by period.</span><button class="btn small" data-copy="date-trunc">Copy</button></div>
         </div>
-        <div class="note-card">
-          <div class="sub-badge">🔗 join patterns</div>
-          <div class="note-title"><i class="fa-regular fa-link"></i> LEFT JOIN with COALESCE</div>
-          <div class="code-container">
-            <div class="code-snip" id="join-pattern">SELECT 
+      </div>
+      <div class="window raised pad">
+        <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg><span class="t">left_join_coalesce.sql - Notepad</span></div>
+        <div class="wbody">
+<pre class="field sunken" id="join-pattern">SELECT
     u.user_id,
     u.name,
-    COALESCE(o.total_orders, 0) as order_count,
-    COALESCE(o.total_spent, 0) as lifetime_value
+    COALESCE(o.total_orders, 0) AS order_count,
+    COALESCE(o.total_spent, 0) AS lifetime_value
 FROM users u
 LEFT JOIN (
-    SELECT user_id, COUNT(*) as total_orders, SUM(amount) as total_spent
+    SELECT user_id, COUNT(*) AS total_orders, SUM(amount) AS total_spent
     FROM orders
     GROUP BY user_id
-) o ON u.user_id = o.user_id;</div>
-            <button class="copy-btn" data-target="join-pattern">copy</button>
-          </div>
-          <div class="note-meta">LEFT JOIN keeps all users, COALESCE replaces NULL with 0 for cleaner results.</div>
+) o ON u.user_id = o.user_id;</pre>
+          <div class="foot"><span>Keep all users; replace NULL with 0.</span><button class="btn small" data-copy="join-pattern">Copy</button></div>
         </div>
-        <div class="note-card">
-          <div class="sub-badge">📈 python visualization</div>
-          <div class="note-title"><i class="fa-regular fa-chart-simple"></i> Quick matplotlib chart</div>
-          <div class="code-container">
-            <div class="code-snip" id="viz">import matplotlib.pyplot as plt
-import seaborn as sns
+      </div>
+      <div class="window raised pad">
+        <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg><span class="t">quick_chart.py - Notepad</span></div>
+        <div class="wbody">
+<pre class="field sunken" id="viz">import matplotlib.pyplot as plt
 
 # Simple bar chart
 df.groupby('category')['sales'].sum().plot(kind='bar')
@@ -943,109 +482,136 @@ plt.title('Sales by Category')
 plt.xlabel('Category')
 plt.ylabel('Total Sales')
 plt.tight_layout()
-plt.show()</div>
-            <button class="copy-btn" data-target="viz">copy</button>
-          </div>
-          <div class="note-meta">Quick exploratory visualization to spot trends and outliers in your data.</div>
+plt.show()</pre>
+          <div class="foot"><span>Spot trends and outliers fast.</span><button class="btn small" data-copy="viz">Copy</button></div>
         </div>
-        <div class="note-card">
-          <div class="sub-badge">🧹 data cleaning</div>
-          <div class="note-title"><i class="fa-regular fa-broom"></i> Handle missing values</div>
-          <div class="code-container">
-            <div class="code-snip" id="cleaning"># Python pandas - handle missing data
-# Fill numeric nulls with median
-df['price'].fillna(df['price'].median(), inplace=True)
+      </div>
+      <div class="window raised pad">
+        <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg><span class="t">missing_values.py - Notepad</span></div>
+        <div class="wbody">
+<pre class="field sunken" id="cleaning"># Fill numeric nulls with median
+df['price'] = df['price'].fillna(df['price'].median())
 # Fill categorical with mode
-df['category'].fillna(df['category'].mode()[0], inplace=True)
+df['category'] = df['category'].fillna(df['category'].mode()[0])
 # Drop rows missing critical columns
-df.dropna(subset=['customer_id', 'transaction_date'], inplace=True)</div>
-            <button class="copy-btn" data-target="cleaning">copy</button>
-          </div>
-          <div class="note-meta">Always clean missing values before analysis. Choose fill strategy based on data type.</div>
+df = df.dropna(subset=['customer_id', 'transaction_date'])</pre>
+          <div class="foot"><span>Choose the fill strategy by data type.</span><button class="btn small" data-copy="cleaning">Copy</button></div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section id="resume" class="section">
-      <h2 class="section-title">resume</h2>
-      <p class="query-line"><span class="q-prompt">&gt;</span> SELECT file FROM documents WHERE type = 'resume';</p>
-      <div class="resume-box">
-        <span>📄 resume-julio-carneiro.pdf</span>
-        <a href="resume-julio-carneiro.pdf" download>download resume</a>
+    <!-- Resume -->
+    <h2 class="section-label" id="resume">resume <code>SELECT file FROM documents WHERE type = 'resume';</code></h2>
+    <div class="window raised dialog">
+      <div class="titlebar"><svg width="16" height="16" aria-hidden="true"><use href="#i-pdf"/></svg><span class="t">File Download</span></div>
+      <div class="wbody">
+        <svg width="32" height="32" aria-hidden="true"><use href="#i-pdf"/></svg>
+        <div style="flex:1">
+          <p>You are about to download:</p>
+          <p style="margin-top:6px"><b>resume-julio-carneiro.pdf</b></p>
+          <div class="actions">
+            <a class="btn default" href="resume-julio-carneiro.pdf" download>Download</a>
+            <a class="btn" href="resume-julio-carneiro.pdf" target="_blank" rel="noopener noreferrer">Open</a>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   </main>
 </div>
 
+<!-- Start menu -->
+<div class="startmenu raised" id="startmenu" aria-label="Start menu">
+  <div class="side-band" aria-hidden="true"><span>julio carneiro</span></div>
+  <ul>
+    <li><a href="#projects"><svg width="16" height="16" aria-hidden="true"><use href="#i-folder"/></svg>Projects</a></li>
+    <li><a href="#about"><svg width="16" height="16" aria-hidden="true"><use href="#i-doc"/></svg>About</a></li>
+    <li><a href="#notes"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg>Notes</a></li>
+    <li><a href="#snippets"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg>Snippets</a></li>
+    <li><a href="#resume"><svg width="16" height="16" aria-hidden="true"><use href="#i-pdf"/></svg>Resume</a></li>
+    <li><hr></li>
+    <li><a href="https://github.com/juliocezarcarneiro" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" aria-hidden="true"><use href="#i-pc"/></svg>GitHub</a></li>
+    <li><a href="https://www.linkedin.com/in/juliocezarcarneiro/" target="_blank" rel="noopener noreferrer"><svg width="16" height="16" aria-hidden="true"><use href="#i-chart"/></svg>LinkedIn</a></li>
+    <li><a href="mailto:carneiro.julio@proton.me"><svg width="16" height="16" aria-hidden="true"><use href="#i-mail"/></svg>Email</a></li>
+  </ul>
+</div>
+
+<!-- Taskbar -->
+<footer class="taskbar">
+  <button class="btn start" id="startBtn" aria-expanded="false" aria-controls="startmenu"><svg width="16" height="16" aria-hidden="true"><use href="#i-win"/></svg>Start</button>
+  <nav class="tasks" aria-label="Open windows">
+    <a class="btn" href="#top"><svg width="16" height="16" aria-hidden="true"><use href="#i-win"/></svg>Welcome</a>
+    <a class="btn" href="#about"><svg width="16" height="16" aria-hidden="true"><use href="#i-pad"/></svg>about.txt</a>
+    <a class="btn" href="#projects"><svg width="16" height="16" aria-hidden="true"><use href="#i-folder"/></svg>projects</a>
+  </nav>
+  <div class="tray sunken"><span>toronto</span><span id="toronto-time">--:--</span></div>
+</footer>
+
 <script>
+  // Toronto clock
   function updateToronto() {
-    const now = new Date();
-    const time = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', hour: 'numeric', minute: '2-digit', hour12: true }).format(now).toLowerCase();
-    document.getElementById('toronto-time').textContent = time;
+    try {
+      document.getElementById('toronto-time').textContent = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', hour: 'numeric', minute: '2-digit', hour12: true }).format(new Date());
+    } catch (e) {}
   }
-  updateToronto();
-  setInterval(updateToronto, 30000);
+  updateToronto(); setInterval(updateToronto, 30000);
 
-  document.querySelectorAll('.nav-link').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-
-  // filter projects
-  const chips = document.querySelectorAll('.filter-chip');
-  const projects = document.querySelectorAll('.project-card');
+  // Filter projects + object count
+  const chips = document.querySelectorAll('#toolFilterBar .btn');
+  const files = document.querySelectorAll('.file');
+  const count = document.getElementById('rowCount');
   function filterProjects(tool) {
-    projects.forEach(p => {
-      const toolsAttr = p.getAttribute('data-tools')?.toLowerCase() || '';
-      if (tool === 'all') {
-        p.classList.remove('hidden');
-      } else {
-        const toolMatches = toolsAttr.split(',').map(t => t.trim());
-        if (toolMatches.includes(tool.toLowerCase())) {
-          p.classList.remove('hidden');
-        } else {
-          p.classList.add('hidden');
-        }
-      }
+    let shown = 0;
+    files.forEach(f => {
+      const tools = (f.getAttribute('data-tools') || '').toLowerCase().split(',').map(t => t.trim());
+      const show = tool === 'all' || tools.includes(tool);
+      f.classList.toggle('hidden', !show);
+      if (show) shown++;
     });
-    const shown = [...projects].filter(p => !p.classList.contains('hidden')).length;
-    const rc = document.getElementById('rowCount');
-    if (rc) rc.textContent = '(' + shown + (shown === 1 ? ' row)' : ' rows)');
+    count.textContent = shown + ' object(s)';
   }
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      chips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      filterProjects(chip.getAttribute('data-tool'));
-    });
-  });
-  filterProjects('all');
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+    chip.setAttribute('aria-pressed', 'true');
+    filterProjects(chip.getAttribute('data-tool'));
+  }));
 
-  // Copy functionality for all code snippets
-  document.querySelectorAll('.copy-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const targetId = this.getAttribute('data-target');
-      const codeElement = document.getElementById(targetId);
-      if (codeElement) {
-        const textToCopy = codeElement.innerText;
-        navigator.clipboard.writeText(textToCopy).then(() => {
-          // Visual feedback
-          const originalText = this.innerText;
-          this.innerText = 'copied!';
-          this.classList.add('copied');
-          setTimeout(() => {
-            this.innerText = originalText;
-            this.classList.remove('copied');
-          }, 1500);
-        }).catch(err => {
-          console.error('Copy failed: ', err);
-        });
-      }
+  // Minimize windows
+  document.querySelectorAll('[data-min]').forEach(b => b.addEventListener('click', () => {
+    const w = b.closest('.window');
+    w.classList.toggle('min');
+    b.setAttribute('aria-label', w.classList.contains('min') ? 'Restore' : 'Minimize');
+  }));
+
+  // Copy code
+  document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', () => {
+    const el = document.getElementById(btn.getAttribute('data-copy'));
+    navigator.clipboard.writeText(el.innerText).then(() => {
+      btn.textContent = 'Copied';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
     });
-  });
+  }));
+
+  // Start menu
+  const startBtn = document.getElementById('startBtn');
+  const menu = document.getElementById('startmenu');
+  function setMenu(open) {
+    menu.classList.toggle('open', open);
+    startBtn.setAttribute('aria-expanded', open);
+    startBtn.setAttribute('aria-pressed', open);
+  }
+  startBtn.addEventListener('click', e => { e.stopPropagation(); setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('click', e => { if (!menu.contains(e.target)) setMenu(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+  // Active window: the one in the middle of the screen gets the blue title bar
+  if ('IntersectionObserver' in window) {
+    const wins = document.querySelectorAll('main > .window, .pads > .window');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => en.target.classList.toggle('inactive', !en.isIntersecting));
+    }, { rootMargin: '-35% 0px -35% 0px' });
+    wins.forEach(w => { w.classList.add('inactive'); io.observe(w); });
+  }
 </script>
 </body>
 </html>
