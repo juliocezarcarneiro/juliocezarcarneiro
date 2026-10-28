@@ -28,7 +28,7 @@ SELECT 1;
 ```
 ~~~
 
-Tags are lowercase, one word each (use a dash for two words, like `power-bi`). Each tag becomes a filter button on the Notes page.
+Tags are lowercase, one word each (use a dash for two words, like `looker-studio`). Each tag becomes a filter button on the Notes page.
 
 ---
 
@@ -45,7 +45,7 @@ summary: One or two sentences: the business question and what you found.
 metric_name: forecast_error
 metric: 4.8%
 trend: up
-tags: [power-bi, sql]
+tags: [tableau, sql]
 repo: https://github.com/juliocezarcarneiro/sales-forecast
 live: https://link-to-dashboard
 live_label: dashboard

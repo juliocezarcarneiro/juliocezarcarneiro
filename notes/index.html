@@ -4,7 +4,7 @@ title: Notes
 nav: notes
 ---
 <h1>Notes</h1>
-<p class="lead">Short, practical posts on data: SQL, Python, Excel, Power BI and reporting.</p>
+<p class="lead">Short, practical posts on data: Tableau, SQL, Python, Excel and reporting.</p>
 
 {% assign tags = " " %}
 {% for post in site.posts %}{% for t in post.tags %}{% assign key = " " | append: t | append: " " %}{% unless tags contains key %}{% assign tags = tags | append: t | append: " " %}{% endunless %}{% endfor %}{% endfor %}

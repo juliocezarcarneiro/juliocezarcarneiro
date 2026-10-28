@@ -1,5 +1,5 @@
 # Julio Carneiro  
-**Data Analyst | Excel • Power BI • SQL • Python • Tableau**  
+**Data Analyst | Tableau • SQL • Python • Excel**  
 Focused on profitability, cost optimization, and business performance  
 
 I analyze business performance to identify profitability drivers and cost inefficiencies that impact results.
@@ -58,7 +58,7 @@ Reusable Python framework for cleaning, validating, and preparing datasets for a
 
 ## Skills
 
-Excel | Power BI | SQL (PostgreSQL) | Python (pandas, matplotlib) | Tableau | Looker Studio  
+Tableau | SQL (PostgreSQL) | Python (pandas, matplotlib) | Excel | Looker Studio  
 Data Cleaning | Data Validation | ETL | Dashboard Development  
 
 ---
